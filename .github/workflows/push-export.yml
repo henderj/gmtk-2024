@@ -8,6 +8,7 @@ env:
   GODOT_VERSION: 4.2.2
   EXPORT_NAME: godot-game-template
   ITCH_IO: false #set to true if you want to enable automatic itch.io deploy
+  GH_PAGES: false #set to true if you want to enable publishing to GitHub Pages
 
 jobs:
   export-windows:
@@ -18,7 +19,7 @@ jobs:
       image: barichello/godot-ci:4.2.2
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
@@ -28,7 +29,7 @@ jobs:
           mkdir -v -p builds/windows
           godot --headless --export-release "Windows Desktop" ./builds/windows/$EXPORT_NAME.exe
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: windows
           path: builds/windows
@@ -53,7 +54,7 @@ jobs:
       image: barichello/godot-ci:4.2.2
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
@@ -63,7 +64,7 @@ jobs:
           mkdir -v -p builds/linux
           godot -v --headless --export-release "Linux/X11" ./builds/linux/$EXPORT_NAME.x86_64
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: linux
           path: builds/linux
@@ -88,7 +89,7 @@ jobs:
       image: barichello/godot-ci:4.2.2
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
@@ -101,16 +102,18 @@ jobs:
         run: |
           wget https://github.com/gzuidhof/coi-serviceworker/raw/master/coi-serviceworker.min.js -O ./builds/web/coi-serviceworker.min.js
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: web
           path: builds/web
           retention-days: 1
       # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
       - name: Install rsync 📚
+        if: ${{ env.GH_PAGES == 'true'}}
         run: |
           apt-get update && apt-get install -y rsync
       - name: Deploy to GitHub Pages 🚀
+        if: ${{ env.GH_PAGES == 'true'}}
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           BRANCH: gh-pages # The branch the action should deploy to.
@@ -135,7 +138,7 @@ jobs:
       image: barichello/godot-ci:4.2.2
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
@@ -145,7 +148,7 @@ jobs:
           mkdir -v -p builds/mac
           godot --headless -v --export-release "macOS" ./builds/mac/$EXPORT_NAME.zip
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mac
           path: builds/mac
