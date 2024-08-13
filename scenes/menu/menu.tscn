@@ -119,27 +119,25 @@ grow_vertical = 0
 layout_mode = 2
 theme_type_variation = &"LabelSmall"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "made by: ..."
+text = "Made by:"
 
 [node name="Developer1" type="Label" parent="MarginContainer/Control/Credits"]
-visible = false
 layout_mode = 2
 theme_type_variation = &"LabelSmall"
 theme_override_colors/font_color = Color(0.92549, 0.92549, 0.92549, 1)
+text = "yourmom"
 
 [node name="Developer2" type="Label" parent="MarginContainer/Control/Credits"]
-visible = false
 layout_mode = 2
 theme_type_variation = &"LabelSmall"
 theme_override_colors/font_color = Color(0.886275, 0.87451, 0.87451, 1)
-text = "Developer 2"
+text = "me"
 
 [node name="Developer3" type="Label" parent="MarginContainer/Control/Credits"]
-visible = false
 layout_mode = 2
 theme_type_variation = &"LabelSmall"
 theme_override_colors/font_color = Color(0.886275, 0.87451, 0.87451, 1)
-text = "Developer 3"
+text = "at yourmom's house"
 
 [connection signal="pressed" from="MarginContainer/Control/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

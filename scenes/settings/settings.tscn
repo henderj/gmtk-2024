@@ -1,0 +1,148 @@
+[gd_scene load_steps=8 format=3 uid="uid://cku24jkwqfe5k"]
+
+[ext_resource type="Theme" uid="uid://3qwd17vl0iud" path="res://resources/theme/theme-options.tres" id="1_sh3gu"]
+[ext_resource type="Script" path="res://scenes/settings/settings.gd" id="2_aytx2"]
+[ext_resource type="Texture2D" uid="uid://vqyivgix51jj" path="res://scenes/settings/cross.png" id="2_blw5b"]
+[ext_resource type="PackedScene" uid="uid://bpnhyrthikoxp" path="res://scenes/settings/volume_slider.tscn" id="3_0o26t"]
+[ext_resource type="Theme" uid="uid://ducfept6pmkkm" path="res://resources/theme/theme-main.tres" id="4_jcjvk"]
+[ext_resource type="FontFile" uid="uid://da2t6lyf41wty" path="res://assets/fonts/open-sans/open-sans-bold.ttf" id="5_w6pt7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dxton"]
+font = ExtResource("5_w6pt7")
+font_size = 32
+font_color = Color(1, 1, 1, 0.917647)
+
+[node name="Settings" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_sh3gu")
+script = ExtResource("2_aytx2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = 200.0
+offset_top = 100.0
+offset_right = 952.0
+offset_bottom = 548.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0.192157)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Control" type="Control" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CloseButton" type="TextureButton" parent="MarginContainer/MarginContainer/Control"]
+modulate = Color(1, 1, 1, 0.890196)
+layout_mode = 1
+offset_right = 42.0
+offset_bottom = 42.0
+scale = Vector2(0.6, 0.6)
+size_flags_horizontal = 0
+mouse_filter = 1
+texture_normal = ExtResource("2_blw5b")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="VBoxOptions" type="VBoxContainer" parent="MarginContainer/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -38.0
+offset_right = 176.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Master" type="HBoxContainer" parent="MarginContainer/MarginContainer/Control/VBoxOptions"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VolLabel" type="Label" parent="MarginContainer/MarginContainer/Control/VBoxOptions/Master"]
+layout_mode = 2
+text = "Master"
+horizontal_alignment = 1
+
+[node name="Slider" parent="MarginContainer/MarginContainer/Control/VBoxOptions/Master" instance=ExtResource("3_0o26t")]
+z_index = 99
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+busName = "Master"
+
+[node name="SFX" type="HBoxContainer" parent="MarginContainer/MarginContainer/Control/VBoxOptions"]
+layout_mode = 2
+theme_override_constants/separation = 43
+
+[node name="VolLabel" type="Label" parent="MarginContainer/MarginContainer/Control/VBoxOptions/SFX"]
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="Slider" parent="MarginContainer/MarginContainer/Control/VBoxOptions/SFX" instance=ExtResource("3_0o26t")]
+z_index = 99
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+busName = "SFX"
+
+[node name="Music" type="HBoxContainer" parent="MarginContainer/MarginContainer/Control/VBoxOptions"]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="VolLabel" type="Label" parent="MarginContainer/MarginContainer/Control/VBoxOptions/Music"]
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="Slider" parent="MarginContainer/MarginContainer/Control/VBoxOptions/Music" instance=ExtResource("3_0o26t")]
+z_index = 99
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+busName = "BGM"
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -222.0
+offset_right = 222.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme = ExtResource("4_jcjvk")
+theme_override_colors/font_color = Color(0.788235, 0.788235, 0.788235, 1)
+text = "Settings"
+label_settings = SubResource("LabelSettings_dxton")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/MarginContainer/Control/CloseButton" to="." method="onCloseButtonPressed"]

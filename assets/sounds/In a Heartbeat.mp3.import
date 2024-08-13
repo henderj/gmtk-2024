@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yjhr43dlrtt"
+path="res://.godot/imported/In a Heartbeat.mp3-3f5134dfeb6b461ae8c231b9bfe1d6f3.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/In a Heartbeat.mp3"
+dest_files=["res://.godot/imported/In a Heartbeat.mp3-3f5134dfeb6b461ae8c231b9bfe1d6f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

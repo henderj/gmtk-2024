@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var pause_options = $MarginContainer/Control/VBoxOptions
 @onready var color_rect = $ColorRect
 
+@onready var settings_panel = $Settings
+
 @onready var nodes_grp1 = [pause_button, label] # should be visible during gamemplay and hidden during pause
 @onready var nodes_grp2 = [pause_options, color_rect] # should be visible only in pause menu
 
@@ -20,6 +22,7 @@ func pause_show():
 		n.hide()
 	for n in nodes_grp2:
 		n.show()
+	MusicPlayer.SetVolume(0.2)
 
 
 func pause_hide():
@@ -30,6 +33,9 @@ func pause_hide():
 	for n in nodes_grp2:
 		if n:
 			n.hide()
+	
+	settings_panel.hide()
+	MusicPlayer.SetVolume(1)
 
 
 func _unhandled_input(event):
@@ -51,6 +57,13 @@ func pause_game():
 	get_tree().paused = true
 	pause_show()
 
+func show_settings():
+	for n in nodes_grp1:
+		n.hide()
+	pause_options.hide()
+	settings_panel.show()
+	
+
 
 func _on_Resume_pressed():
 	resume()
@@ -58,7 +71,15 @@ func _on_Resume_pressed():
 
 func _on_PauseButton_pressed():
 	pause_game()
+	
+func _on_Settings_pressed():
+	show_settings()
+
+func _on_Settings_closed():
+	settings_panel.hide()
+	pause_game()
 
 
 func _on_main_menu_pressed():
 	Game.change_scene_to_file("res://scenes/menu/menu.tscn", {"show_progress_bar": false})
+

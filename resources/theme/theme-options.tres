@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://3qwd17vl0iud"]
+
+[ext_resource type="FontFile" uid="uid://cawekr44fruhm" path="res://assets/fonts/open-sans/open-sans-regular.ttf" id="1_rxyml"]
+
+[resource]
+default_font = ExtResource("1_rxyml")
+default_font_size = 20
+MarginContainer/constants/margin_bottom = 100
+MarginContainer/constants/margin_left = 200
+MarginContainer/constants/margin_right = 200
+MarginContainer/constants/margin_top = 100

@@ -21,6 +21,6 @@ func start():
 
 
 func _process(delta):
-	elapsed += delta
+	elapsed += delta / 3
 	$Sprite2D.position.x = Game.size.x / 2 + 150 * sin(2 * 0.4 * PI * elapsed)
 	$Sprite2D.position.y = Game.size.y / 2 + 100 * sin(2 * 0.2 * PI * elapsed)

@@ -9,6 +9,8 @@ func _ready():
 	btn_play.grab_focus()
 	if OS.has_feature('web'):
 		btn_exit.queue_free() # exit button dosn't make sense on HTML5
+	MusicPlayer.SetVolume(1)
+	MusicPlayer.PlayMusicClip("el_magicia", 2)
 
 
 func _on_PlayButton_pressed() -> void:
@@ -22,10 +24,13 @@ func _on_PlayButton_pressed() -> void:
 			"val": 15
 		},
 	}
+	SoundManager.PlaySound("menu_click")
+	MusicPlayer.PlayMusicClip("in_a_heartbeat", 2)
 	Game.change_scene_to_file("res://scenes/gameplay/gameplay.tscn", params)
 
 
 func _on_ExitButton_pressed() -> void:
+	SoundManager.PlaySound("menu_click")
 	# gently shutdown the game
 	var transitions = get_node_or_null("/root/Transitions")
 	if transitions:

@@ -1,0 +1,6 @@
+[gd_resource type="CanvasTexture" load_steps=2 format=3 uid="uid://ol4b60gt75g8"]
+
+[ext_resource type="Texture2D" uid="uid://daqihhuw8h00p" path="res://assets/pixel_particle_flipbook.png" id="1_j7sn4"]
+
+[resource]
+diffuse_texture = ExtResource("1_j7sn4")

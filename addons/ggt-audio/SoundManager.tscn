@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://jn5kondxmgqd"]
+
+[ext_resource type="Script" path="res://addons/ggt-audio/sound_manager.gd" id="1_fusie"]
+[ext_resource type="Resource" uid="uid://m1t0fm3bcuwo" path="res://resources/audio/aud_laser_fire.tres" id="2_1h2yc"]
+[ext_resource type="Resource" uid="uid://dn0qahdpnkmod" path="res://resources/audio/aud_menu_click.tres" id="3_aq3sg"]
+
+[node name="SoundManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_fusie")
+audioResources = Array[Resource("res://addons/ggt-audio/audio_resource.gd")]([ExtResource("2_1h2yc"), ExtResource("3_aq3sg")])

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AudioResource" load_steps=3 format=3 uid="uid://dn0qahdpnkmod"]
+
+[ext_resource type="AudioStream" uid="uid://tjj2bgs4btgk" path="res://assets/sounds/impactMetal_004.ogg" id="1_8t7re"]
+[ext_resource type="Script" path="res://addons/ggt-audio/audio_resource.gd" id="2_r7i31"]
+
+[resource]
+script = ExtResource("2_r7i31")
+audioStreams = Array[AudioStream]([ExtResource("1_8t7re")])
+referenceString = "menu_click"
+spacialState = 0

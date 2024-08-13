@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AudioResource" load_steps=6 format=3 uid="uid://m1t0fm3bcuwo"]
+
+[ext_resource type="AudioStream" uid="uid://cgnhbtin4jinn" path="res://assets/sounds/laserLarge_000.ogg" id="1_tu5ax"]
+[ext_resource type="AudioStream" uid="uid://f3yykufkddiw" path="res://assets/sounds/laserLarge_001.ogg" id="2_xj5sh"]
+[ext_resource type="AudioStream" uid="uid://biyw0vebgwjnm" path="res://assets/sounds/laserLarge_002.ogg" id="3_vbghu"]
+[ext_resource type="AudioStream" uid="uid://emlerwbffqjr" path="res://assets/sounds/laserLarge_003.ogg" id="4_q278o"]
+[ext_resource type="Script" path="res://addons/ggt-audio/audio_resource.gd" id="5_wjgs1"]
+
+[resource]
+script = ExtResource("5_wjgs1")
+audioStreams = Array[AudioStream]([ExtResource("1_tu5ax"), ExtResource("2_xj5sh"), ExtResource("3_vbghu"), ExtResource("4_q278o")])
+referenceString = "laser_fire"
+spacialState = 0

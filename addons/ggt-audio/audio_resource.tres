@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bjwbskr10s58m"]
+
+[ext_resource type="Script" path="res://addons/ggt-audio/audio_resource.gd" id="1_s0qco"]
+
+[resource]
+script = ExtResource("1_s0qco")
+audioStreams = Array[AudioStream]([])
+referenceString = ""
+spacialState = 0

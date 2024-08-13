@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AudioResource" load_steps=3 format=3 uid="uid://dsrtstsdo6qjj"]
+
+[ext_resource type="AudioStream" uid="uid://yjhr43dlrtt" path="res://assets/sounds/In a Heartbeat.mp3" id="1_d4mgk"]
+[ext_resource type="Script" path="res://addons/ggt-audio/audio_resource.gd" id="2_odfk7"]
+
+[resource]
+script = ExtResource("2_odfk7")
+audioStreams = Array[AudioStream]([ExtResource("1_d4mgk")])
+referenceString = "in_a_heartbeat"
+spacialState = 0
+audioBus = "BGM"
