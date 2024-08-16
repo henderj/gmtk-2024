@@ -14,6 +14,7 @@ extends CanvasLayer
 
 
 func _ready():
+	visible = true
 	pause_hide()
 
 
