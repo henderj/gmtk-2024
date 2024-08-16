@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="godot-game-template"
+config/name="gmtk-2024"
 config/version="0.0.1"
 run/main_scene="res://scenes/menu/menu.tscn"
 config/features=PackedStringArray("4.3")
@@ -83,5 +83,5 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(1.5, 1.5, 2, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0.215686, 1)
 viewport/hdr_2d=true
