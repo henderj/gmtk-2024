@@ -1,85 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=7 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="Texture2D" uid="uid://dtwpm3uclaspj" path="res://assets/sprites/icon.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
-[ext_resource type="Script" path="res://scenes/gameplay/sprite.gd" id="3_uvdch"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_17sjg"]
-input_name = "texture"
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_nc2xh"]
-source = 5
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_on0ya"]
-parameter_name = "blur_strength"
-hint = 1
-max = 5.0
-default_value_enabled = true
-default_value = 4.0
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_hk6if"]
-input_name = "uv"
-
-[sub_resource type="VisualShader" id="VisualShader_0y1ks"]
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform float blur_strength : hint_range(0, 5) = 4;
-
-
-
-void fragment() {
-// Input:5
-	vec2 n_out5p0 = UV;
-
-
-// FloatParameter:4
-	float n_out4p0 = blur_strength;
-
-
-	vec4 n_out3p0;
-// Texture2D:3
-	n_out3p0 = textureLod(TEXTURE, n_out5p0, n_out4p0);
-
-
-// Output:0
-	COLOR.rgb = vec3(n_out3p0.xyz);
-
-
-}
-"
-graph_offset = Vector2(-232.849, -111.376)
-mode = 1
-flags/light_only = false
-nodes/fragment/2/node = SubResource("VisualShaderNodeInput_17sjg")
-nodes/fragment/2/position = Vector2(-320, 520)
-nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_nc2xh")
-nodes/fragment/3/position = Vector2(120, 220)
-nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_on0ya")
-nodes/fragment/4/position = Vector2(-340, 200)
-nodes/fragment/5/node = SubResource("VisualShaderNodeInput_hk6if")
-nodes/fragment/5/position = Vector2(-300, 100)
-nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 3, 1, 5, 0, 3, 0, 3, 0, 0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ld51"]
-shader = SubResource("VisualShader_0y1ks")
-shader_parameter/blur_strength = 5.0
+[ext_resource type="Script" path="res://scenes/gameplay/player_movement.gd" id="5_jro3h"]
 
 [sub_resource type="Environment" id="Environment_bgiew"]
 background_mode = 3
 glow_enabled = true
 glow_hdr_threshold = 1.5
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_prn8j"]
+
 [node name="Gameplay" type="Node"]
 process_mode = 1
 script = ExtResource("5")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_4ld51")
-position = Vector2(523.993, 298.508)
-texture = ExtResource("1")
-script = ExtResource("3_uvdch")
 
 [node name="PauseLayer" parent="." instance=ExtResource("2")]
 visible = false
@@ -87,3 +22,12 @@ follow_viewport_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bgiew")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("5_jro3h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_prn8j")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1")
