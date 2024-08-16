@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://f7el1bookbcm"]
+
+[ext_resource type="Script" path="res://entities/bullets/shooting_patterns/triangle.gd" id="1_0gw6d"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="1_yyhlu"]
+
+[node name="Triangle" type="Node2D"]
+script = ExtResource("1_0gw6d")
+
+[node name="Shooter" parent="." instance=ExtResource("1_yyhlu")]
+rotation = 0.523599
+
+[node name="Shooter2" parent="." instance=ExtResource("1_yyhlu")]
+
+[node name="Shooter3" parent="." instance=ExtResource("1_yyhlu")]
+rotation = -0.523599
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="on_shoot"]
+[connection signal="timeout" from="Timer" to="Shooter" method="shoot"]
+[connection signal="timeout" from="Timer" to="Shooter2" method="shoot"]
+[connection signal="timeout" from="Timer" to="Shooter3" method="shoot"]

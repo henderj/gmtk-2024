@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1svsscdkey13"]
+[gd_scene load_steps=6 format=3 uid="uid://c1svsscdkey13"]
 
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="1_02a1p"]
 [ext_resource type="PackedScene" uid="uid://dl3o66oxy6g18" path="res://components/hitbox_component.tscn" id="2_a5721"]
 [ext_resource type="Script" path="res://components/health_component.gd" id="3_ojfl3"]
+[ext_resource type="PackedScene" uid="uid://dn8eu77t87b6x" path="res://entities/bullets/shooting_patterns/shock_web.tscn" id="4_sryc2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0gkp"]
 size = Vector2(20, 318)
@@ -33,3 +34,6 @@ script = ExtResource("3_ojfl3")
 remove_on_died = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Enemy"]
+
+[node name="ShockWeb" parent="." instance=ExtResource("4_sryc2")]
+position = Vector2(704, 310)

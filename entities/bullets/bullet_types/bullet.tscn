@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3wx2mwp4bxib"]
+[gd_scene load_steps=5 format=3 uid="uid://d3wx2mwp4bxib"]
 
-[ext_resource type="Script" path="res://components/bullet.gd" id="1_jev2g"]
+[ext_resource type="Script" path="res://entities/bullets/bullet_types/bullet.gd" id="1_jev2g"]
+[ext_resource type="Script" path="res://entities/bullets/movement_patterns/straight.gd" id="2_p7qbd"]
 
 [sub_resource type="Curve" id="Curve_w3ljs"]
 _data = [Vector2(0.0968586, 0.656069), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -8,7 +9,7 @@ point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pesni"]
 radius = 3.0
-height = 26.0
+height = 22.0
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 2
@@ -24,11 +25,14 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(3, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pesni")
 
 [node name="SelfDestruct" type="Timer" parent="."]
 one_shot = true
+
+[node name="Movement" type="Node2D" parent="."]
+script = ExtResource("2_p7qbd")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

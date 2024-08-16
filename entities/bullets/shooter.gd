@@ -3,10 +3,6 @@ class_name Shooter
 
 @export var bullet_scene: PackedScene
 
-func _process(delta):
-	pass
-	#rotate(0.05)
-
 func shoot():
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position

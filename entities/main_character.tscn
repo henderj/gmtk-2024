@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2kqamoul11gc"]
+[gd_scene load_steps=8 format=3 uid="uid://b2kqamoul11gc"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/player_movement.gd" id="1_jbq02"]
 [ext_resource type="Script" path="res://entities/main_character_sprites.gd" id="2_7f84s"]
 [ext_resource type="Texture2D" uid="uid://d2etycu8w83ii" path="res://assets/sprites/FireflySpriteNoAnim.png" id="2_k71al"]
-[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://components/shooter.tscn" id="3_4837i"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="3_4837i"]
+[ext_resource type="Script" path="res://components/health_component.gd" id="5_7q07f"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="6_tv6aq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6uw6x"]
 radius = 83.0
@@ -63,4 +65,18 @@ region_rect = Rect2(118, 61, 281, 315)
 visible = false
 position = Vector2(4, -40)
 rotation = 0.0637561
+shape = SubResource("CapsuleShape2D_6uw6x")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("5_7q07f")
+remove_on_died = true
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("6_tv6aq")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+visible = false
+position = Vector2(10.5404, -79.6639)
+rotation = 0.127512
 shape = SubResource("CapsuleShape2D_6uw6x")
