@@ -12,7 +12,7 @@ func _ready():
 	$SelfDestruct.start(life_span)
 	movement_vector = Vector2(speed, 0).rotated(global_rotation)
 
-func _process(delta: float):
+func _physics_process(delta: float):
 	position += movement_vector * delta
 
 func _on_area_entered(area):

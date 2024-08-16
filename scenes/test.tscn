@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1svsscdkey13"]
 
-[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://components/shooter.tscn" id="1_o6t6r"]
+[ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="1_02a1p"]
 [ext_resource type="PackedScene" uid="uid://dl3o66oxy6g18" path="res://components/hitbox_component.tscn" id="2_a5721"]
 [ext_resource type="Script" path="res://components/health_component.gd" id="3_ojfl3"]
 
@@ -9,8 +9,8 @@ size = Vector2(20, 318)
 
 [node name="Test" type="Node2D"]
 
-[node name="Shooter" parent="." instance=ExtResource("1_o6t6r")]
-position = Vector2(330, 325)
+[node name="MainCharacter" parent="." instance=ExtResource("1_02a1p")]
+position = Vector2(280, 300)
 
 [node name="Enemy" type="Node2D" parent="."]
 position = Vector2(871, 336)
