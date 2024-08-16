@@ -11,3 +11,4 @@ script = ExtResource("5_wjgs1")
 audioStreams = Array[AudioStream]([ExtResource("1_tu5ax"), ExtResource("2_xj5sh"), ExtResource("3_vbghu"), ExtResource("4_q278o")])
 referenceString = "laser_fire"
 spacialState = 0
+audioBus = "SFX"

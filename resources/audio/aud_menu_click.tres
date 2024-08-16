@@ -8,3 +8,4 @@ script = ExtResource("2_r7i31")
 audioStreams = Array[AudioStream]([ExtResource("1_8t7re")])
 referenceString = "menu_click"
 spacialState = 0
+audioBus = "SFX"
