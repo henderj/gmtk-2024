@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=11 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="Texture2D" uid="uid://dtwpm3uclaspj" path="res://assets/sprites/icon.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ctklyuuy0mpo" path="res://entities/boss.tscn" id="5_51niy"]
 [ext_resource type="Script" path="res://scenes/gameplay/player_movement.gd" id="5_jro3h"]
 [ext_resource type="Script" path="res://scenes/gameplay/health_bar.gd" id="6_7hmyu"]
-[ext_resource type="PackedScene" path="res://components/shooter.tscn" id="7_qx8hb"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yrnxy"]
 
@@ -19,6 +18,7 @@ glow_enabled = true
 glow_hdr_threshold = 1.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prn8j"]
+radius = 44.78
 
 [node name="Gameplay" type="Node"]
 process_mode = 1
@@ -77,9 +77,7 @@ shape = SubResource("CircleShape2D_prn8j")
 texture = ExtResource("1")
 
 [node name="Boss" parent="." instance=ExtResource("5_51niy")]
-
-[node name="Shooter" parent="." instance=ExtResource("7_qx8hb")]
-position = Vector2(105, 341)
+position = Vector2(554, 259)
 
 [connection signal="initialize" from="Boss" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
 [connection signal="take_damgage" from="Boss" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]

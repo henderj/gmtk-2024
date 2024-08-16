@@ -1,44 +1,479 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctklyuuy0mpo"]
+[gd_scene load_steps=11 format=3 uid="uid://ctklyuuy0mpo"]
 
 [ext_resource type="Script" path="res://entities/boss_root.gd" id="1_otxql"]
-[ext_resource type="Script" path="res://scenes/gameplay/player_movement.gd" id="1_y6xau"]
+[ext_resource type="Script" path="res://entities/boss_movement.gd" id="2_e3gw8"]
 [ext_resource type="PackedScene" uid="uid://dl3o66oxy6g18" path="res://components/hitbox_component.tscn" id="2_yx7ll"]
 [ext_resource type="PackedScene" uid="uid://dn61ufqjghgsi" path="res://components/health_component.tscn" id="3_usm86"]
+[ext_resource type="Texture2D" uid="uid://bcupuo0ry0ovp" path="res://entities/SpiderBossSpriteSheet.png" id="3_xa3u4"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="5_r2m11"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prn8j"]
 radius = 129.79
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2tn61"]
-size = Vector2(256, 256)
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvxxd"]
+radius = 130.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nlkf"]
-size = Vector2(254, 253)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hxsd0"]
+radius = 196.0
+height = 751.507
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lshtj"]
+size = Vector2(744.438, 1144.78)
 
 [node name="Boss" type="Node2D"]
 script = ExtResource("1_otxql")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(311, 143)
-script = ExtResource("1_y6xau")
-movementSpeed = 600
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+script = ExtResource("2_e3gw8")
+movementSpeed = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 shape = SubResource("CircleShape2D_prn8j")
+disabled = true
+one_way_collision_margin = 0.0
+debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = SubResource("PlaceholderTexture2D_2tn61")
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(-4, 2)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(724.503, 0, 1469.63, 1290.06)
 
-[node name="HitboxComponent" parent="CharacterBody2D" node_paths=PackedStringArray("health_component") instance=ExtResource("2_yx7ll")]
+[node name="HitboxComponent" parent="AnimatableBody2D" node_paths=PackedStringArray("health_component") instance=ExtResource("2_yx7ll")]
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/HitboxComponent"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_7nlkf")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent"]
+position = Vector2(1.52588e-05, -0.499992)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_mvxxd")
 
-[node name="HealthComponent" parent="CharacterBody2D" instance=ExtResource("3_usm86")]
+[node name="LegHip" type="Node2D" parent="AnimatableBody2D/HitboxComponent"]
+position = Vector2(119, 52)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip" node_paths=PackedStringArray("health_component")]
+position = Vector2(2, 1)
+rotation = -1.54827
+scale = Vector2(0.1, 0.1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip"]
+position = Vector2(62.3507, 14.6038)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D/HitboxComponent"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip"]
+position = Vector2(111, 68)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D2" node_paths=PackedStringArray("health_component")]
+position = Vector2(0.624786, -14.1283)
+rotation = 0.434093
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D2/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip"]
+position = Vector2(141, 170)
+rotation = -0.202988
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(2206.77, 76.5896, 896.21, 1135.45)
+
+[node name="HitboxComponent3" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D3" node_paths=PackedStringArray("health_component")]
+position = Vector2(2.01593, -9.79465)
+rotation = 0.0548354
+scale = Vector2(1, 1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D3/HitboxComponent3"]
+position = Vector2(-18.0032, -29.6909)
+scale = Vector2(1, 1)
+skew = -0.036652
+shape = SubResource("RectangleShape2D_lshtj")
+
+[node name="LegHip2" type="Node2D" parent="AnimatableBody2D/HitboxComponent"]
+position = Vector2(126, -25)
+rotation = -0.603318
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip2" node_paths=PackedStringArray("health_component")]
+position = Vector2(2, 1)
+rotation = -1.54827
+scale = Vector2(0.1, 0.1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip2"]
+position = Vector2(62.3507, 14.6038)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D/HitboxComponent"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip2"]
+position = Vector2(111, 68)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D2" node_paths=PackedStringArray("health_component")]
+position = Vector2(0.624786, -14.1283)
+rotation = 0.434093
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D2/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip2"]
+position = Vector2(141, 170)
+rotation = -0.202988
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(2206.77, 76.5896, 896.21, 1135.45)
+
+[node name="HitboxComponent3" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D3" node_paths=PackedStringArray("health_component")]
+position = Vector2(2.01593, -9.79465)
+rotation = 0.0548354
+scale = Vector2(1, 1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D3/HitboxComponent3"]
+position = Vector2(-18.0032, -29.6909)
+scale = Vector2(1, 1)
+skew = -0.036652
+shape = SubResource("RectangleShape2D_lshtj")
+
+[node name="LegHip3" type="Node2D" parent="AnimatableBody2D/HitboxComponent"]
+position = Vector2(81, -106)
+rotation = -0.935072
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip3" node_paths=PackedStringArray("health_component")]
+position = Vector2(2, 1)
+rotation = -1.54827
+scale = Vector2(0.1, 0.1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip3/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip3"]
+position = Vector2(62.3507, 14.6038)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip3/Sprite2D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip3/Sprite2D/HitboxComponent"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip3"]
+position = Vector2(111, 68)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip3/Sprite2D2" node_paths=PackedStringArray("health_component")]
+position = Vector2(0.624786, -14.1283)
+rotation = 0.434093
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip3/Sprite2D2/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip3"]
+position = Vector2(141, 170)
+rotation = -0.202988
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(2206.77, 76.5896, 896.21, 1135.45)
+
+[node name="HitboxComponent3" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip3/Sprite2D3" node_paths=PackedStringArray("health_component")]
+position = Vector2(2.01593, -9.79465)
+rotation = 0.0548354
+scale = Vector2(1, 1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip3/Sprite2D3/HitboxComponent3"]
+position = Vector2(-18.0032, -29.6909)
+scale = Vector2(1, 1)
+skew = -0.036652
+shape = SubResource("RectangleShape2D_lshtj")
+
+[node name="LegHip4" type="Node2D" parent="AnimatableBody2D/HitboxComponent"]
+position = Vector2(-95, -83)
+rotation = 0.848741
+scale = Vector2(-1, 1)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip4" node_paths=PackedStringArray("health_component")]
+position = Vector2(2, 1)
+rotation = -1.54827
+scale = Vector2(0.1, 0.1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip4/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip4"]
+position = Vector2(62.3507, 14.6038)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip4/Sprite2D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip4/Sprite2D/HitboxComponent"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip4"]
+position = Vector2(111, 68)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip4/Sprite2D2" node_paths=PackedStringArray("health_component")]
+position = Vector2(0.624786, -14.1283)
+rotation = 0.434093
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip4/Sprite2D2/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip4"]
+position = Vector2(141, 170)
+rotation = -0.202988
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(2206.77, 76.5896, 896.21, 1135.45)
+
+[node name="HitboxComponent3" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip4/Sprite2D3" node_paths=PackedStringArray("health_component")]
+position = Vector2(2.01593, -9.79465)
+rotation = 0.0548354
+scale = Vector2(1, 1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip4/Sprite2D3/HitboxComponent3"]
+position = Vector2(-18.0032, -29.6909)
+scale = Vector2(1, 1)
+skew = -0.036652
+shape = SubResource("RectangleShape2D_lshtj")
+
+[node name="LegHip5" type="Node2D" parent="AnimatableBody2D/HitboxComponent"]
+position = Vector2(-130, 3)
+rotation = 0.548017
+scale = Vector2(-1, 1)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip5" node_paths=PackedStringArray("health_component")]
+position = Vector2(2, 1)
+rotation = -1.54827
+scale = Vector2(0.1, 0.1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip5/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip5"]
+position = Vector2(62.3507, 14.6038)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip5/Sprite2D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip5/Sprite2D/HitboxComponent"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip5"]
+position = Vector2(111, 68)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip5/Sprite2D2" node_paths=PackedStringArray("health_component")]
+position = Vector2(0.624786, -14.1283)
+rotation = 0.434093
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip5/Sprite2D2/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip5"]
+position = Vector2(141, 170)
+rotation = -0.202988
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(2206.77, 76.5896, 896.21, 1135.45)
+
+[node name="HitboxComponent3" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip5/Sprite2D3" node_paths=PackedStringArray("health_component")]
+position = Vector2(2.01593, -9.79465)
+rotation = 0.0548354
+scale = Vector2(1, 1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip5/Sprite2D3/HitboxComponent3"]
+position = Vector2(-18.0032, -29.6909)
+scale = Vector2(1, 1)
+skew = -0.036652
+shape = SubResource("RectangleShape2D_lshtj")
+
+[node name="LegHip6" type="Node2D" parent="AnimatableBody2D/HitboxComponent"]
+position = Vector2(-106, 86)
+rotation = 0.105505
+scale = Vector2(-1, 1)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip6" node_paths=PackedStringArray("health_component")]
+position = Vector2(2, 1)
+rotation = -1.54827
+scale = Vector2(0.1, 0.1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip6/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip6"]
+position = Vector2(62.3507, 14.6038)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip6/Sprite2D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip6/Sprite2D/HitboxComponent"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip6"]
+position = Vector2(111, 68)
+rotation = -0.829591
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip6/Sprite2D2" node_paths=PackedStringArray("health_component")]
+position = Vector2(0.624786, -14.1283)
+rotation = 0.434093
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip6/Sprite2D2/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip6"]
+position = Vector2(141, 170)
+rotation = -0.202988
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xa3u4")
+region_enabled = true
+region_rect = Rect2(2206.77, 76.5896, 896.21, 1135.45)
+
+[node name="HitboxComponent3" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip6/Sprite2D3" node_paths=PackedStringArray("health_component")]
+position = Vector2(2.01593, -9.79465)
+rotation = 0.0548354
+scale = Vector2(1, 1)
+script = ExtResource("5_r2m11")
+health_component = NodePath("../../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip6/Sprite2D3/HitboxComponent3"]
+position = Vector2(-18.0032, -29.6909)
+scale = Vector2(1, 1)
+skew = -0.036652
+shape = SubResource("RectangleShape2D_lshtj")
+
+[node name="HealthComponent" parent="AnimatableBody2D" instance=ExtResource("3_usm86")]
 remove_on_died = true
 bar_color = Color(1, 0, 0, 1)
 
-[connection signal="changed" from="CharacterBody2D/HealthComponent" to="." method="TakeDamage"]
-[connection signal="died" from="CharacterBody2D/HealthComponent" to="." method="Die"]
-[connection signal="initialize" from="CharacterBody2D/HealthComponent" to="." method="_initializeHealthBar"]
+[connection signal="changed" from="AnimatableBody2D/HealthComponent" to="." method="TakeDamage"]
+[connection signal="died" from="AnimatableBody2D/HealthComponent" to="." method="Die"]
+[connection signal="initialize" from="AnimatableBody2D/HealthComponent" to="." method="_initializeHealthBar"]
