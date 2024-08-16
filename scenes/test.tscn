@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1svsscdkey13"]
+
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://components/shooter.tscn" id="1_o6t6r"]
+[ext_resource type="PackedScene" uid="uid://dl3o66oxy6g18" path="res://components/hitbox_component.tscn" id="2_a5721"]
+[ext_resource type="Script" path="res://components/health_component.gd" id="3_ojfl3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0gkp"]
+size = Vector2(20, 318)
+
+[node name="Test" type="Node2D"]
+
+[node name="Shooter" parent="." instance=ExtResource("1_o6t6r")]
+position = Vector2(330, 325)
+
+[node name="Enemy" type="Node2D" parent="."]
+position = Vector2(871, 336)
+
+[node name="ColorRect" type="ColorRect" parent="Enemy"]
+offset_left = -9.0
+offset_top = -161.0
+offset_right = 31.0
+offset_bottom = 157.0
+
+[node name="HitboxComponent" parent="Enemy" node_paths=PackedStringArray("health_component") instance=ExtResource("2_a5721")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/HitboxComponent"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_m0gkp")
+
+[node name="HealthComponent" type="Node2D" parent="Enemy"]
+script = ExtResource("3_ojfl3")
+remove_on_died = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Enemy"]
