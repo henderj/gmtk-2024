@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctklyuuy0mpo"]
+
+[ext_resource type="Script" path="res://entities/boss_root.gd" id="1_otxql"]
+[ext_resource type="Script" path="res://scenes/gameplay/player_movement.gd" id="1_y6xau"]
+[ext_resource type="PackedScene" uid="uid://dl3o66oxy6g18" path="res://components/hitbox_component.tscn" id="2_yx7ll"]
+[ext_resource type="PackedScene" uid="uid://dn61ufqjghgsi" path="res://components/health_component.tscn" id="3_usm86"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prn8j"]
+radius = 129.79
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2tn61"]
+size = Vector2(256, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nlkf"]
+size = Vector2(254, 253)
+
+[node name="Boss" type="Node2D"]
+script = ExtResource("1_otxql")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(311, 143)
+script = ExtResource("1_y6xau")
+movementSpeed = 600
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_prn8j")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = SubResource("PlaceholderTexture2D_2tn61")
+
+[node name="HitboxComponent" parent="CharacterBody2D" node_paths=PackedStringArray("health_component") instance=ExtResource("2_yx7ll")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/HitboxComponent"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7nlkf")
+
+[node name="HealthComponent" parent="CharacterBody2D" instance=ExtResource("3_usm86")]
+remove_on_died = true
+bar_color = Color(1, 0, 0, 1)
+
+[connection signal="changed" from="CharacterBody2D/HealthComponent" to="." method="TakeDamage"]
+[connection signal="died" from="CharacterBody2D/HealthComponent" to="." method="Die"]
+[connection signal="initialize" from="CharacterBody2D/HealthComponent" to="." method="_initializeHealthBar"]
