@@ -1,10 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://4fyoq8npekf0"]
 
-[ext_resource type="Texture2D" uid="uid://dtwpm3uclaspj" path="res://assets/sprites/icon.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="4_jqre8"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://ctklyuuy0mpo" path="res://entities/boss.tscn" id="5_51niy"]
-[ext_resource type="Script" path="res://scenes/gameplay/player_movement.gd" id="5_jro3h"]
 [ext_resource type="Script" path="res://scenes/gameplay/health_bar.gd" id="6_7hmyu"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yrnxy"]
@@ -65,16 +64,8 @@ follow_viewport_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bgiew")
 
-[node name="MainCharacter" type="CharacterBody2D" parent="."]
-position = Vector2(543, 446)
-script = ExtResource("5_jro3h")
-movementSpeed = 600
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCharacter"]
-shape = SubResource("CircleShape2D_prn8j")
-
-[node name="Sprite2D" type="Sprite2D" parent="MainCharacter"]
-texture = ExtResource("1")
+[node name="MainCharacter" parent="." instance=ExtResource("4_jqre8")]
+position = Vector2(805, 407)
 
 [node name="Boss" parent="." instance=ExtResource("5_51niy")]
 position = Vector2(554, 259)

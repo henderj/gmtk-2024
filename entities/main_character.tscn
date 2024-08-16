@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2kqamoul11gc"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/player_movement.gd" id="1_jbq02"]
+[ext_resource type="Script" path="res://entities/main_character_sprites.gd" id="2_7f84s"]
+[ext_resource type="Texture2D" uid="uid://d2etycu8w83ii" path="res://assets/sprites/FireflySpriteNoAnim.png" id="2_k71al"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://components/shooter.tscn" id="3_4837i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6uw6x"]
+radius = 83.0
+height = 264.483
+
+[node name="MainCharacter" type="CharacterBody2D"]
+script = ExtResource("1_jbq02")
+movementSpeed = 600
+
+[node name="Sprites" type="Node2D" parent="."]
+script = ExtResource("2_7f84s")
+
+[node name="LegLeft" type="Sprite2D" parent="Sprites"]
+position = Vector2(-71, 103)
+texture = ExtResource("2_k71al")
+region_enabled = true
+region_rect = Rect2(116, 451, 119, 113)
+
+[node name="LegRight" type="Sprite2D" parent="Sprites"]
+position = Vector2(20, 120)
+texture = ExtResource("2_k71al")
+region_enabled = true
+region_rect = Rect2(251, 439, 63, 126)
+
+[node name="ArmOrigin" type="Node2D" parent="Sprites"]
+position = Vector2(0, -15)
+
+[node name="Arm" type="Sprite2D" parent="Sprites/ArmOrigin"]
+position = Vector2(190, -27)
+rotation = 0.335123
+texture = ExtResource("2_k71al")
+region_enabled = true
+region_rect = Rect2(656, 553, 299, 165)
+
+[node name="Shooter" parent="Sprites/ArmOrigin/Arm" instance=ExtResource("3_4837i")]
+position = Vector2(40.171, 24.1307)
+rotation = -0.335103
+
+[node name="Body" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("2_k71al")
+region_enabled = true
+region_rect = Rect2(386, 463, 179, 184)
+
+[node name="Wings" type="Sprite2D" parent="Sprites"]
+position = Vector2(-164, -40)
+texture = ExtResource("2_k71al")
+region_enabled = true
+region_rect = Rect2(10, 615, 349, 281)
+
+[node name="Head" type="Sprite2D" parent="Sprites"]
+position = Vector2(-35, -140)
+texture = ExtResource("2_k71al")
+region_enabled = true
+region_rect = Rect2(118, 61, 281, 315)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(4, -40)
+rotation = 0.0637561
+shape = SubResource("CapsuleShape2D_6uw6x")
