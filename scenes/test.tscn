@@ -1,8 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1svsscdkey13"]
+[gd_scene load_steps=4 format=3 uid="uid://c1svsscdkey13"]
 
+[ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="1_02a1p"]
 [ext_resource type="PackedScene" uid="uid://baukcudl4aj7" path="res://entities/bullets/shooting_patterns/parabola.tscn" id="1_xi2ws"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="3_0687u"]
 
 [node name="Test" type="Node2D"]
 
+[node name="MainCharacter" parent="." instance=ExtResource("1_02a1p")]
+position = Vector2(211, 198)
+
 [node name="Parabola" parent="." instance=ExtResource("1_xi2ws")]
 position = Vector2(469, 328)
+
+[node name="Shooter" parent="." instance=ExtResource("3_0687u")]
+position = Vector2(210, 499)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Shooter" method="shoot"]
