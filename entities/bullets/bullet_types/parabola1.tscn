@@ -22,4 +22,4 @@ script = ExtResource("2_kgc6l")
 a = 0.003
 b = -100.0
 inverse = false
-speed = 100.0
+speed = 400.0

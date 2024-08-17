@@ -18,6 +18,7 @@ script = ExtResource("1_jev2g")
 [node name="Line2D" type="Line2D" parent="."]
 z_index = -10
 points = PackedVector2Array(-10, 0, 10, 0)
+width = 20.0
 width_curve = SubResource("Curve_w3ljs")
 default_color = Color(1, 0.39, 0.501833, 1)
 begin_cap_mode = 2

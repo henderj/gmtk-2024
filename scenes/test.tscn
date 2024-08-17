@@ -25,7 +25,6 @@ offset_bottom = 197.0
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_02a1p")]
 position = Vector2(199, 147)
-shootingSlowDown = 0.5
 
 [node name="Parabola" parent="." instance=ExtResource("1_xi2ws")]
 position = Vector2(371, 164)
