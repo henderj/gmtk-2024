@@ -23,6 +23,7 @@ func TakeDamage(old: float, new: float):
 	take_damage.emit(old, new)
 	health.invincible = true
 	$Sprites.do_blink(invincibility_time)
+	particleEmitter.restart()
 	particleEmitter.emitting = true
 	await get_tree().create_timer(invincibility_time).timeout
 	health.invincible = false
