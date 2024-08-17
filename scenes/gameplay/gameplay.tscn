@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=10 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="4_cn87y"]
@@ -17,6 +17,9 @@ background_mode = 3
 glow_enabled = true
 glow_hdr_threshold = 1.5
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej17e"]
+size = Vector2(2000, 40)
+
 [node name="Gameplay" type="Node"]
 process_mode = 1
 script = ExtResource("5")
@@ -29,8 +32,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="Control" type="Control" parent="GameplayLayer/MarginContainer"]
 layout_mode = 2
@@ -93,6 +96,31 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(554, 259)
 scale = Vector2(0.4, 0.4)
 playerNode = NodePath("../MainCharacter")
+
+[node name="Boundary" type="Node2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundary"]
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+position = Vector2(0, 560)
+shape = SubResource("RectangleShape2D_ej17e")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+position = Vector2(0, -560)
+shape = SubResource("RectangleShape2D_ej17e")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+position = Vector2(980, 0)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ej17e")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+position = Vector2(-980, 0)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ej17e")
 
 [connection signal="initialize" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="InitializeHealthbar"]
 [connection signal="take_damage" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="ChangeValue"]

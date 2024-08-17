@@ -28,6 +28,10 @@ func telegraph():
 	await get_tree().create_timer(1.0).timeout
 	
 	attack()
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	body.Move()
 
 func attack():
 	var pattern = attackPatterns[currentMoveIndex].instantiate()

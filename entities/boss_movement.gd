@@ -9,6 +9,8 @@ var t = PI / 2
 var legHips: Array[Node2D] = []
 var legOrginalRotations: Array[float] = []
 
+var movePoint: Vector2 = Vector2.ZERO
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -37,17 +39,29 @@ func _animateLegs(dir: Vector2):
 		legHips[i].rotation = legOrginalRotations[i] + offset
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func Move():
+	
+	var upperLeftBound = Vector2(200, 200)
+	var lowerRightBound = Vector2(1920 - 200, 1080 - 200)
+	
+	movePoint = Vector2.ZERO
+	
+	while position.distance_to(movePoint) < 400:
+	
+		movePoint = Vector2(
+			randi_range(upperLeftBound.x, lowerRightBound.x),
+			randi_range(upperLeftBound.y, lowerRightBound.y))
+	
 
 func _physics_process(delta):
 	
-	t += delta
-	
-	
-	dir = Vector2(sin(t), 0)
-	
-	position += dir * movementSpeed
-	
-	_animateLegs(dir)
+	if (movePoint != Vector2.ZERO):
+		
+		dir = global_position.direction_to(movePoint)
+		
+		position += dir * movementSpeed
+		
+		_animateLegs(dir)
+		
+		if global_position.distance_to(movePoint) <= 10:
+			movePoint = Vector2.ZERO
