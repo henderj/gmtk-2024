@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1svsscdkey13"]
+[gd_scene load_steps=4 format=3 uid="uid://dec76gst1y4fi"]
 
-[ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="1_02a1p"]
+[ext_resource type="PackedScene" uid="uid://barxk1qf0ydlv" path="res://entities/main_character.tscn" id="1_02a1p"]
 [ext_resource type="PackedScene" uid="uid://baukcudl4aj7" path="res://entities/bullets/shooting_patterns/parabola.tscn" id="1_xi2ws"]
 [ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="3_0687u"]
 
