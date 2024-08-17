@@ -29,6 +29,10 @@ func TakeDamage(old: float, new: float):
 	await get_tree().create_timer(invincibility_time).timeout
 	health.invincible = false
 
+func on_hit(damage: float, knockback: Vector2):
+	print(knockback)
+	velocity = knockback
+
 func _initializeHealthBar(max: float, val: float, color: Color):
 	initialize.emit(max, val, color)
 

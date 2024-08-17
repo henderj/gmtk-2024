@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d2etycu8w83ii" path="res://assets/sprites/FireflySpriteNoAnim.png" id="2_k71al"]
 [ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="3_4837i"]
 [ext_resource type="Script" path="res://components/health_component.gd" id="5_7q07f"]
-[ext_resource type="PackedScene" path="res://entities/bullets/bullet_types/player_bullet.tscn" id="5_t0je0"]
+[ext_resource type="PackedScene" uid="uid://dkcxj6ggac5c0" path="res://entities/bullets/bullet_types/player_bullet.tscn" id="5_t0je0"]
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="6_tv6aq"]
 [ext_resource type="AudioStream" uid="uid://bpn1dfs4o0ng6" path="res://assets/sounds/spaceEngineLarge_001.ogg" id="7_t3td0"]
 [ext_resource type="Script" path="res://entities/player_movement_sfx.gd" id="8_ae5x7"]
@@ -128,3 +128,4 @@ scale_amount_max = 0.08
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="Sprites/ArmOrigin/Arm/Shooter" method="shoot"]
 [connection signal="changed" from="HealthComponent" to="." method="TakeDamage"]
 [connection signal="initialize" from="HealthComponent" to="." method="_initializeHealthBar"]
+[connection signal="hit" from="HitboxComponent" to="." method="on_hit"]
