@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://5j0qo2e8226j"]
+
+[ext_resource type="PackedScene" uid="uid://d3wx2mwp4bxib" path="res://entities/bullets/bullet_types/bullet.tscn" id="1_etrpm"]
+[ext_resource type="Script" path="res://entities/bullets/movement_patterns/parabola.gd" id="2_kgc6l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4jbs3"]
+radius = 4.0
+height = 10.0
+
+[node name="Parabola1" instance=ExtResource("1_etrpm")]
+
+[node name="Line2D" parent="." index="0"]
+points = PackedVector2Array(-1, 0, 1, 0)
+width_curve = null
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0)
+shape = SubResource("CapsuleShape2D_4jbs3")
+
+[node name="Movement" parent="." index="3"]
+script = ExtResource("2_kgc6l")
+a = 0.003
+b = -100.0
+inverse = false
+speed = 100.0

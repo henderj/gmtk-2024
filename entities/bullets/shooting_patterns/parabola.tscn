@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://baukcudl4aj7"]
+
+[ext_resource type="Script" path="res://entities/bullets/shooting_patterns/parabola.gd" id="1_n1qia"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_16s72"]
+[ext_resource type="PackedScene" uid="uid://5j0qo2e8226j" path="res://entities/bullets/bullet_types/parabola1.tscn" id="3_85kge"]
+[ext_resource type="PackedScene" uid="uid://bcwy6akwidlf4" path="res://entities/bullets/bullet_types/parabola2.tscn" id="4_ql15i"]
+[ext_resource type="PackedScene" uid="uid://dm3yec04hvi0t" path="res://entities/bullets/bullet_types/parabola3.tscn" id="5_llw5x"]
+[ext_resource type="PackedScene" uid="uid://bv8yffg1r1q40" path="res://entities/bullets/bullet_types/parabola1_inverse.tscn" id="6_cuuyd"]
+[ext_resource type="PackedScene" uid="uid://cqyysfth3qdan" path="res://entities/bullets/bullet_types/parabola2_inverse.tscn" id="7_yr6xt"]
+[ext_resource type="PackedScene" uid="uid://bmsrw26hv4mqd" path="res://entities/bullets/bullet_types/parabola3_inverse.tscn" id="8_s2ha2"]
+
+[node name="Parabola" type="Node2D"]
+script = ExtResource("1_n1qia")
+
+[node name="Shooters" type="Node2D" parent="."]
+
+[node name="Shooter" parent="Shooters" instance=ExtResource("2_16s72")]
+bullet_scene = ExtResource("3_85kge")
+
+[node name="Shooter2" parent="Shooters" instance=ExtResource("2_16s72")]
+rotation = 1.0472
+bullet_scene = ExtResource("4_ql15i")
+
+[node name="Shooter3" parent="Shooters" instance=ExtResource("2_16s72")]
+rotation = 2.0944
+bullet_scene = ExtResource("5_llw5x")
+
+[node name="Shooter4" parent="Shooters" instance=ExtResource("2_16s72")]
+rotation = 3.14159
+bullet_scene = ExtResource("6_cuuyd")
+
+[node name="Shooter5" parent="Shooters" instance=ExtResource("2_16s72")]
+rotation = 4.18879
+bullet_scene = ExtResource("7_yr6xt")
+
+[node name="Shooter6" parent="Shooters" instance=ExtResource("2_16s72")]
+rotation = 5.23599
+bullet_scene = ExtResource("8_s2ha2")
+
+[node name="Timer" type="Timer" parent="."]

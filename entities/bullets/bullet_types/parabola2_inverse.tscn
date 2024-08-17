@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqyysfth3qdan"]
+
+[ext_resource type="PackedScene" uid="uid://bcwy6akwidlf4" path="res://entities/bullets/bullet_types/parabola2.tscn" id="1_2816l"]
+
+[node name="Parabola2Inverse" instance=ExtResource("1_2816l")]
+
+[node name="Movement" parent="." index="3"]
+inverse = true

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3p5mwm2sq0p1"]
+
+[ext_resource type="PackedScene" uid="uid://d3wx2mwp4bxib" path="res://entities/bullets/bullet_types/bullet.tscn" id="1_t3fcv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4jbs3"]
+radius = 4.0
+height = 10.0
+
+[node name="SlowCircle" instance=ExtResource("1_t3fcv")]
+
+[node name="Line2D" parent="." index="0"]
+points = PackedVector2Array(-1, 0, 1, 0)
+width_curve = null
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0)
+shape = SubResource("CapsuleShape2D_4jbs3")
+
+[node name="Movement" parent="." index="3"]
+speed = 100.0

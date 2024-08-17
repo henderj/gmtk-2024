@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcwy6akwidlf4"]
+
+[ext_resource type="PackedScene" uid="uid://5j0qo2e8226j" path="res://entities/bullets/bullet_types/parabola1.tscn" id="1_r2ya8"]
+
+[node name="Parabola2" instance=ExtResource("1_r2ya8")]
+
+[node name="Movement" parent="." index="3"]
+a = 0.002
