@@ -196,5 +196,6 @@ shape = SubResource("RectangleShape2D_ej17e")
 
 [connection signal="initialize" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="InitializeHealthbar"]
 [connection signal="take_damage" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="ChangeValue"]
+[connection signal="die" from="Spider" to="MainCharacter" method="TransformIntoBullet"]
 [connection signal="initialize" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
 [connection signal="take_damgage" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]

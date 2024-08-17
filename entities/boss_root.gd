@@ -19,6 +19,7 @@ signal initialize(max: float, val: float, color: Color)
 @export var playerNode: Node2D
 
 var currentMoveIndex = 0
+var isDead = false
 
 func telegraph():
 	
@@ -29,12 +30,12 @@ func telegraph():
 	sprite.texture = facialExpressions[currentMoveIndex]
 	
 	await get_tree().create_timer(1.0).timeout
-	
-	attack()
+	if not isDead:
+		attack()
 	
 	await get_tree().create_timer(1.0).timeout
-	
-	body.Move()
+	if not isDead:
+		body.Move()	
 
 func attack():
 	var pattern = attackPatterns[currentMoveIndex].instantiate()
@@ -58,6 +59,8 @@ func TakeDamage(old: float, new: float):
 func Die():
 	emit_signal("die")
 	sprite.texture = dyingExpression
+	isDead = true
+	
 	body.Stop()
 	timer.stop()
 	

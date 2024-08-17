@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://entities/boss_root.gd" id="1_otxql"]
 [ext_resource type="Script" path="res://entities/boss_movement.gd" id="2_e3gw8"]
-[ext_resource type="PackedScene" uid="uid://bxuhy00qoqg41" path="res://entities/bullets/shooting_patterns/parabola.tscn" id="2_ia3vw"]
+[ext_resource type="PackedScene" uid="uid://baukcudl4aj7" path="res://entities/bullets/shooting_patterns/parabola.tscn" id="2_ia3vw"]
 [ext_resource type="PackedScene" uid="uid://dl3o66oxy6g18" path="res://components/hitbox_component.tscn" id="2_yx7ll"]
-[ext_resource type="PackedScene" uid="uid://7sv01hf4bx71" path="res://entities/bullets/shooting_patterns/shock_web.tscn" id="3_uj1gm"]
+[ext_resource type="PackedScene" uid="uid://dn8eu77t87b6x" path="res://entities/bullets/shooting_patterns/shock_web.tscn" id="3_uj1gm"]
 [ext_resource type="PackedScene" uid="uid://dn61ufqjghgsi" path="res://components/health_component.tscn" id="3_usm86"]
 [ext_resource type="Texture2D" uid="uid://bcupuo0ry0ovp" path="res://entities/SpiderBossSpriteSheet.png" id="3_xa3u4"]
-[ext_resource type="PackedScene" uid="uid://my8ynwc8dero" path="res://entities/bullets/shooting_patterns/triangle.tscn" id="4_olivc"]
+[ext_resource type="PackedScene" uid="uid://f7el1bookbcm" path="res://entities/bullets/shooting_patterns/triangle.tscn" id="4_olivc"]
 [ext_resource type="Texture2D" uid="uid://cs0ulkk38wfk1" path="res://entities/SpiderBossExpressionSpriteSheet.png" id="5_2ln1t"]
 [ext_resource type="Texture2D" uid="uid://cr0xloj1mxaas" path="res://entities/SpiderBossSpriteSheet2.png" id="10_t4j24"]
 
