@@ -18,23 +18,18 @@ script = ExtResource("1_n1qia")
 bullet_scene = ExtResource("3_85kge")
 
 [node name="Shooter2" parent="Shooters" instance=ExtResource("2_16s72")]
-rotation = 1.0472
 bullet_scene = ExtResource("4_ql15i")
 
 [node name="Shooter3" parent="Shooters" instance=ExtResource("2_16s72")]
-rotation = 2.0944
 bullet_scene = ExtResource("5_llw5x")
 
 [node name="Shooter4" parent="Shooters" instance=ExtResource("2_16s72")]
-rotation = 3.14159
 bullet_scene = ExtResource("6_cuuyd")
 
 [node name="Shooter5" parent="Shooters" instance=ExtResource("2_16s72")]
-rotation = 4.18879
 bullet_scene = ExtResource("7_yr6xt")
 
 [node name="Shooter6" parent="Shooters" instance=ExtResource("2_16s72")]
-rotation = 5.23599
 bullet_scene = ExtResource("8_s2ha2")
 
 [node name="Timer" type="Timer" parent="."]

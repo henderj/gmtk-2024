@@ -7,8 +7,11 @@ extends BulletMovement
 var c: float
 var time: float = 0
 var pos_offset: Vector2
+var rot: float
 
 func _ready():
+	rot = global_rotation
+	print(rot)
 	pos_offset = global_position
 	c = sqrt(-b/a)
 	if inverse:
@@ -23,5 +26,8 @@ func calc_pos(t: float) -> Vector2:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var pos = calc_pos(time)
+	#print('before: ', pos.length())
+	pos = pos.rotated(rot)
+	#print('after: ', pos.length())
 	parent.global_position = pos_offset + pos
 	time += delta * speed
