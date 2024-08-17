@@ -13,6 +13,7 @@ var is_shooting: bool = false
 @onready var shooter: Shooter = $Sprites/ArmOrigin/Arm/Shooter
 @onready var shooter_timer: Timer = $Sprites/ArmOrigin/Arm/Timer
 @onready var health: HealthComponent = $HealthComponent
+@onready var particleEmitter: GPUParticles2D = $GPUParticles2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +23,7 @@ func TakeDamage(old: float, new: float):
 	take_damage.emit(old, new)
 	health.invincible = true
 	$Sprites.do_blink(invincibility_time)
+	particleEmitter.emitting = true
 	await get_tree().create_timer(invincibility_time).timeout
 	health.invincible = false
 

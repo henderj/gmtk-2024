@@ -59,9 +59,11 @@ func _physics_process(delta):
 		
 		dir = global_position.direction_to(movePoint)
 		
-		position += dir * movementSpeed
+		position += dir * movementSpeed * delta
 		
-		_animateLegs(dir)
 		
 		if global_position.distance_to(movePoint) <= 10:
 			movePoint = Vector2.ZERO
+			dir = Vector2.ZERO
+
+		_animateLegs(dir)
