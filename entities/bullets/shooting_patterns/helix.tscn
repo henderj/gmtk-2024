@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://yq0681p2m4uj"]
+
+[ext_resource type="PackedScene" uid="uid://b8mpnu7wakcbq" path="res://entities/bullets/shooting_patterns/shooting_pattern.tscn" id="1_d36vj"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_phpes"]
+[ext_resource type="PackedScene" uid="uid://db0p5e1dewpx5" path="res://entities/bullets/bullet_types/sine.tscn" id="3_jhtkr"]
+[ext_resource type="PackedScene" uid="uid://dvj5pn48wghuy" path="res://entities/bullets/bullet_types/sine_inverse.tscn" id="4_bpewj"]
+
+[node name="Sinewave" instance=ExtResource("1_d36vj")]
+
+[node name="Shooter2" parent="Shooters" index="1" instance=ExtResource("2_phpes")]
+bullet_scene = ExtResource("3_jhtkr")
+
+[node name="Shooter3" parent="Shooters" index="2" instance=ExtResource("2_phpes")]
+bullet_scene = ExtResource("4_bpewj")

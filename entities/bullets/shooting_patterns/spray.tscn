@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cst4sub5bk0s2"]
+
+[ext_resource type="PackedScene" uid="uid://b8mpnu7wakcbq" path="res://entities/bullets/shooting_patterns/shooting_pattern.tscn" id="1_4wshs"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_i1n5v"]
+
+[node name="Triangle" instance=ExtResource("1_4wshs")]
+num_bullets = 10
+
+[node name="Shooter2" parent="Shooters" index="1" instance=ExtResource("2_i1n5v")]
+position = Vector2(0, -4)
+rotation = -0.0645772
+
+[node name="Shooter3" parent="Shooters" index="2" instance=ExtResource("2_i1n5v")]
+position = Vector2(-1, -8)
+rotation = -0.1309
+
+[node name="Shooter4" parent="Shooters" index="3" instance=ExtResource("2_i1n5v")]
+position = Vector2(0, 4)
+rotation = 0.0663225
+
+[node name="Shooter5" parent="Shooters" index="4" instance=ExtResource("2_i1n5v")]
+position = Vector2(-1, 8)
+rotation = 0.1309

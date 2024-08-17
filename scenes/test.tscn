@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1svsscdkey13"]
 
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="1_02a1p"]
-[ext_resource type="PackedScene" uid="uid://c8wfcvm2qlg6y" path="res://entities/bullets/shooting_patterns/sinewave.tscn" id="2_tub25"]
+[ext_resource type="PackedScene" uid="uid://cst4sub5bk0s2" path="res://entities/bullets/shooting_patterns/spray.tscn" id="2_5tvoo"]
 
 [node name="Test" type="Node2D"]
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_02a1p")]
 position = Vector2(675, 276)
 
-[node name="Sinewave" parent="." instance=ExtResource("2_tub25")]
-position = Vector2(335, 451)
+[node name="Triangle" parent="." instance=ExtResource("2_5tvoo")]
+position = Vector2(312, 542)
