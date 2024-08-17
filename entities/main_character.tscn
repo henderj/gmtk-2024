@@ -126,9 +126,9 @@ position = Vector2(1, -9.00001)
 rotation = 0.127512
 shape = SubResource("CapsuleShape2D_6uw6x")
 
-[node name="MovementSFX" type="AudioStreamPlayer2D" parent="."]
+[node name="MovementSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_t3td0")
-volume_db = -6.0
+volume_db = -20.0
 autoplay = true
 bus = &"SFX"
 script = ExtResource("8_ae5x7")
