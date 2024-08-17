@@ -62,13 +62,18 @@ texture = ExtResource("2_k71al")
 region_enabled = true
 region_rect = Rect2(10, 615, 349, 281)
 
-[node name="Head" type="Sprite2D" parent="Sprites"]
-position = Vector2(-35, -140)
+[node name="HeadOrigin" type="Node2D" parent="Sprites"]
+position = Vector2(-15, -25)
+
+[node name="Head" type="Sprite2D" parent="Sprites/HeadOrigin"]
+position = Vector2(-20.8699, -109.838)
+scale = Vector2(1, 1)
 texture = ExtResource("2_k71al")
 region_enabled = true
 region_rect = Rect2(118, 61, 281, 315)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, -9)
 rotation = 0.0637561
 shape = SubResource("CapsuleShape2D_6uw6x")
@@ -82,6 +87,7 @@ script = ExtResource("6_tv6aq")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+visible = false
 position = Vector2(1, -9.00001)
 rotation = 0.127512
 shape = SubResource("CapsuleShape2D_6uw6x")
