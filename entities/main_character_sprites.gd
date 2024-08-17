@@ -3,6 +3,8 @@ extends Node2D
 @export var max_head_tilt: float = 5
 @export var mid_head_tilt: float = 0
 @export var min_head_tilt: float = -20
+@export var invincibility_color: Color
+@export var invincibility_flash_rate: float = 0.1
 
 @onready var max_head_tilt_rads = deg_to_rad(max_head_tilt)
 @onready var mid_head_tilt_rads = deg_to_rad(mid_head_tilt)
@@ -10,10 +12,7 @@ extends Node2D
 
 @onready var originalScale: Vector2 = scale
 
-#@onready var leg_left = $LegLeft
-#@onready var leg_left_anchor = $LegLeftAnchor
-#@onready var leg_right = $LegRight
-#@onready var leg_right_anchor = $LegRightAnchor
+@onready var normal_color: Color = self.modulate
 
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()
@@ -22,12 +21,26 @@ func _process(delta):
 	
 	$HeadOrigin.rotation = calc_head_tilt(angle_to_mouse)
 	
-	#leg_left.global_position = leg_left.global_position.lerp(leg_left_anchor.global_position, delta)
-	
 	var x_scale = originalScale.x
 	if mouse_pos.x < global_position.x:
 		x_scale = -originalScale.x
 	self.scale = Vector2(x_scale, originalScale.y)
+
+func do_blink(duration: float):
+	var tween = get_tree().create_tween()
+	tween.bind_node(self)
+	tween.tween_property(self, 
+		"modulate", 
+		invincibility_color, 
+		invincibility_flash_rate)
+	tween.tween_property(self,
+		"modulate",
+		normal_color,
+		invincibility_flash_rate)
+	tween.set_loops()
+	await get_tree().create_timer(duration).timeout
+	tween.stop()
+	modulate = normal_color
 
 func calc_head_tilt(angle: float) -> float:
 	if angle > 0 and angle <= PI / 2: # bottom right

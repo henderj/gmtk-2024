@@ -24,6 +24,7 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("2_7f84s")
 max_head_tilt = -45.0
 min_head_tilt = 40.0
+invincibility_color = Color(0.22, 0.22, 0.22, 1)
 
 [node name="LegLeft" type="Sprite2D" parent="Sprites"]
 position = Vector2(-71, 103)
@@ -100,6 +101,7 @@ shape = SubResource("CapsuleShape2D_6uw6x")
 
 [node name="MovementSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_t3td0")
+volume_db = -4.0
 autoplay = true
 bus = &"SFX"
 script = ExtResource("8_ae5x7")
