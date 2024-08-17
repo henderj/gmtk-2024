@@ -6,7 +6,7 @@
 radius = 4.0
 height = 10.0
 
-[node name="Bullet" instance=ExtResource("1_t3fcv")]
+[node name="SlowCircle" instance=ExtResource("1_t3fcv")]
 
 [node name="Line2D" parent="." index="0"]
 points = PackedVector2Array(-1, 0, 1, 0)

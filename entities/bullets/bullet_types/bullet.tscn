@@ -33,5 +33,6 @@ one_shot = true
 
 [node name="Movement" type="Node2D" parent="."]
 script = ExtResource("2_p7qbd")
+speed = 200.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
