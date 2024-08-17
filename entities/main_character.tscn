@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://b2kqamoul11gc"]
+[gd_scene load_steps=12 format=3 uid="uid://b2kqamoul11gc"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/player_movement.gd" id="1_jbq02"]
 [ext_resource type="Script" path="res://entities/main_character_sprites.gd" id="2_7f84s"]
 [ext_resource type="Texture2D" uid="uid://d2etycu8w83ii" path="res://assets/sprites/FireflySpriteNoAnim.png" id="2_k71al"]
 [ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="3_4837i"]
 [ext_resource type="Script" path="res://components/health_component.gd" id="5_7q07f"]
-[ext_resource type="PackedScene" uid="uid://dkcxj6ggac5c0" path="res://entities/bullets/bullet_types/player_bullet.tscn" id="5_t0je0"]
+[ext_resource type="PackedScene" path="res://entities/bullets/bullet_types/player_bullet.tscn" id="5_t0je0"]
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="6_tv6aq"]
 [ext_resource type="AudioStream" uid="uid://bpn1dfs4o0ng6" path="res://assets/sounds/spaceEngineLarge_001.ogg" id="7_t3td0"]
 [ext_resource type="Script" path="res://entities/player_movement_sfx.gd" id="8_ae5x7"]
@@ -14,32 +14,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6uw6x"]
 radius = 17.0292
 height = 48.2848
-
-[sub_resource type="Curve" id="Curve_r4mfw"]
-_data = [Vector2(0.224839, 1), 0.0, 0.0, 0, 0, Vector2(0.593148, 0.0982358), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_6dodg"]
-curve = SubResource("Curve_r4mfw")
-
-[sub_resource type="Curve" id="Curve_011a7"]
-max_value = 3.0
-_data = [Vector2(0, 1.5), 0.0, 0.0, 0, 1, Vector2(1, 1.5), 0.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_0pnak"]
-curve = SubResource("Curve_011a7")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c7u87"]
-particle_flag_disable_z = true
-spread = 180.0
-radial_velocity_min = 983.12
-radial_velocity_max = 1000.0
-radial_velocity_curve = SubResource("CurveTexture_6dodg")
-gravity = Vector3(0, 0, 0)
-scale_min = 0.04
-scale_max = 0.08
-scale_over_velocity_curve = SubResource("CurveTexture_0pnak")
 
 [node name="MainCharacter" type="CharacterBody2D"]
 collision_mask = 12
@@ -133,15 +107,22 @@ autoplay = true
 bus = &"SFX"
 script = ExtResource("8_ae5x7")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color(1, 1, 0.317647, 1)
 emitting = false
 amount = 20
-process_material = SubResource("ParticleProcessMaterial_c7u87")
-texture = ExtResource("10_ko1jr")
 lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
+fixed_fps = 30
+draw_order = 1
+texture = ExtResource("10_ko1jr")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1013.55
+initial_velocity_max = 1013.55
+scale_amount_min = 0.04
+scale_amount_max = 0.08
 
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="." method="play_fire_sound"]
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="Sprites/ArmOrigin/Arm/Shooter" method="shoot"]
