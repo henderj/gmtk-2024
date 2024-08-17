@@ -5,5 +5,8 @@
 
 [node name="DuelShots" instance=ExtResource("1_w3q6y")]
 
+[node name="Shooter" parent="Shooters" index="0"]
+rotation = -1.57079
+
 [node name="Shooter2" parent="Shooters" index="1" instance=ExtResource("2_gs612")]
-rotation = 3.14159
+rotation = 1.57079
