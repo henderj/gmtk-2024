@@ -6,6 +6,8 @@ signal take_damage(old: float, new: float)
 var dir = Vector2(0,0)
 var is_shooting: bool = false
 
+var is_transforming: bool = false
+
 @export var movementSpeed = 300
 @export var shootingSlowDown: float = 0.5
 @export var invincibility_time: float = 0.5
@@ -19,6 +21,14 @@ var is_shooting: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	shooter_timer.paused = true
+	
+func TransformIntoBullet():
+	print("Transform")
+	is_transforming = true
+	
+
+func _doTransformation(delta):
+	scale = scale.lerp(Vector2.ZERO, delta)
 
 func TakeDamage(old: float, new: float):
 	take_damage.emit(old, new)
@@ -39,6 +49,8 @@ func _initializeHealthBar(max: float, val: float, color: Color):
 func _process(delta):
 	if Input.is_action_just_pressed('fire'):
 		is_shooting = true
+		shooter_timer.timeout.emit()
+		shooter_timer.start()
 	if Input.is_action_just_released('fire'):
 		is_shooting = false
 	shooter_timer.paused = not is_shooting
