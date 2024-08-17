@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AudioResource" load_steps=3 format=3 uid="uid://m1t0fm3bcuwo"]
 
-[ext_resource type="AudioStream" uid="uid://cyq56eebccc6h" path="res://assets/sounds/laserLarge_004.ogg" id="1_u8ayp"]
+[ext_resource type="AudioStream" uid="uid://b4q6mq5awyfxd" path="res://assets/sounds/mixkit-short-laser-gun-shot-1670.wav" id="2_rxini"]
 [ext_resource type="Script" path="res://addons/ggt-audio/audio_resource.gd" id="5_wjgs1"]
 
 [resource]
 script = ExtResource("5_wjgs1")
-audioStreams = Array[AudioStream]([ExtResource("1_u8ayp")])
+audioStreams = Array[AudioStream]([ExtResource("2_rxini")])
 referenceString = "laser_fire"
 spacialState = 0
 audioBus = "SFX"

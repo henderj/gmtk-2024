@@ -15,4 +15,5 @@ func _on_area_entered(area):
 	if area is HitboxComponent:
 		var hitbox: HitboxComponent = area
 		hitbox.damage(damage_amount)
+		SoundManager.PlaySound(hit_sound)
 		queue_free()
