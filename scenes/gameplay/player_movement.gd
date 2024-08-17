@@ -9,6 +9,7 @@ var is_shooting: bool = false
 @export var movementSpeed = 300
 @export var shootingSlowDown: float = 0.5
 @export var invincibility_time: float = 0.5
+@export var fire_sound: String = 'laser_fire'
 
 @onready var shooter: Shooter = $Sprites/ArmOrigin/Arm/Shooter
 @onready var shooter_timer: Timer = $Sprites/ArmOrigin/Arm/Timer
@@ -60,3 +61,6 @@ func _physics_process(delta):
 	velocity = velocity.lerp(dir, 6 * delta)
 
 	move_and_slide()
+
+func play_fire_sound():
+	SoundManager.PlaySound(fire_sound)

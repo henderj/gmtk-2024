@@ -1,13 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1svsscdkey13"]
+[gd_scene load_steps=6 format=3 uid="uid://c1svsscdkey13"]
 
-[ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="1_02a1p"]
-[ext_resource type="PackedScene" uid="uid://baukcudl4aj7" path="res://entities/bullets/shooting_patterns/parabola.tscn" id="1_xi2ws"]
+[ext_resource type="PackedScene" uid="uid://my8ynwc8dero" path="res://entities/bullets/shooting_patterns/triangle.tscn" id="2_6r8vo"]
+[ext_resource type="PackedScene" uid="uid://cpx01bmqyatb5" path="res://entities/bullets/shooting_patterns/shock_wave.tscn" id="3_3foo0"]
+[ext_resource type="PackedScene" uid="uid://7sv01hf4bx71" path="res://entities/bullets/shooting_patterns/shock_web.tscn" id="4_10lda"]
+[ext_resource type="PackedScene" uid="uid://bxuhy00qoqg41" path="res://entities/bullets/shooting_patterns/parabola.tscn" id="5_3jx8c"]
+[ext_resource type="PackedScene" uid="uid://b8mpnu7wakcbq" path="res://entities/bullets/shooting_patterns/shooting_pattern.tscn" id="5_4ergd"]
 
 [node name="Test" type="Node2D"]
 
-[node name="MainCharacter" parent="." instance=ExtResource("1_02a1p")]
-position = Vector2(199, 147)
+[node name="ShootingPattern" parent="." instance=ExtResource("5_4ergd")]
+position = Vector2(523, 300)
 
-[node name="Parabola" parent="." instance=ExtResource("1_xi2ws")]
-position = Vector2(371, 164)
-rotation = 0.622032
+[node name="Triangle" parent="." instance=ExtResource("2_6r8vo")]
+position = Vector2(981, 718)
+
+[node name="ShockWave" parent="." instance=ExtResource("3_3foo0")]
+position = Vector2(1332, 330)
+
+[node name="ShockWeb" parent="." instance=ExtResource("4_10lda")]
+position = Vector2(338, 748)
+
+[node name="Parabola" parent="." instance=ExtResource("5_3jx8c")]
+position = Vector2(1466, 738)

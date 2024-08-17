@@ -124,6 +124,7 @@ initial_velocity_max = 1013.55
 scale_amount_min = 0.04
 scale_amount_max = 0.08
 
+[connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="." method="play_fire_sound"]
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="Sprites/ArmOrigin/Arm/Shooter" method="shoot"]
 [connection signal="changed" from="HealthComponent" to="." method="TakeDamage"]
 [connection signal="initialize" from="HealthComponent" to="." method="_initializeHealthBar"]
