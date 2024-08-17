@@ -106,7 +106,7 @@ autoplay = true
 bus = &"SFX"
 script = ExtResource("8_ae5x7")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="HitParticle" type="CPUParticles2D" parent="."]
 modulate = Color(1, 1, 0.317647, 1)
 emitting = false
 amount = 20
@@ -122,6 +122,22 @@ initial_velocity_min = 1013.55
 initial_velocity_max = 1013.55
 scale_amount_min = 0.04
 scale_amount_max = 0.08
+
+[node name="ShrinkingParticle" type="CPUParticles2D" parent="."]
+modulate = Color(0.929412, 0.823529, 0.321569, 1)
+scale = Vector2(2, 2)
+emitting = false
+amount = 30
+texture = ExtResource("10_ko1jr")
+emission_shape = 2
+emission_sphere_radius = 128.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.2
+radial_accel_min = -500.0
+radial_accel_max = -500.0
+scale_amount_min = 0.02
+scale_amount_max = 0.04
 
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="." method="play_fire_sound"]
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="Sprites/ArmOrigin/Arm/Shooter" method="shoot"]

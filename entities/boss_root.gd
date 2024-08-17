@@ -50,7 +50,7 @@ func attack():
 	timer.start(randf_range(3.0, 6.0))
 	
 func _ready():
-	timer.start(randf_range(3.0, 6.0))
+	timer.start()
 	neutralExpression = sprite.texture
 
 func TakeDamage(old: float, new: float):
