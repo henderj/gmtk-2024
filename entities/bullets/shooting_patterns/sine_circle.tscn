@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy0j15qwr52hr"]
+
+[ext_resource type="PackedScene" uid="uid://b8mpnu7wakcbq" path="res://entities/bullets/shooting_patterns/shooting_pattern.tscn" id="1_4ltgd"]
+[ext_resource type="PackedScene" uid="uid://db0p5e1dewpx5" path="res://entities/bullets/bullet_types/sine.tscn" id="2_74jp3"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="3_gtkkc"]
+
+[node name="SineCircle" instance=ExtResource("1_4ltgd")]
+
+[node name="Shooter" parent="Shooters" index="0"]
+bullet_scene = ExtResource("2_74jp3")
+
+[node name="Shooter2" parent="Shooters" index="1" instance=ExtResource("3_gtkkc")]
+rotation = 0.785398
+bullet_scene = ExtResource("2_74jp3")
+
+[node name="Shooter3" parent="Shooters" index="2" instance=ExtResource("3_gtkkc")]
+rotation = 1.5708
+bullet_scene = ExtResource("2_74jp3")
+
+[node name="Shooter4" parent="Shooters" index="3" instance=ExtResource("3_gtkkc")]
+rotation = 2.35619
+bullet_scene = ExtResource("2_74jp3")
+
+[node name="Shooter5" parent="Shooters" index="4" instance=ExtResource("3_gtkkc")]
+rotation = 3.14159
+bullet_scene = ExtResource("2_74jp3")
+
+[node name="Shooter6" parent="Shooters" index="5" instance=ExtResource("3_gtkkc")]
+rotation = 3.92699
+bullet_scene = ExtResource("2_74jp3")
+
+[node name="Shooter7" parent="Shooters" index="6" instance=ExtResource("3_gtkkc")]
+rotation = 4.71239
+bullet_scene = ExtResource("2_74jp3")
+
+[node name="Shooter8" parent="Shooters" index="7" instance=ExtResource("3_gtkkc")]
+rotation = 5.49779
+bullet_scene = ExtResource("2_74jp3")

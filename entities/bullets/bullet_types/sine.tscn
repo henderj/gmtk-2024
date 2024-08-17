@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://db0p5e1dewpx5"]
+
+[ext_resource type="PackedScene" uid="uid://b3p5mwm2sq0p1" path="res://entities/bullets/bullet_types/slow_circle.tscn" id="1_nwswu"]
+[ext_resource type="Script" path="res://entities/bullets/movement_patterns/sine.gd" id="2_gdnl4"]
+
+[node name="Sine" instance=ExtResource("1_nwswu")]
+
+[node name="Movement" parent="." index="3"]
+script = ExtResource("2_gdnl4")
+amplitude = 100.0
+period = 400.0
+inverse = false

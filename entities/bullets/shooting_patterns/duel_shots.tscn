@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnthhv0qiqmmn"]
+
+[ext_resource type="PackedScene" uid="uid://b8mpnu7wakcbq" path="res://entities/bullets/shooting_patterns/shooting_pattern.tscn" id="1_w3q6y"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_gs612"]
+
+[node name="DuelShots" instance=ExtResource("1_w3q6y")]
+
+[node name="Shooter2" parent="Shooters" index="1" instance=ExtResource("2_gs612")]
+rotation = 3.14159

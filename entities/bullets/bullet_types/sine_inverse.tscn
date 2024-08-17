@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvj5pn48wghuy"]
+
+[ext_resource type="PackedScene" uid="uid://db0p5e1dewpx5" path="res://entities/bullets/bullet_types/sine.tscn" id="1_rse5a"]
+
+[node name="SineInverse" instance=ExtResource("1_rse5a")]
+
+[node name="Movement" parent="." index="3"]
+inverse = true
