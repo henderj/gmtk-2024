@@ -1,4 +1,4 @@
-extends AudioStreamPlayer2D
+extends AudioStreamPlayer
 
 @export var max_pitch: float = 1.2
 @export var min_pitch: float = 0.8

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn8eu77t87b6x"]
+[gd_scene load_steps=4 format=3 uid="uid://dn8eu77t87b6x"]
 
 [ext_resource type="Script" path="res://entities/bullets/shooting_patterns/shock_web.gd" id="1_o6bb5"]
 [ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_2axd2"]
 [ext_resource type="PackedScene" uid="uid://b3p5mwm2sq0p1" path="res://entities/bullets/bullet_types/slow_circle.tscn" id="3_odr5t"]
-[ext_resource type="Texture2D" uid="uid://ol4b60gt75g8" path="res://assets/sprites/particle.tres" id="4_dw1jj"]
 
 [node name="ShockWeb" type="Node2D"]
 script = ExtResource("1_o6bb5")
@@ -36,9 +35,10 @@ bullet_scene = ExtResource("3_odr5t")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.39, 0.501833, 1)
+[node name="Line2D" type="Line2D" parent="."]
 z_index = -10
-texture = ExtResource("4_dw1jj")
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
+points = PackedVector2Array(-1, 0, 1, 0)
+width = 20.0
+default_color = Color(1, 0.39, 0.501833, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
