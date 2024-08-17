@@ -4,18 +4,30 @@ signal initialize(max: float, val: float, color: Color)
 signal take_damage(old: float, new: float)
 
 var dir = Vector2(0,0)
+var is_shooting: bool = false
 
-@export var movementSpeed = 300 
+@export var movementSpeed = 300
+@export var shootingSlowDown: float = 0.5
+
+@onready var shooter: Shooter = $Sprites/ArmOrigin/Arm/Shooter
+@onready var shooter_timer: Timer = $Sprites/ArmOrigin/Arm/Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	shooter_timer.paused = true
 
 func TakeDamage(old: float, new: float):
 	take_damage.emit(old, new)
 
 func _initializeHealthBar(max: float, val: float, color: Color):
 	initialize.emit(max, val, color)
+
+func _process(delta):
+	if Input.is_action_just_pressed('fire'):
+		is_shooting = true
+	if Input.is_action_just_released('fire'):
+		is_shooting = false
+	shooter_timer.paused = not is_shooting
 
 func _physics_process(delta):
 	dir = Vector2(0, 0)
@@ -34,6 +46,8 @@ func _physics_process(delta):
 		dir.y += 1
 	
 	dir = dir.normalized() * movementSpeed
+	if is_shooting:
+		dir *= shootingSlowDown
 	velocity = velocity.lerp(dir, 6 * delta)
 
 	move_and_slide()
