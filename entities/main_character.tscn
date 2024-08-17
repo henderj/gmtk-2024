@@ -72,7 +72,6 @@ position = Vector2(5, -50)
 
 [node name="Head" type="Sprite2D" parent="Sprites/HeadOrigin"]
 position = Vector2(-35, -85)
-scale = Vector2(1, 1)
 texture = ExtResource("2_k71al")
 region_enabled = true
 region_rect = Rect2(118, 61, 281, 315)
@@ -86,6 +85,7 @@ shape = SubResource("CapsuleShape2D_6uw6x")
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("5_7q07f")
 remove_on_died = true
+bar_color = Color(0.839216, 0.8, 0.184314, 1)
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_mask = 12
@@ -105,3 +105,5 @@ bus = &"SFX"
 script = ExtResource("8_ae5x7")
 
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="Sprites/ArmOrigin/Arm/Shooter" method="shoot"]
+[connection signal="changed" from="HealthComponent" to="." method="TakeDamage"]
+[connection signal="initialize" from="HealthComponent" to="." method="_initializeHealthBar"]

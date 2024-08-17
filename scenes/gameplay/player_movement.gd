@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal initialize(max: float, val: float, color: Color)
+signal take_damage(old: float, new: float)
+
 var dir = Vector2(0,0)
 
 @export var movementSpeed = 300 
@@ -8,6 +11,11 @@ var dir = Vector2(0,0)
 func _ready():
 	pass # Replace with function body.
 
+func TakeDamage(old: float, new: float):
+	take_damage.emit(old, new)
+
+func _initializeHealthBar(max: float, val: float, color: Color):
+	initialize.emit(max, val, color)
 
 func _physics_process(delta):
 	dir = Vector2(0, 0)
