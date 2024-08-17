@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=13 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="4_cn87y"]
@@ -8,6 +8,43 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyr2g"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_0jd3s"]
+resource_name = "shake"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0174533, 0.020944, -0.00349066, 0.0261799, -0.00872665, 0.0349066, -0.00349066, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rv6mn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mydn3"]
+_data = {
+"RESET": SubResource("Animation_rv6mn"),
+"shake": SubResource("Animation_0jd3s")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mn1rq"]
 bg_color = Color(1, 1, 1, 1)
@@ -47,6 +84,7 @@ offset_left = -398.0
 offset_right = 402.0
 offset_bottom = 30.0
 grow_horizontal = 2
+pivot_offset = Vector2(400, 15)
 
 [node name="BossHealth" type="ProgressBar" parent="GameplayLayer/MarginContainer/Control/HBoxContainer"]
 layout_mode = 2
@@ -56,6 +94,11 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_qyr2g")
 value = 50.0
 show_percentage = false
 script = ExtResource("6_7hmyu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth"]
+libraries = {
+"": SubResource("AnimationLibrary_mydn3")
+}
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="GameplayLayer/MarginContainer/Control"]
 layout_mode = 1
@@ -81,6 +124,11 @@ step = 0.1
 value = 50.0
 show_percentage = false
 script = ExtResource("6_7hmyu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth"]
+libraries = {
+"": SubResource("AnimationLibrary_mydn3")
+}
 
 [node name="PauseLayer" parent="." instance=ExtResource("2")]
 visible = false
