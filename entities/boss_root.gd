@@ -13,6 +13,8 @@ signal initialize(max: float, val: float, color: Color)
 @export var facialExpressions: Array[Texture2D] = []
 @export var neutralExpression: Texture2D
 @export var dyingExpression: Texture2D
+@export var touch_damage: float = 1
+@export var touch_knockback: float = 500
 
 @export var playerNode: Node2D
 
@@ -65,3 +67,11 @@ func _initializeHealthBar(max: float, val: float, color: Color):
 
 func _process(delta):
 	global_position = body.global_position
+
+
+func on_hit(area):
+	if area is HitboxComponent:
+		var hitbox: HitboxComponent = area
+		var knockback_dir = hitbox.global_position - global_position
+		var knockback = knockback_dir.normalized() * touch_knockback
+		hitbox.damage(touch_damage, knockback)
