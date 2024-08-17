@@ -143,6 +143,7 @@ lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 
+[connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="." method="play_fire_sound"]
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="Sprites/ArmOrigin/Arm/Shooter" method="shoot"]
 [connection signal="changed" from="HealthComponent" to="." method="TakeDamage"]
 [connection signal="initialize" from="HealthComponent" to="." method="_initializeHealthBar"]

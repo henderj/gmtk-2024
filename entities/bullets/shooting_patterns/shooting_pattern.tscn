@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8mpnu7wakcbq"]
+
+[ext_resource type="Script" path="res://entities/bullets/shooting_patterns/shooting_pattern.gd" id="1_qdn0o"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_am5gu"]
+
+[node name="ShootingPattern" type="Node2D"]
+script = ExtResource("1_qdn0o")
+
+[node name="Shooters" type="Node2D" parent="."]
+
+[node name="Shooter" parent="Shooters" instance=ExtResource("2_am5gu")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = -10
+points = PackedVector2Array(-1, 0, 1, 0)
+width = 20.0
+default_color = Color(1, 0.39, 0.501833, 1)
+begin_cap_mode = 2
+end_cap_mode = 2

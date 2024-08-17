@@ -1,35 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6i7h8faapeea"]
+[gd_scene load_steps=4 format=3 uid="uid://cpx01bmqyatb5"]
 
-[ext_resource type="Script" path="res://entities/bullets/shooting_patterns/shock_wave.gd" id="1_86p8v"]
-[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_td3sn"]
-[ext_resource type="PackedScene" uid="uid://b3p5mwm2sq0p1" path="res://entities/bullets/bullet_types/slow_circle.tscn" id="3_aqjox"]
+[ext_resource type="PackedScene" uid="uid://b8mpnu7wakcbq" path="res://entities/bullets/shooting_patterns/shooting_pattern.tscn" id="1_mky7p"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_a7ivi"]
+[ext_resource type="PackedScene" uid="uid://b3p5mwm2sq0p1" path="res://entities/bullets/bullet_types/slow_circle.tscn" id="3_hi22a"]
 
-[node name="ShockWave" type="Node2D"]
-script = ExtResource("1_86p8v")
+[node name="ShockWave" instance=ExtResource("1_mky7p")]
+num_bullets = 7
 
-[node name="Circle" type="Node2D" parent="."]
-
-[node name="Shooter" parent="Circle" instance=ExtResource("2_td3sn")]
-bullet_scene = ExtResource("3_aqjox")
-
-[node name="Shooter2" parent="Circle" instance=ExtResource("2_td3sn")]
+[node name="Shooter2" parent="Shooters" index="1" instance=ExtResource("2_a7ivi")]
 rotation = 1.0472
-bullet_scene = ExtResource("3_aqjox")
+bullet_scene = ExtResource("3_hi22a")
 
-[node name="Shooter3" parent="Circle" instance=ExtResource("2_td3sn")]
+[node name="Shooter3" parent="Shooters" index="2" instance=ExtResource("2_a7ivi")]
 rotation = 2.0944
-bullet_scene = ExtResource("3_aqjox")
+bullet_scene = ExtResource("3_hi22a")
 
-[node name="Shooter4" parent="Circle" instance=ExtResource("2_td3sn")]
+[node name="Shooter4" parent="Shooters" index="3" instance=ExtResource("2_a7ivi")]
 rotation = 3.14159
-bullet_scene = ExtResource("3_aqjox")
+bullet_scene = ExtResource("3_hi22a")
 
-[node name="Shooter5" parent="Circle" instance=ExtResource("2_td3sn")]
+[node name="Shooter5" parent="Shooters" index="4" instance=ExtResource("2_a7ivi")]
 rotation = 4.18879
-bullet_scene = ExtResource("3_aqjox")
+bullet_scene = ExtResource("3_hi22a")
 
-[node name="Shooter6" parent="Circle" instance=ExtResource("2_td3sn")]
+[node name="Shooter6" parent="Shooters" index="5" instance=ExtResource("2_a7ivi")]
 rotation = 5.23599
-bullet_scene = ExtResource("3_aqjox")
-
-[node name="Timer" type="Timer" parent="."]
+bullet_scene = ExtResource("3_hi22a")

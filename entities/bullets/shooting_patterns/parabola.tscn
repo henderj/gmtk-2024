@@ -1,51 +1,38 @@
-[gd_scene load_steps=11 format=3 uid="uid://baukcudl4aj7"]
+[gd_scene load_steps=11 format=3 uid="uid://bxuhy00qoqg41"]
 
-[ext_resource type="Script" path="res://entities/bullets/shooting_patterns/parabola.gd" id="1_n1qia"]
-[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_16s72"]
-[ext_resource type="PackedScene" uid="uid://5j0qo2e8226j" path="res://entities/bullets/bullet_types/parabola1.tscn" id="3_85kge"]
-[ext_resource type="PackedScene" uid="uid://bcwy6akwidlf4" path="res://entities/bullets/bullet_types/parabola2.tscn" id="4_ql15i"]
-[ext_resource type="PackedScene" uid="uid://dm3yec04hvi0t" path="res://entities/bullets/bullet_types/parabola3.tscn" id="5_llw5x"]
-[ext_resource type="PackedScene" uid="uid://bv8yffg1r1q40" path="res://entities/bullets/bullet_types/parabola1_inverse.tscn" id="6_cuuyd"]
-[ext_resource type="PackedScene" uid="uid://cqyysfth3qdan" path="res://entities/bullets/bullet_types/parabola2_inverse.tscn" id="7_yr6xt"]
-[ext_resource type="PackedScene" uid="uid://bmsrw26hv4mqd" path="res://entities/bullets/bullet_types/parabola3_inverse.tscn" id="8_s2ha2"]
-[ext_resource type="PackedScene" uid="uid://ddym462ir6tyt" path="res://entities/bullets/bullet_types/parabola4.tscn" id="9_xju1x"]
-[ext_resource type="PackedScene" uid="uid://diux7cttrinbo" path="res://entities/bullets/bullet_types/parabola4_inverse.tscn" id="10_j0ng8"]
+[ext_resource type="PackedScene" uid="uid://b8mpnu7wakcbq" path="res://entities/bullets/shooting_patterns/shooting_pattern.tscn" id="1_5owil"]
+[ext_resource type="PackedScene" uid="uid://5j0qo2e8226j" path="res://entities/bullets/bullet_types/parabola1.tscn" id="2_lld65"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="3_uota7"]
+[ext_resource type="PackedScene" uid="uid://bcwy6akwidlf4" path="res://entities/bullets/bullet_types/parabola2.tscn" id="4_yigux"]
+[ext_resource type="PackedScene" uid="uid://dm3yec04hvi0t" path="res://entities/bullets/bullet_types/parabola3.tscn" id="5_h27jt"]
+[ext_resource type="PackedScene" uid="uid://bv8yffg1r1q40" path="res://entities/bullets/bullet_types/parabola1_inverse.tscn" id="6_fewrq"]
+[ext_resource type="PackedScene" uid="uid://cqyysfth3qdan" path="res://entities/bullets/bullet_types/parabola2_inverse.tscn" id="7_burj5"]
+[ext_resource type="PackedScene" uid="uid://bmsrw26hv4mqd" path="res://entities/bullets/bullet_types/parabola3_inverse.tscn" id="8_rrwet"]
+[ext_resource type="PackedScene" uid="uid://ddym462ir6tyt" path="res://entities/bullets/bullet_types/parabola4.tscn" id="9_yiepb"]
+[ext_resource type="PackedScene" uid="uid://diux7cttrinbo" path="res://entities/bullets/bullet_types/parabola4_inverse.tscn" id="10_q1upq"]
 
-[node name="Parabola" type="Node2D"]
-script = ExtResource("1_n1qia")
+[node name="Parabola" instance=ExtResource("1_5owil")]
 
-[node name="Shooters" type="Node2D" parent="."]
+[node name="Shooter" parent="Shooters" index="0"]
+bullet_scene = ExtResource("2_lld65")
 
-[node name="Shooter" parent="Shooters" instance=ExtResource("2_16s72")]
-bullet_scene = ExtResource("3_85kge")
+[node name="Shooter2" parent="Shooters" index="1" instance=ExtResource("3_uota7")]
+bullet_scene = ExtResource("4_yigux")
 
-[node name="Shooter2" parent="Shooters" instance=ExtResource("2_16s72")]
-bullet_scene = ExtResource("4_ql15i")
+[node name="Shooter3" parent="Shooters" index="2" instance=ExtResource("3_uota7")]
+bullet_scene = ExtResource("5_h27jt")
 
-[node name="Shooter3" parent="Shooters" instance=ExtResource("2_16s72")]
-bullet_scene = ExtResource("5_llw5x")
+[node name="Shooter4" parent="Shooters" index="3" instance=ExtResource("3_uota7")]
+bullet_scene = ExtResource("6_fewrq")
 
-[node name="Shooter4" parent="Shooters" instance=ExtResource("2_16s72")]
-bullet_scene = ExtResource("6_cuuyd")
+[node name="Shooter5" parent="Shooters" index="4" instance=ExtResource("3_uota7")]
+bullet_scene = ExtResource("7_burj5")
 
-[node name="Shooter5" parent="Shooters" instance=ExtResource("2_16s72")]
-bullet_scene = ExtResource("7_yr6xt")
+[node name="Shooter6" parent="Shooters" index="5" instance=ExtResource("3_uota7")]
+bullet_scene = ExtResource("8_rrwet")
 
-[node name="Shooter6" parent="Shooters" instance=ExtResource("2_16s72")]
-bullet_scene = ExtResource("8_s2ha2")
+[node name="Shooter7" parent="Shooters" index="6" instance=ExtResource("3_uota7")]
+bullet_scene = ExtResource("9_yiepb")
 
-[node name="Shooter7" parent="Shooters" instance=ExtResource("2_16s72")]
-bullet_scene = ExtResource("9_xju1x")
-
-[node name="Shooter8" parent="Shooters" instance=ExtResource("2_16s72")]
-bullet_scene = ExtResource("10_j0ng8")
-
-[node name="Timer" type="Timer" parent="."]
-
-[node name="Line2D" type="Line2D" parent="."]
-z_index = -10
-points = PackedVector2Array(-1, 0, 1, 0)
-width = 20.0
-default_color = Color(1, 0.39, 0.501833, 1)
-begin_cap_mode = 2
-end_cap_mode = 2
+[node name="Shooter8" parent="Shooters" index="7" instance=ExtResource("3_uota7")]
+bullet_scene = ExtResource("10_q1upq")
