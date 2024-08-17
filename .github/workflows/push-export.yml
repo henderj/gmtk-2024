@@ -6,7 +6,7 @@ on:
       # - "feature/**"
 env:
   GODOT_VERSION: 4.3
-  EXPORT_NAME: gmtk-2024-yourmom
+  EXPORT_NAME: bee-the-bullet
   ITCH_IO: true #set to true if you want to enable automatic itch.io deploy
   GH_PAGES: false #set to true if you want to enable publishing to GitHub Pages
 
