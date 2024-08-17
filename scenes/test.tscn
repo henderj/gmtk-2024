@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1svsscdkey13"]
+[gd_scene load_steps=5 format=3 uid="uid://c1svsscdkey13"]
 
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="1_02a1p"]
+[ext_resource type="PackedScene" uid="uid://baukcudl4aj7" path="res://entities/bullets/shooting_patterns/parabola.tscn" id="1_xi2ws"]
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="2_nufsb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3v82"]
@@ -23,3 +24,8 @@ offset_right = 32.0
 offset_bottom = 197.0
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_02a1p")]
+position = Vector2(199, 147)
+
+[node name="Parabola" parent="." instance=ExtResource("1_xi2ws")]
+position = Vector2(371, 164)
+rotation = 0.622032

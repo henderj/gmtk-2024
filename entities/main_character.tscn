@@ -22,6 +22,8 @@ movementSpeed = 600
 [node name="Sprites" type="Node2D" parent="."]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("2_7f84s")
+max_head_tilt = -45.0
+min_head_tilt = 40.0
 
 [node name="LegLeft" type="Sprite2D" parent="Sprites"]
 position = Vector2(-71, 103)
@@ -66,10 +68,10 @@ region_enabled = true
 region_rect = Rect2(10, 615, 349, 281)
 
 [node name="HeadOrigin" type="Node2D" parent="Sprites"]
-position = Vector2(-15, -25)
+position = Vector2(5, -50)
 
 [node name="Head" type="Sprite2D" parent="Sprites/HeadOrigin"]
-position = Vector2(-20.8699, -109.838)
+position = Vector2(-35, -85)
 scale = Vector2(1, 1)
 texture = ExtResource("2_k71al")
 region_enabled = true
