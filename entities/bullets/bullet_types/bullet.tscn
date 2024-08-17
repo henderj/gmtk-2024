@@ -12,7 +12,7 @@ radius = 3.0
 height = 22.0
 
 [node name="Bullet" type="Area2D"]
-collision_layer = 2
+collision_layer = 4
 script = ExtResource("1_jev2g")
 
 [node name="Line2D" type="Line2D" parent="."]
