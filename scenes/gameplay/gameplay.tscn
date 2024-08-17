@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="4_cn87y"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
-[ext_resource type="PackedScene" uid="uid://ctklyuuy0mpo" path="res://entities/boss.tscn" id="5_51niy"]
+[ext_resource type="PackedScene" uid="uid://ctklyuuy0mpo" path="res://entities/spider.tscn" id="5_51niy"]
 [ext_resource type="Script" path="res://scenes/gameplay/health_bar.gd" id="6_7hmyu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyr2g"]
@@ -164,7 +164,7 @@ environment = SubResource("Environment_bgiew")
 position = Vector2(543, 446)
 scale = Vector2(0.8, 0.8)
 
-[node name="Boss" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("5_51niy")]
+[node name="Spider" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("5_51niy")]
 position = Vector2(554, 259)
 scale = Vector2(0.4, 0.4)
 playerNode = NodePath("../MainCharacter")
@@ -196,5 +196,5 @@ shape = SubResource("RectangleShape2D_ej17e")
 
 [connection signal="initialize" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="InitializeHealthbar"]
 [connection signal="take_damage" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="ChangeValue"]
-[connection signal="initialize" from="Boss" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
-[connection signal="take_damgage" from="Boss" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]
+[connection signal="initialize" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
+[connection signal="take_damgage" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]

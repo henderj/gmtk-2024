@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ctklyuuy0mpo"]
+[gd_scene load_steps=22 format=3 uid="uid://ctklyuuy0mpo"]
 
 [ext_resource type="Script" path="res://entities/boss_root.gd" id="1_otxql"]
 [ext_resource type="Script" path="res://entities/boss_movement.gd" id="2_e3gw8"]
@@ -28,6 +28,10 @@ region = Rect2(1530, 1333, 1530, 1333)
 atlas = ExtResource("5_2ln1t")
 region = Rect2(0, 0, 1530, 1333)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3fxl"]
+atlas = ExtResource("5_2ln1t")
+region = Rect2(1530, 2666, 1530, 1333)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_prn8j"]
 radius = 129.79
 
@@ -51,6 +55,7 @@ script = ExtResource("1_otxql")
 attackPatterns = Array[PackedScene]([ExtResource("2_ia3vw"), ExtResource("3_uj1gm"), ExtResource("4_olivc")])
 facialExpressions = Array[Texture2D]([SubResource("AtlasTexture_rpksy"), SubResource("AtlasTexture_8o4et"), SubResource("AtlasTexture_60r6w")])
 neutralExpression = SubResource("AtlasTexture_pl65n")
+dyingExpression = SubResource("AtlasTexture_k3fxl")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 collision_layer = 8
