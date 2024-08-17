@@ -4,6 +4,8 @@ signal take_damgage(old_amount: float, new_amount: float)
 signal die
 signal initialize(max: float, val: float, color: Color)
 
+@onready var body = $AnimatableBody2D
+
 func TakeDamage(old: float, new: float):
 	emit_signal("take_damgage", old, new)
 
@@ -21,7 +23,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	global_position = body.global_position
 
 
 func _on_health_component_initialize(max, val, color):
