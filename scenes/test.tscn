@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1svsscdkey13"]
+[gd_scene load_steps=5 format=3 uid="uid://dec76gst1y4fi"]
 
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="1_02a1p"]
 [ext_resource type="PackedScene" uid="uid://baukcudl4aj7" path="res://entities/bullets/shooting_patterns/parabola.tscn" id="1_xi2ws"]

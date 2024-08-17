@@ -8,13 +8,20 @@ signal initialize(max: float, val: float, color: Color)
 @onready var timer = $Timer
 @onready var sprite = $AnimatableBody2D/Sprite2D
 
+
 @export var attackPatterns: Array[PackedScene] = []
 @export var facialExpressions: Array[Texture2D] = []
 @export var neutralExpression: Texture2D
 
+@export var playerNode: Node2D
+
 var currentMoveIndex = 0
 
 func telegraph():
+	
+	if playerNode == null:
+		return
+	
 	currentMoveIndex = randi_range(0, attackPatterns.size() - 1)
 	sprite.texture = facialExpressions[currentMoveIndex]
 	
@@ -28,6 +35,7 @@ func attack():
 	if not pattern == null:
 		get_tree().current_scene.add_child(pattern)
 		pattern.position = position
+		pattern.rotation = get_angle_to(playerNode.position)
 	
 	sprite.texture = neutralExpression
 	

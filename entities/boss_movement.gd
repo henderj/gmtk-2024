@@ -18,6 +18,8 @@ func _ready():
 	legHips.push_back($HitboxComponent/LegHip4)
 	legHips.push_back($HitboxComponent/LegHip5)
 	legHips.push_back($HitboxComponent/LegHip6)
+	legHips.push_back($HitboxComponent/LegHip7)
+	legHips.push_back($HitboxComponent/LegHip8)
 	
 	legOrginalRotations.push_back(legHips[0].rotation)
 	legOrginalRotations.push_back(legHips[1].rotation)
@@ -25,10 +27,12 @@ func _ready():
 	legOrginalRotations.push_back(legHips[3].rotation)
 	legOrginalRotations.push_back(legHips[4].rotation)
 	legOrginalRotations.push_back(legHips[5].rotation)
+	legOrginalRotations.push_back(legHips[6].rotation)
+	legOrginalRotations.push_back(legHips[7].rotation)
 
 func _animateLegs(dir: Vector2):
 	
-	for i in 6:
+	for i in 8:
 		var offset = dir.x * .4
 		legHips[i].rotation = legOrginalRotations[i] + offset
 
