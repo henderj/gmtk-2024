@@ -1,5 +1,6 @@
 extends ProgressBar
 
+@export var shake_amount: float = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,4 +15,5 @@ func InitializeHealthbar(max: float, val: float,  color: Color):
 
 func ChangeValue(old: float, new: float):
 	value = new
+	$AnimationPlayer.play("shake")
 	
