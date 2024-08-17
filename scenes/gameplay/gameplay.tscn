@@ -30,6 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 30
 
 [node name="Control" type="Control" parent="GameplayLayer/MarginContainer"]
 layout_mode = 2
@@ -39,11 +40,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -250.0
-offset_right = 250.0
-offset_bottom = 20.0
+offset_left = -398.0
+offset_right = 402.0
+offset_bottom = 30.0
 grow_horizontal = 2
-pivot_offset = Vector2(250, 0)
 
 [node name="BossHealth" type="ProgressBar" parent="GameplayLayer/MarginContainer/Control/HBoxContainer"]
 layout_mode = 2
@@ -62,9 +62,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -20.0
-offset_right = 100.0
+offset_left = -200.0
+offset_top = -28.0
+offset_right = 200.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(100, 0)
@@ -87,11 +88,11 @@ environment = SubResource("Environment_bgiew")
 
 [node name="MainCharacter" parent="." instance=ExtResource("4_cn87y")]
 position = Vector2(543, 446)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.8, 0.8)
 
 [node name="Boss" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("5_51niy")]
 position = Vector2(554, 259)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.4, 0.4)
 playerNode = NodePath("../MainCharacter")
 
 [connection signal="initialize" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="InitializeHealthbar"]
