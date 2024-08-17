@@ -1,14 +1,38 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctklyuuy0mpo"]
+[gd_scene load_steps=20 format=3 uid="uid://ctklyuuy0mpo"]
 
 [ext_resource type="Script" path="res://entities/boss_root.gd" id="1_otxql"]
 [ext_resource type="Script" path="res://entities/boss_movement.gd" id="2_e3gw8"]
+[ext_resource type="PackedScene" uid="uid://baukcudl4aj7" path="res://entities/bullets/shooting_patterns/parabola.tscn" id="2_ia3vw"]
 [ext_resource type="PackedScene" uid="uid://dl3o66oxy6g18" path="res://components/hitbox_component.tscn" id="2_yx7ll"]
+[ext_resource type="PackedScene" uid="uid://dn8eu77t87b6x" path="res://entities/bullets/shooting_patterns/shock_web.tscn" id="3_uj1gm"]
 [ext_resource type="PackedScene" uid="uid://dn61ufqjghgsi" path="res://components/health_component.tscn" id="3_usm86"]
 [ext_resource type="Texture2D" uid="uid://bcupuo0ry0ovp" path="res://entities/SpiderBossSpriteSheet.png" id="3_xa3u4"]
+[ext_resource type="PackedScene" uid="uid://f7el1bookbcm" path="res://entities/bullets/shooting_patterns/triangle.tscn" id="4_olivc"]
+[ext_resource type="Texture2D" uid="uid://cs0ulkk38wfk1" path="res://entities/SpiderBossExpressionSpriteSheet.png" id="5_2ln1t"]
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="5_r2m11"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpksy"]
+atlas = ExtResource("5_2ln1t")
+region = Rect2(0, 1333, 1530, 1333)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o4et"]
+atlas = ExtResource("5_2ln1t")
+region = Rect2(1530, 0, 1530, 1333)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60r6w"]
+atlas = ExtResource("5_2ln1t")
+region = Rect2(1530, 1333, 1530, 1333)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl65n"]
+atlas = ExtResource("5_2ln1t")
+region = Rect2(0, 0, 1530, 1333)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prn8j"]
 radius = 129.79
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in50c"]
+atlas = ExtResource("5_2ln1t")
+region = Rect2(0, 0, 1530, 1333)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mvxxd"]
 radius = 130.0
@@ -22,6 +46,9 @@ size = Vector2(744.438, 1144.78)
 
 [node name="Boss" type="Node2D"]
 script = ExtResource("1_otxql")
+attackPatterns = Array[PackedScene]([ExtResource("2_ia3vw"), ExtResource("3_uj1gm"), ExtResource("4_olivc")])
+facialExpressions = Array[Texture2D]([SubResource("AtlasTexture_rpksy"), SubResource("AtlasTexture_8o4et"), SubResource("AtlasTexture_60r6w")])
+neutralExpression = SubResource("AtlasTexture_pl65n")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 script = ExtResource("2_e3gw8")
@@ -36,8 +63,7 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
 position = Vector2(-4, 2)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_xa3u4")
-region_enabled = true
+texture = SubResource("AtlasTexture_in50c")
 region_rect = Rect2(724.503, 0, 1469.63, 1290.06)
 
 [node name="HitboxComponent" parent="AnimatableBody2D" node_paths=PackedStringArray("health_component") instance=ExtResource("2_yx7ll")]
@@ -471,9 +497,12 @@ skew = -0.036652
 shape = SubResource("RectangleShape2D_lshtj")
 
 [node name="HealthComponent" parent="AnimatableBody2D" instance=ExtResource("3_usm86")]
-remove_on_died = true
+invincible = true
 bar_color = Color(1, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="changed" from="AnimatableBody2D/HealthComponent" to="." method="TakeDamage"]
 [connection signal="died" from="AnimatableBody2D/HealthComponent" to="." method="Die"]
 [connection signal="initialize" from="AnimatableBody2D/HealthComponent" to="." method="_initializeHealthBar"]
+[connection signal="timeout" from="Timer" to="." method="telegraph"]
