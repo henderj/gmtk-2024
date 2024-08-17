@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6i7h8faapeea"]
+
+[ext_resource type="Script" path="res://entities/bullets/shooting_patterns/shock_wave.gd" id="1_86p8v"]
+[ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_td3sn"]
+[ext_resource type="PackedScene" uid="uid://b3p5mwm2sq0p1" path="res://entities/bullets/bullet_types/slow_circle.tscn" id="3_aqjox"]
+
+[node name="ShockWave" type="Node2D"]
+script = ExtResource("1_86p8v")
+
+[node name="Circle" type="Node2D" parent="."]
+
+[node name="Shooter" parent="Circle" instance=ExtResource("2_td3sn")]
+bullet_scene = ExtResource("3_aqjox")
+
+[node name="Shooter2" parent="Circle" instance=ExtResource("2_td3sn")]
+rotation = 1.0472
+bullet_scene = ExtResource("3_aqjox")
+
+[node name="Shooter3" parent="Circle" instance=ExtResource("2_td3sn")]
+rotation = 2.0944
+bullet_scene = ExtResource("3_aqjox")
+
+[node name="Shooter4" parent="Circle" instance=ExtResource("2_td3sn")]
+rotation = 3.14159
+bullet_scene = ExtResource("3_aqjox")
+
+[node name="Shooter5" parent="Circle" instance=ExtResource("2_td3sn")]
+rotation = 4.18879
+bullet_scene = ExtResource("3_aqjox")
+
+[node name="Shooter6" parent="Circle" instance=ExtResource("2_td3sn")]
+rotation = 5.23599
+bullet_scene = ExtResource("3_aqjox")
+
+[node name="Timer" type="Timer" parent="."]

@@ -25,5 +25,5 @@ func initializeAudioSources():
 
 func PlaySound(referenceString: String):
 	var source = _soundSources[referenceString]
-	print(referenceString)
+	#print(referenceString)
 	source.PlaySound()

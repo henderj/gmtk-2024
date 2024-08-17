@@ -6,12 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="3_4837i"]
 [ext_resource type="Script" path="res://components/health_component.gd" id="5_7q07f"]
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="6_tv6aq"]
+[ext_resource type="AudioStream" uid="uid://bpn1dfs4o0ng6" path="res://assets/sounds/spaceEngineLarge_001.ogg" id="7_t3td0"]
+[ext_resource type="Script" path="res://entities/player_movement_sfx.gd" id="8_ae5x7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6uw6x"]
 radius = 17.0292
 height = 48.2848
 
 [node name="MainCharacter" type="CharacterBody2D"]
+collision_mask = 12
 script = ExtResource("1_jbq02")
 movementSpeed = 600
 
@@ -60,13 +63,18 @@ texture = ExtResource("2_k71al")
 region_enabled = true
 region_rect = Rect2(10, 615, 349, 281)
 
-[node name="Head" type="Sprite2D" parent="Sprites"]
-position = Vector2(-35, -140)
+[node name="HeadOrigin" type="Node2D" parent="Sprites"]
+position = Vector2(-15, -25)
+
+[node name="Head" type="Sprite2D" parent="Sprites/HeadOrigin"]
+position = Vector2(-20.8699, -109.838)
+scale = Vector2(1, 1)
 texture = ExtResource("2_k71al")
 region_enabled = true
 region_rect = Rect2(118, 61, 281, 315)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, -9)
 rotation = 0.0637561
 shape = SubResource("CapsuleShape2D_6uw6x")
@@ -76,12 +84,20 @@ script = ExtResource("5_7q07f")
 remove_on_died = true
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_mask = 12
 script = ExtResource("6_tv6aq")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+visible = false
 position = Vector2(1, -9.00001)
 rotation = 0.127512
 shape = SubResource("CapsuleShape2D_6uw6x")
+
+[node name="MovementSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_t3td0")
+autoplay = true
+bus = &"SFX"
+script = ExtResource("8_ae5x7")
 
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="Sprites/ArmOrigin/Arm/Shooter" method="shoot"]

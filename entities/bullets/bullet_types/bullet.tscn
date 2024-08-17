@@ -12,7 +12,7 @@ radius = 3.0
 height = 22.0
 
 [node name="Bullet" type="Area2D"]
-collision_layer = 2
+collision_layer = 4
 script = ExtResource("1_jev2g")
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -33,6 +33,6 @@ one_shot = true
 
 [node name="Movement" type="Node2D" parent="."]
 script = ExtResource("2_p7qbd")
-speed = 500.0
+speed = 700.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

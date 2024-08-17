@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AudioResource" load_steps=3 format=3 uid="uid://b0jnchp8ls3hi"]
+
+[ext_resource type="AudioStream" uid="uid://dlyh8xdnuincr" path="res://assets/sounds/mixkit-arcade-game-explosion-2759.wav" id="2_e8ywu"]
+[ext_resource type="Script" path="res://addons/ggt-audio/audio_resource.gd" id="2_gabw6"]
+
+[resource]
+script = ExtResource("2_gabw6")
+audioStreams = Array[AudioStream]([ExtResource("2_e8ywu")])
+referenceString = "laser_hit"
+spacialState = 0
+audioBus = "SFX"

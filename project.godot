@@ -79,10 +79,14 @@ debug_quit_game={
 
 [layer_names]
 
-2d_physics/layer_2="bullet"
+2d_physics/layer_1="player"
+2d_physics/layer_2="player_bullet"
+2d_physics/layer_3="boss_bullet"
+2d_physics/layer_4="boss"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
