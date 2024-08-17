@@ -1,6 +1,6 @@
 extends BulletMovement
 
-@export var speed: float = 500
+@export var speed: float = 200
 
 var movement_vector: Vector2
 

@@ -14,7 +14,6 @@ height = 22.0
 [node name="Bullet" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_jev2g")
-damage_amount = 1.0
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = -10

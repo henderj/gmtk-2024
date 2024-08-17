@@ -1,8 +1,9 @@
 extends Area2D
 class_name Bullet
 
-@export var damage_amount: float
-@export var life_span: float = 3
+@export var damage_amount: float = 1
+@export var life_span: float = 10
+
 
 
 func _ready():
