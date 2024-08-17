@@ -3,8 +3,11 @@ class_name Bullet
 
 @export var damage_amount: float = 1
 @export var life_span: float = 10
+@export var shoot_sound: String = 'laser_fire'
+@export var hit_sound: String = 'laser_hit'
 
 func _ready():
+	SoundManager.PlaySound(shoot_sound)
 	$SelfDestruct.timeout.connect(queue_free)
 	$SelfDestruct.start(life_span)
 
