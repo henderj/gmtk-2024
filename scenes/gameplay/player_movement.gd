@@ -13,10 +13,13 @@ var is_transforming: bool = false
 @export var invincibility_time: float = 0.5
 @export var fire_sound: String = 'laser_fire'
 
+@export var shrinkRateMultiplier: float = 3.0
+
 @onready var shooter: Shooter = $Sprites/ArmOrigin/Arm/Shooter
 @onready var shooter_timer: Timer = $Sprites/ArmOrigin/Arm/Timer
 @onready var health: HealthComponent = $HealthComponent
-@onready var particleEmitter: CPUParticles2D = $CPUParticles2D
+@onready var hitParticle: CPUParticles2D = $HitParticle
+@onready var shrinkParticle: CPUParticles2D = $ShrinkingParticle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,17 +28,20 @@ func _ready():
 func TransformIntoBullet():
 	print("Transform")
 	is_transforming = true
+	shrinkParticle.emitting = true
 	
 
 func _doTransformation(delta):
 	scale = scale.lerp(Vector2.ZERO, delta)
+	
+	print(scale)
 
 func TakeDamage(old: float, new: float):
 	take_damage.emit(old, new)
 	health.invincible = true
 	$Sprites.do_blink(invincibility_time)
-	particleEmitter.restart()
-	particleEmitter.emitting = true
+	hitParticle.restart()
+	hitParticle.emitting = true
 	await get_tree().create_timer(invincibility_time).timeout
 	health.invincible = false
 
@@ -54,6 +60,9 @@ func _process(delta):
 	if Input.is_action_just_released('fire'):
 		is_shooting = false
 	shooter_timer.paused = not is_shooting
+	
+	if is_transforming:
+		_doTransformation(delta)
 
 func _physics_process(delta):
 	dir = Vector2(0, 0)
