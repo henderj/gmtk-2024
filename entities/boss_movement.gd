@@ -8,7 +8,7 @@ var t = PI / 2
 @export var minMovement: float = 400
 @export var maxMovement: float = 1000
 
-var legHips: Array[Node2D] = []
+@export var legHips: Array[Node2D] = []
 var legOrginalRotations: Array[float] = []
 
 var movePoint: Vector2 = Vector2.ZERO
@@ -16,27 +16,12 @@ var movePoint: Vector2 = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	legHips.push_back($HitboxComponent/LegHip)
-	legHips.push_back($HitboxComponent/LegHip2)
-	legHips.push_back($HitboxComponent/LegHip3)
-	legHips.push_back($HitboxComponent/LegHip4)
-	legHips.push_back($HitboxComponent/LegHip5)
-	legHips.push_back($HitboxComponent/LegHip6)
-	legHips.push_back($HitboxComponent/LegHip7)
-	legHips.push_back($HitboxComponent/LegHip8)
-	
-	legOrginalRotations.push_back(legHips[0].rotation)
-	legOrginalRotations.push_back(legHips[1].rotation)
-	legOrginalRotations.push_back(legHips[2].rotation)
-	legOrginalRotations.push_back(legHips[3].rotation)
-	legOrginalRotations.push_back(legHips[4].rotation)
-	legOrginalRotations.push_back(legHips[5].rotation)
-	legOrginalRotations.push_back(legHips[6].rotation)
-	legOrginalRotations.push_back(legHips[7].rotation)
+	for leg in legHips:
+		legOrginalRotations.push_back(leg.rotation)
 
 func _animateLegs(dir: Vector2):
 	
-	for i in 8:
+	for i in legHips.size():
 		var offset = dir.x * .4
 		legHips[i].rotation = legOrginalRotations[i] + offset
 

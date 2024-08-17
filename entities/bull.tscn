@@ -1,0 +1,211 @@
+[gd_scene load_steps=22 format=3 uid="uid://dwd6xjhdnn8a3"]
+
+[ext_resource type="Script" path="res://entities/boss_root.gd" id="1_4ktx4"]
+[ext_resource type="PackedScene" uid="uid://cpx01bmqyatb5" path="res://entities/bullets/shooting_patterns/shock_wave.tscn" id="2_c6g24"]
+[ext_resource type="PackedScene" uid="uid://my8ynwc8dero" path="res://entities/bullets/shooting_patterns/triangle.tscn" id="4_661s0"]
+[ext_resource type="Script" path="res://entities/boss_movement.gd" id="6_iu4ev"]
+[ext_resource type="Texture2D" uid="uid://dq01up04gcbdl" path="res://entities/BullBossSpriteSheet.png" id="7_kwyw8"]
+[ext_resource type="PackedScene" uid="uid://dl3o66oxy6g18" path="res://components/hitbox_component.tscn" id="7_qre7h"]
+[ext_resource type="Texture2D" uid="uid://bcupuo0ry0ovp" path="res://entities/SpiderBossSpriteSheet.png" id="8_usmdk"]
+[ext_resource type="PackedScene" uid="uid://dn61ufqjghgsi" path="res://components/health_component.tscn" id="10_ofiid"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if533"]
+atlas = ExtResource("7_kwyw8")
+region = Rect2(514, 1370, 1528, 1309)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rd6v"]
+atlas = ExtResource("7_kwyw8")
+region = Rect2(2047, 1363, 1521, 1308)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdjta"]
+atlas = ExtResource("7_kwyw8")
+region = Rect2(2019, 2716, 1535, 1240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl65n"]
+atlas = ExtResource("7_kwyw8")
+region = Rect2(2081, 3, 1503, 1298)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3fxl"]
+atlas = ExtResource("7_kwyw8")
+region = Rect2(505, 2670, 1506, 1280)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prn8j"]
+radius = 129.79
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in50c"]
+atlas = ExtResource("7_kwyw8")
+region = Rect2(424.059, 28.9, 1646.73, 1173.77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umge4"]
+atlas = ExtResource("7_kwyw8")
+region = Rect2(2069, 0, 1536, 1308)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvxxd"]
+radius = 123.48
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5f7tm"]
+radius = 544.82
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igvm0"]
+radius = 236.35
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p64ty"]
+atlas = ExtResource("7_kwyw8")
+region = Rect2(50, 686, 282, 443)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hxsd0"]
+radius = 134.255
+height = 397.166
+
+[node name="Boss" type="Node2D" node_paths=PackedStringArray("faceSprite")]
+script = ExtResource("1_4ktx4")
+faceSprite = NodePath("AnimatableBody2D/Sprite2D/Sprite2D")
+attackPatterns = Array[PackedScene]([ExtResource("2_c6g24"), ExtResource("4_661s0")])
+facialExpressions = Array[Texture2D]([SubResource("AtlasTexture_if533"), SubResource("AtlasTexture_1rd6v"), SubResource("AtlasTexture_kdjta")])
+neutralExpression = SubResource("AtlasTexture_pl65n")
+dyingExpression = SubResource("AtlasTexture_k3fxl")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." node_paths=PackedStringArray("legHips")]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("6_iu4ev")
+movementSpeed = 2000
+legHips = [NodePath("HitboxComponent/LegHip"), NodePath("HitboxComponent/LegHip2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("CircleShape2D_prn8j")
+disabled = true
+one_way_collision_margin = 0.0
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(-4, 2)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("AtlasTexture_in50c")
+region_rect = Rect2(724.503, 0, 1469.63, 1290.06)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/Sprite2D"]
+position = Vector2(25, 50)
+texture = SubResource("AtlasTexture_umge4")
+
+[node name="HitboxComponent" parent="AnimatableBody2D" node_paths=PackedStringArray("health_component") instance=ExtResource("7_qre7h")]
+collision_layer = 8
+collision_mask = 3
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent"]
+position = Vector2(1.52588e-05, -0.499992)
+shape = SubResource("CircleShape2D_mvxxd")
+
+[node name="LegHip" type="Node2D" parent="AnimatableBody2D/HitboxComponent"]
+position = Vector2(119, 52)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip"]
+position = Vector2(6, 10)
+rotation = -1.54827
+scale = Vector2(0.1, 0.1)
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip/HitboxComponent2"]
+position = Vector2(-1.5767, -69.9822)
+shape = SubResource("CircleShape2D_5f7tm")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip"]
+position = Vector2(74, 75)
+rotation = -0.829591
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("8_usmdk")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D"]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D/HitboxComponent"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CircleShape2D_igvm0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip"]
+position = Vector2(107, 178)
+rotation = 1.56456
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_p64ty")
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D2"]
+position = Vector2(0.624786, -14.1283)
+rotation = 0.0161567
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D2/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="LegHip2" type="Node2D" parent="AnimatableBody2D/HitboxComponent"]
+position = Vector2(-130, 48)
+scale = Vector2(-1, 1)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip2"]
+position = Vector2(6, 10)
+rotation = -1.54827
+scale = Vector2(0.1, 0.1)
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/HitboxComponent2"]
+position = Vector2(-1.5767, -69.9822)
+shape = SubResource("CircleShape2D_5f7tm")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip2"]
+position = Vector2(74, 75)
+rotation = -0.829591
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("8_usmdk")
+region_enabled = true
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D"]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D/HitboxComponent"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CircleShape2D_igvm0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip2"]
+position = Vector2(107, 178)
+rotation = 1.56456
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_p64ty")
+region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
+
+[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D2"]
+position = Vector2(0.624786, -14.1283)
+rotation = 0.0161567
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D2/HitboxComponent2"]
+position = Vector2(1.46078, 7.46464)
+shape = SubResource("CapsuleShape2D_hxsd0")
+
+[node name="HealthComponent" parent="AnimatableBody2D" instance=ExtResource("10_ofiid")]
+MAX_HEALTH = 100.0
+bar_color = Color(1, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="AnimatableBody2D/HitboxComponent" to="." method="on_hit"]
+[connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip/HitboxComponent2" to="." method="on_hit"]
+[connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D/HitboxComponent" to="." method="on_hit"]
+[connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D2/HitboxComponent2" to="." method="on_hit"]
+[connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip2/HitboxComponent2" to="." method="on_hit"]
+[connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D/HitboxComponent" to="." method="on_hit"]
+[connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D2/HitboxComponent2" to="." method="on_hit"]
+[connection signal="changed" from="AnimatableBody2D/HealthComponent" to="." method="TakeDamage"]
+[connection signal="died" from="AnimatableBody2D/HealthComponent" to="." method="Die"]
+[connection signal="initialize" from="AnimatableBody2D/HealthComponent" to="." method="_initializeHealthBar"]
+[connection signal="timeout" from="Timer" to="." method="telegraph"]

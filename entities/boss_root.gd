@@ -6,7 +6,7 @@ signal initialize(max: float, val: float, color: Color)
 
 @onready var body = $AnimatableBody2D
 @onready var timer = $Timer
-@onready var sprite = $AnimatableBody2D/Sprite2D
+@export var faceSprite: Sprite2D
 
 
 @export var attackPatterns: Array[PackedScene] = []
@@ -27,7 +27,7 @@ func telegraph():
 		return
 	
 	currentMoveIndex = randi_range(0, attackPatterns.size() - 1)
-	sprite.texture = facialExpressions[currentMoveIndex]
+	faceSprite.texture = facialExpressions[currentMoveIndex]
 	
 	await get_tree().create_timer(1.0).timeout
 	if not isDead:
@@ -45,20 +45,20 @@ func attack():
 		pattern.position = position
 		pattern.rotation = get_angle_to(playerNode.position)
 	
-	sprite.texture = neutralExpression
+	faceSprite.texture = neutralExpression
 	
 	timer.start(randf_range(3.0, 6.0))
 	
 func _ready():
 	timer.start()
-	neutralExpression = sprite.texture
+	neutralExpression = faceSprite.texture
 
 func TakeDamage(old: float, new: float):
 	emit_signal("take_damgage", old, new)
 
 func Die():
 	emit_signal("die")
-	sprite.texture = dyingExpression
+	faceSprite.texture = dyingExpression
 	isDead = true
 	
 	body.Stop()

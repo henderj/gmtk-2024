@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=14 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="4_cn87y"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://ctklyuuy0mpo" path="res://entities/spider.tscn" id="5_51niy"]
 [ext_resource type="Script" path="res://scenes/gameplay/health_bar.gd" id="6_7hmyu"]
+[ext_resource type="PackedScene" uid="uid://dwd6xjhdnn8a3" path="res://entities/bull.tscn" id="6_xr4gr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyr2g"]
 bg_color = Color(1, 1, 1, 1)
@@ -165,6 +166,8 @@ position = Vector2(543, 446)
 scale = Vector2(0.8, 0.8)
 
 [node name="Spider" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("5_51niy")]
+process_mode = 4
+visible = false
 position = Vector2(554, 259)
 scale = Vector2(0.4, 0.4)
 playerNode = NodePath("../MainCharacter")
@@ -193,6 +196,11 @@ shape = SubResource("RectangleShape2D_ej17e")
 position = Vector2(-980, 0)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ej17e")
+
+[node name="Bull" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("6_xr4gr")]
+position = Vector2(1006, 273)
+scale = Vector2(0.5, 0.5)
+playerNode = NodePath("../MainCharacter")
 
 [connection signal="initialize" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="InitializeHealthbar"]
 [connection signal="take_damage" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="ChangeValue"]
