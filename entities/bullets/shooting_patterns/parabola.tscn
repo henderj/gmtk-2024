@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://baukcudl4aj7"]
+[gd_scene load_steps=11 format=3 uid="uid://baukcudl4aj7"]
 
 [ext_resource type="Script" path="res://entities/bullets/shooting_patterns/parabola.gd" id="1_n1qia"]
 [ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_16s72"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bv8yffg1r1q40" path="res://entities/bullets/bullet_types/parabola1_inverse.tscn" id="6_cuuyd"]
 [ext_resource type="PackedScene" uid="uid://cqyysfth3qdan" path="res://entities/bullets/bullet_types/parabola2_inverse.tscn" id="7_yr6xt"]
 [ext_resource type="PackedScene" uid="uid://bmsrw26hv4mqd" path="res://entities/bullets/bullet_types/parabola3_inverse.tscn" id="8_s2ha2"]
+[ext_resource type="PackedScene" uid="uid://ddym462ir6tyt" path="res://entities/bullets/bullet_types/parabola4.tscn" id="9_xju1x"]
+[ext_resource type="PackedScene" uid="uid://diux7cttrinbo" path="res://entities/bullets/bullet_types/parabola4_inverse.tscn" id="10_j0ng8"]
 
 [node name="Parabola" type="Node2D"]
 script = ExtResource("1_n1qia")
@@ -31,5 +33,11 @@ bullet_scene = ExtResource("7_yr6xt")
 
 [node name="Shooter6" parent="Shooters" instance=ExtResource("2_16s72")]
 bullet_scene = ExtResource("8_s2ha2")
+
+[node name="Shooter7" parent="Shooters" instance=ExtResource("2_16s72")]
+bullet_scene = ExtResource("9_xju1x")
+
+[node name="Shooter8" parent="Shooters" instance=ExtResource("2_16s72")]
+bullet_scene = ExtResource("10_j0ng8")
 
 [node name="Timer" type="Timer" parent="."]

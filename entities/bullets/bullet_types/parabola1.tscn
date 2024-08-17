@@ -19,7 +19,7 @@ shape = SubResource("CapsuleShape2D_4jbs3")
 
 [node name="Movement" parent="." index="3"]
 script = ExtResource("2_kgc6l")
-a = 0.003
-b = -100.0
+a = 0.1
+b = -300.0
 inverse = false
 speed = 400.0

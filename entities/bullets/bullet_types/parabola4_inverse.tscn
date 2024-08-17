@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://diux7cttrinbo"]
+
+[ext_resource type="PackedScene" uid="uid://ddym462ir6tyt" path="res://entities/bullets/bullet_types/parabola4.tscn" id="1_lluif"]
+
+[node name="Parabola4Inverse" instance=ExtResource("1_lluif")]
+
+[node name="Movement" parent="." index="3"]
+inverse = true

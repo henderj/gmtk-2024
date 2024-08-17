@@ -1,7 +1,7 @@
 extends BulletMovement
 
-@export var a: float = 0.003
-@export var b: float = -100
+@export var a: float = 0.1
+@export var b: float = -300
 @export var inverse: bool
 
 var c: float
@@ -12,6 +12,7 @@ var rot: float
 func _ready():
 	rot = global_rotation
 	pos_offset = global_position
+	a /= 100
 	c = sqrt(-b/a)
 	if inverse:
 		a *= -1
