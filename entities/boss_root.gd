@@ -12,6 +12,7 @@ signal initialize(max: float, val: float, color: Color)
 @export var attackPatterns: Array[PackedScene] = []
 @export var facialExpressions: Array[Texture2D] = []
 @export var neutralExpression: Texture2D
+@export var dyingExpression: Texture2D
 
 @export var playerNode: Node2D
 
@@ -54,7 +55,9 @@ func TakeDamage(old: float, new: float):
 
 func Die():
 	emit_signal("die")
-	queue_free()
+	sprite.texture = dyingExpression
+	body.Stop()
+	timer.stop()
 	
 func _initializeHealthBar(max: float, val: float, color: Color):
 	initialize.emit(max, val, color)

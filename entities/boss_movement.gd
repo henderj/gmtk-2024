@@ -51,6 +51,9 @@ func Move():
 		movePoint = Vector2(
 			randi_range(upperLeftBound.x, lowerRightBound.x),
 			randi_range(upperLeftBound.y, lowerRightBound.y))
+
+func Stop():
+	movePoint = Vector2.ZERO
 	
 
 func _physics_process(delta):
