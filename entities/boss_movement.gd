@@ -4,7 +4,9 @@ var dir = Vector2(0,0)
 
 var t = PI / 2
 
-@export var movementSpeed = 300 
+@export var movementSpeed = 1000
+@export var minMovement: float = 400
+@export var maxMovement: float = 1000
 
 var legHips: Array[Node2D] = []
 var legOrginalRotations: Array[float] = []
@@ -46,7 +48,7 @@ func Move():
 	
 	movePoint = Vector2.ZERO
 	
-	while position.distance_to(movePoint) < 400:
+	while position.distance_to(movePoint) < minMovement or position.distance_to(movePoint) > maxMovement:
 	
 		movePoint = Vector2(
 			randi_range(upperLeftBound.x, lowerRightBound.x),
