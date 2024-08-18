@@ -13,8 +13,8 @@ var _fadeRate: float = 0
 
 var _volume: float = 1
 
-func _init(resources: Array[AudioResource] = []):
-	audioResources = resources
+#func _init(resources: Array[AudioResource] = []):
+	#audioResources = resources
 
 func _ready():
 	_initializePlayers()
@@ -28,6 +28,7 @@ func _initializePlayers():
 
 func _initializeClips():
 	for resource in audioResources:
+		print(resource.referenceString)
 		if resource.audioStreams.size() != 1:
 			continue
 		_clips[resource.referenceString] = resource.audioStreams[0]

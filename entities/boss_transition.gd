@@ -4,6 +4,7 @@ signal all_bosses_killed
 signal finished_killing
 
 @export var bosses: Array[Node2D] = []
+@export var musicTracks: Array[String] = ["in_a_heartbeat", "igor", "darkshadow"]
 
 var currentIndex = 0
 
@@ -44,15 +45,20 @@ func KillBoss():
 	killBossParticle2.emitting = true
 	bosses[currentIndex].visible = false
 	bosses[currentIndex].process_mode = Node.PROCESS_MODE_DISABLED
+	currentIndex += 1
+		
+	if currentIndex >= bosses.size():
+		all_bosses_killed.emit()
+	else:
+		MusicPlayer.PlayMusicClip(musicTracks[currentIndex], 6)
+		
+	
 	
 	await get_tree().create_timer(3).timeout
 
 	finished_killing.emit()
 	
-	currentIndex += 1
-	
-	if currentIndex >= bosses.size():
-		all_bosses_killed.emit()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

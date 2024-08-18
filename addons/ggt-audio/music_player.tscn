@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://7iliwj4vqmgw"]
+[gd_scene load_steps=7 format=3 uid="uid://7iliwj4vqmgw"]
 
 [ext_resource type="Script" path="res://addons/ggt-audio/music_player.gd" id="1_8lk8u"]
+[ext_resource type="Script" path="res://addons/ggt-audio/audio_resource.gd" id="2_2galw"]
 [ext_resource type="Resource" uid="uid://ctv54atmjmclr" path="res://resources/audio/mus_el_magicia.tres" id="2_aa51v"]
 [ext_resource type="Resource" uid="uid://dsrtstsdo6qjj" path="res://resources/audio/mus_in_a_heartbeat.tres" id="3_kweg7"]
+[ext_resource type="Resource" uid="uid://b2uu68hojn6hh" path="res://resources/audio/mus_igor.tres" id="5_bqdld"]
+[ext_resource type="Resource" uid="uid://c6lesjaocq0f2" path="res://resources/audio/mus_darkshadow.tres" id="6_yqhj7"]
 
 [node name="MusicPlayer" type="Node"]
 process_mode = 3
 script = ExtResource("1_8lk8u")
-audioResources = Array[Resource("res://addons/ggt-audio/audio_resource.gd")]([ExtResource("2_aa51v"), ExtResource("3_kweg7")])
+audioResources = Array[ExtResource("2_2galw")]([ExtResource("2_aa51v"), ExtResource("3_kweg7"), ExtResource("5_bqdld"), ExtResource("6_yqhj7")])

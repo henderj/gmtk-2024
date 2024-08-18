@@ -22,7 +22,7 @@ size = Vector2(45, 19.8959)
 size = Vector2(17.2312, 9.56915)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hntth"]
-radius = 473.305
+radius = 148.661
 
 [node name="MainCharacter" type="CharacterBody2D"]
 collision_mask = 12

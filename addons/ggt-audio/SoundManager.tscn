@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://m1t0fm3bcuwo" path="res://resources/audio/aud_laser_fire.tres" id="2_1h2yc"]
 [ext_resource type="Script" path="res://addons/ggt-audio/audio_resource.gd" id="2_ychki"]
 [ext_resource type="Resource" uid="uid://dn0qahdpnkmod" path="res://resources/audio/aud_menu_click.tres" id="3_aq3sg"]
-[ext_resource type="Resource" uid="uid://b0jnchp8ls3hi" path="res://resources/audio/aud_laser_hit.tres" id="5_o53ma"]
+[ext_resource type="Resource" path="res://resources/audio/aud_laser_hit.tres" id="5_o53ma"]
 
 [node name="SoundManager" type="Node"]
 process_mode = 3

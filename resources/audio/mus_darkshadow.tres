@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AudioResource" load_steps=3 format=3 uid="uid://c6lesjaocq0f2"]
+
+[ext_resource type="AudioStream" uid="uid://buvxomqv8j3ev" path="res://assets/sounds/darkshadow-when-dreams-are-reality-200079.mp3" id="1_4bfc1"]
+[ext_resource type="Script" path="res://addons/ggt-audio/audio_resource.gd" id="2_38ujj"]
+
+[resource]
+script = ExtResource("2_38ujj")
+audioStreams = Array[AudioStream]([ExtResource("1_4bfc1")])
+referenceString = "darkshadow"
+spacialState = 0
+audioBus = "BGM"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AudioResource" load_steps=3 format=3 uid="uid://b2uu68hojn6hh"]
+
+[ext_resource type="Script" path="res://addons/ggt-audio/audio_resource.gd" id="1_qjy08"]
+[ext_resource type="AudioStream" uid="uid://dkk1ayi8gp5qt" path="res://assets/sounds/igor-video-game-soundtrack-organ-gothic-141567.mp3" id="1_s6g1u"]
+
+[resource]
+script = ExtResource("1_qjy08")
+audioStreams = Array[AudioStream]([ExtResource("1_s6g1u")])
+referenceString = "igor"
+spacialState = 0
+audioBus = "BGM"
