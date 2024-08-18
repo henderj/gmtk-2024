@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1svsscdkey13"]
+[gd_scene load_steps=4 format=3 uid="uid://c1svsscdkey13"]
 
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="1_02a1p"]
 [ext_resource type="PackedScene" uid="uid://cp8ghsns4fbkl" path="res://entities/background.tscn" id="2_r7wkh"]
+[ext_resource type="PackedScene" uid="uid://81u1x7xh8qfm" path="res://entities/background3.tscn" id="3_tw1mc"]
 
 [node name="Test" type="Node2D"]
 
@@ -9,6 +10,7 @@
 position = Vector2(675, 276)
 
 [node name="Background" parent="." instance=ExtResource("2_r7wkh")]
+visible = false
 
 [node name="Layer1" parent="Background" index="0" node_paths=PackedStringArray("player")]
 player = NodePath("../../MainCharacter")
@@ -19,4 +21,16 @@ player = NodePath("../../MainCharacter")
 [node name="Layer3" parent="Background" index="2" node_paths=PackedStringArray("player")]
 player = NodePath("../../MainCharacter")
 
+[node name="Background3" parent="." instance=ExtResource("3_tw1mc")]
+
+[node name="Layer1" parent="Background3" index="0" node_paths=PackedStringArray("player")]
+player = NodePath("../../MainCharacter")
+
+[node name="Layer2" parent="Background3" index="1" node_paths=PackedStringArray("player")]
+player = NodePath("../../MainCharacter")
+
+[node name="Layer3" parent="Background3" index="2" node_paths=PackedStringArray("player")]
+player = NodePath("../../MainCharacter")
+
 [editable path="Background"]
+[editable path="Background3"]

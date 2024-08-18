@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://81u1x7xh8qfm"]
+
+[ext_resource type="Script" path="res://entities/background.gd" id="1_jfcbt"]
+[ext_resource type="Texture2D" uid="uid://crgl5skr3beo8" path="res://assets/circle_particle.png" id="2_rksra"]
+
+[node name="Background3" type="Node2D"]
+z_index = -1000
+scale = Vector2(0.86, 0.86)
+
+[node name="Layer1" type="Node2D" parent="."]
+modulate = Color(0.0467074, 0.0527786, 0.289552, 1)
+script = ExtResource("1_jfcbt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Layer1"]
+position = Vector2(841.86, -298.837)
+rotation = 0.359841
+texture = ExtResource("2_rksra")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Layer1"]
+position = Vector2(229.07, 1711.63)
+rotation = 1.7014
+scale = Vector2(1.47641, 1.47641)
+texture = ExtResource("2_rksra")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Layer1"]
+position = Vector2(2295.35, 1067.44)
+rotation = 1.30585
+scale = Vector2(1.04242, 1.04242)
+texture = ExtResource("2_rksra")
+
+[node name="Layer2" type="Node2D" parent="."]
+modulate = Color(0.0467074, 0.0527786, 0.289552, 1)
+script = ExtResource("1_jfcbt")
+damping = 0.2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Layer2"]
+position = Vector2(438.372, 669.767)
+rotation = 0.121261
+scale = Vector2(0.419, 0.443)
+texture = ExtResource("2_rksra")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Layer2"]
+position = Vector2(1534.88, 391.86)
+rotation = 0.398979
+scale = Vector2(0.419, 0.443)
+texture = ExtResource("2_rksra")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Layer2"]
+position = Vector2(1375.58, 1104.65)
+rotation = -0.560808
+scale = Vector2(0.419, 0.443)
+texture = ExtResource("2_rksra")
+
+[node name="Layer3" type="Node2D" parent="."]
+modulate = Color(0.0467074, 0.0527786, 0.289552, 1)
+script = ExtResource("1_jfcbt")
+damping = 0.4
+
+[node name="Sprite2D5" type="Sprite2D" parent="Layer3"]
+position = Vector2(777.907, 1027.91)
+rotation = -0.243424
+scale = Vector2(0.0987967, 0.104456)
+texture = ExtResource("2_rksra")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Layer3"]
+position = Vector2(995.349, 594.186)
+rotation = 0.361745
+scale = Vector2(0.0987967, 0.104456)
+texture = ExtResource("2_rksra")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Layer3"]
+position = Vector2(1943.02, 215.116)
+rotation = -0.119989
+scale = Vector2(0.0987967, 0.104456)
+texture = ExtResource("2_rksra")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Layer3"]
+position = Vector2(212.791, 244.186)
+rotation = -0.644583
+scale = Vector2(0.0987967, 0.104456)
+texture = ExtResource("2_rksra")
