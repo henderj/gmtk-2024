@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=26 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
 [ext_resource type="Script" path="res://entities/background_controller.gd" id="2_qm35y"]
@@ -9,9 +9,13 @@
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://ctklyuuy0mpo" path="res://entities/spider.tscn" id="5_51niy"]
 [ext_resource type="Script" path="res://scenes/gameplay/health_bar.gd" id="6_7hmyu"]
+[ext_resource type="Script" path="res://scenes/gameplay/gameplay_layer.gd" id="6_gcifb"]
 [ext_resource type="PackedScene" uid="uid://dwd6xjhdnn8a3" path="res://entities/bull.tscn" id="6_xr4gr"]
 [ext_resource type="PackedScene" uid="uid://cmoxqoujvra3c" path="res://entities/virus.tscn" id="7_4vsqt"]
+[ext_resource type="FontFile" uid="uid://da2t6lyf41wty" path="res://assets/fonts/open-sans/open-sans-bold.ttf" id="7_bs0nj"]
+[ext_resource type="FontFile" uid="uid://cawekr44fruhm" path="res://assets/fonts/open-sans/open-sans-regular.ttf" id="8_lxukd"]
 [ext_resource type="PackedScene" uid="uid://cpmwjhf7ehwg6" path="res://entities/boss_transition.tscn" id="12_n1gvi"]
+[ext_resource type="PackedScene" uid="uid://cagwufwfbiie3" path="res://entities/player_death.tscn" id="13_w7a1a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyr2g"]
 bg_color = Color(1, 1, 1, 1)
@@ -80,6 +84,15 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mn1rq"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_0o34n"]
+line_spacing = 6.0
+font = ExtResource("7_bs0nj")
+font_size = 76
+
+[sub_resource type="LabelSettings" id="LabelSettings_y04mo"]
+font = ExtResource("8_lxukd")
+font_size = 64
+
 [sub_resource type="Environment" id="Environment_bgiew"]
 background_mode = 3
 glow_enabled = true
@@ -131,6 +144,7 @@ player = NodePath("../../../MainCharacter")
 player = NodePath("../../../MainCharacter")
 
 [node name="GameplayLayer" type="CanvasLayer" parent="."]
+script = ExtResource("6_gcifb")
 
 [node name="MarginContainer" type="MarginContainer" parent="GameplayLayer"]
 anchors_preset = 15
@@ -144,7 +158,7 @@ theme_override_constants/margin_bottom = 50
 [node name="Control" type="Control" parent="GameplayLayer/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameplayLayer/MarginContainer/Control"]
+[node name="BossHealthContainer" type="HBoxContainer" parent="GameplayLayer/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -155,7 +169,7 @@ offset_bottom = 30.0
 grow_horizontal = 2
 pivot_offset = Vector2(400, 15)
 
-[node name="BossHealth" type="ProgressBar" parent="GameplayLayer/MarginContainer/Control/HBoxContainer"]
+[node name="BossHealth" type="ProgressBar" parent="GameplayLayer/MarginContainer/Control/BossHealthContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -164,12 +178,12 @@ value = 50.0
 show_percentage = false
 script = ExtResource("6_7hmyu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth"]
 libraries = {
 "": SubResource("AnimationLibrary_mydn3")
 }
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="GameplayLayer/MarginContainer/Control"]
+[node name="PlayerHealthContainer" type="HBoxContainer" parent="GameplayLayer/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -184,7 +198,7 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(100, 0)
 
-[node name="PlayerHealth" type="ProgressBar" parent="GameplayLayer/MarginContainer/Control/HBoxContainer2"]
+[node name="PlayerHealth" type="ProgressBar" parent="GameplayLayer/MarginContainer/Control/PlayerHealthContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -194,10 +208,71 @@ value = 50.0
 show_percentage = false
 script = ExtResource("6_7hmyu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameplayLayer/MarginContainer/Control/PlayerHealthContainer/PlayerHealth"]
 libraries = {
 "": SubResource("AnimationLibrary_mydn3")
 }
+
+[node name="GameOver" type="VBoxContainer" parent="GameplayLayer/MarginContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="GameplayLayer/MarginContainer/Control/GameOver"]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_0o34n")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="GameplayLayer/MarginContainer/Control/GameOver"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_lxukd")
+theme_override_font_sizes/font_size = 32
+text = "Try Again"
+
+[node name="Victory" type="VBoxContainer" parent="GameplayLayer/MarginContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="GameplayLayer/MarginContainer/Control/Victory"]
+layout_mode = 2
+text = "VICTORY"
+label_settings = SubResource("LabelSettings_0o34n")
+horizontal_alignment = 1
+
+[node name="StopWatch" type="Label" parent="GameplayLayer/MarginContainer/Control/Victory"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_y04mo")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="GameplayLayer/MarginContainer/Control/Victory"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_lxukd")
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
 
 [node name="PauseLayer" parent="." instance=ExtResource("2")]
 visible = false
@@ -258,22 +333,30 @@ playerNode = NodePath("../MainCharacter")
 [node name="BossTransition" parent="." node_paths=PackedStringArray("bosses") instance=ExtResource("12_n1gvi")]
 bosses = [NodePath("../Bull"), NodePath("../Spider"), NodePath("../Virus")]
 
+[node name="PlayerDeath" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("13_w7a1a")]
+playerNode = NodePath("../MainCharacter")
+
 [connection signal="finish_transition" from="Backgrounds" to="BossTransition" method="TransitionToBoss"]
+[connection signal="pressed" from="GameplayLayer/MarginContainer/Control/GameOver/Button" to="GameplayLayer" method="Restart"]
+[connection signal="pressed" from="GameplayLayer/MarginContainer/Control/Victory/Button" to="GameplayLayer" method="MainMenu"]
+[connection signal="die" from="MainCharacter" to="GameplayLayer" method="FailState"]
+[connection signal="die" from="MainCharacter" to="PlayerDeath" method="KIllPlayer"]
 [connection signal="hit_boss" from="MainCharacter" to="BossTransition" method="KillBoss"]
-[connection signal="initialize" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="InitializeHealthbar"]
-[connection signal="take_damage" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="ChangeValue"]
+[connection signal="initialize" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/PlayerHealthContainer/PlayerHealth" method="InitializeHealthbar"]
+[connection signal="take_damage" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/PlayerHealthContainer/PlayerHealth" method="ChangeValue"]
 [connection signal="die" from="Spider" to="MainCharacter" method="TransformIntoBullet"]
 [connection signal="die" from="Spider" to="BossTransition" method="PrepToKill"]
-[connection signal="initialize" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
-[connection signal="take_damgage" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]
+[connection signal="initialize" from="Spider" to="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth" method="InitializeHealthbar"]
+[connection signal="take_damgage" from="Spider" to="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth" method="ChangeValue"]
 [connection signal="die" from="Bull" to="MainCharacter" method="TransformIntoBullet"]
 [connection signal="die" from="Bull" to="BossTransition" method="PrepToKill"]
-[connection signal="initialize" from="Bull" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
-[connection signal="take_damgage" from="Bull" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]
+[connection signal="initialize" from="Bull" to="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth" method="InitializeHealthbar"]
+[connection signal="take_damgage" from="Bull" to="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth" method="ChangeValue"]
 [connection signal="die" from="Virus" to="MainCharacter" method="TransformIntoBullet"]
 [connection signal="die" from="Virus" to="BossTransition" method="PrepToKill"]
-[connection signal="initialize" from="Virus" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
-[connection signal="take_damgage" from="Virus" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]
+[connection signal="initialize" from="Virus" to="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth" method="InitializeHealthbar"]
+[connection signal="take_damgage" from="Virus" to="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth" method="ChangeValue"]
+[connection signal="all_bosses_killed" from="BossTransition" to="GameplayLayer" method="VictoryState"]
 [connection signal="finished_killing" from="BossTransition" to="Backgrounds" method="next_bg"]
 [connection signal="finished_killing" from="BossTransition" to="MainCharacter" method="TransformIntoBee"]
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cagwufwfbiie3"]
+
+[ext_resource type="Texture2D" uid="uid://crgl5skr3beo8" path="res://assets/circle_particle.png" id="1_8d7w1"]
+[ext_resource type="Script" path="res://entities/player_death.gd" id="2_p7dlw"]
+
+[node name="PlayerDeath" type="CPUParticles2D"]
+emitting = false
+amount = 60
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_8d7w1")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1086.5
+initial_velocity_max = 1086.5
+orbit_velocity_min = 0.4
+orbit_velocity_max = 0.4
+scale_amount_min = 0.04
+scale_amount_max = 0.04
+color = Color(1, 1, 0.317647, 1)
+script = ExtResource("2_p7dlw")

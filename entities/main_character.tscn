@@ -179,6 +179,7 @@ shape = SubResource("CircleShape2D_hntth")
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="." method="play_fire_sound"]
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="Sprites/ArmOrigin/Arm/Shooter" method="shoot"]
 [connection signal="changed" from="HealthComponent" to="." method="TakeDamage"]
+[connection signal="died" from="HealthComponent" to="." method="Die"]
 [connection signal="initialize" from="HealthComponent" to="." method="_initializeHealthBar"]
 [connection signal="hit" from="HitboxComponent" to="." method="on_hit"]
 [connection signal="area_entered" from="BossKiller" to="." method="HitBoss"]

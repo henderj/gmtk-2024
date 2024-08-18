@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal initialize(max: float, val: float, color: Color)
 signal take_damage(old: float, new: float)
+signal die
 
 signal hit_boss
 
@@ -100,3 +101,6 @@ func play_fire_sound():
 func HitBoss(area: Area2D):
 	print("BOSS HIT")
 	hit_boss.emit()
+
+func Die():
+	die.emit()
