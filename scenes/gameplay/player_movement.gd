@@ -60,12 +60,13 @@ func _initializeHealthBar(max: float, val: float, color: Color):
 
 func _process(delta):
 	if Input.is_action_just_pressed('fire'):
-		is_shooting = true
-		shooter_timer.timeout.emit()
-		shooter_timer.start()
+		if not is_transforming:
+			is_shooting = true
+			shooter_timer.timeout.emit()
+			shooter_timer.start()
 	if Input.is_action_just_released('fire'):
 		is_shooting = false
-	shooter_timer.paused = not is_shooting
+	shooter_timer.paused = not is_shooting or is_transforming
 	
 	if is_transforming:
 		_doTransformation(delta, 0.1)

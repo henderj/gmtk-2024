@@ -17,6 +17,7 @@ mouse_filter = 2
 color = Color(0.243137, 0.211765, 0.290196, 0.717647)
 
 [node name="Settings" parent="." instance=ExtResource("4_ey5ni")]
+visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -79,13 +80,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -222.0
-offset_right = 222.0
-offset_bottom = 28.0
+offset_left = -855.0
+offset_top = 7.0
+offset_right = -411.0
+offset_bottom = 35.0
 grow_horizontal = 2
 theme = ExtResource("3")
 theme_override_colors/font_color = Color(0.788235, 0.788235, 0.788235, 1)
-text = "Pause: ESC (keyboard) or START button (joypad)"
+text = "Pause: P"
 
 [connection signal="close" from="Settings" to="." method="_on_Settings_closed"]
 [connection signal="pressed" from="MarginContainer/Control/PauseButton" to="." method="_on_PauseButton_pressed"]

@@ -2,6 +2,7 @@ extends Control
 
 @onready var btn_play = $MarginContainer/Control/VBoxContainer/PlayButton
 @onready var btn_exit = $MarginContainer/Control/VBoxContainer/ExitButton
+@onready var settingsMenu = $Settings
 
 
 func _ready():
@@ -10,7 +11,10 @@ func _ready():
 	if OS.has_feature('web'):
 		btn_exit.queue_free() # exit button dosn't make sense on HTML5
 	MusicPlayer.SetVolume(1)
-	MusicPlayer.PlayMusicClip("el_magicia", 2)
+	MusicPlayer.PlayMusicClip("in_a_heartbeat", 2)
+	
+func ToggleSettings():
+	settingsMenu.visible = not settingsMenu.visible
 
 
 func _on_PlayButton_pressed() -> void:

@@ -10,19 +10,24 @@ var currentIndex = 0
 
 @onready var killBossParticle1 = $BigExplosion
 @onready var killBossParticle2 = $BigExplosion2
+@onready var spawnParticle = $SpawnParticle
 
 var readyToKill = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	await get_tree().create_timer(2).timeout
+	TransitionToBoss()
 	
 func TransitionToBoss():
 	global_position = get_viewport_rect().size / 2
 	
 	#do boss spawning
+	spawnParticle.restart()
+	spawnParticle.emitting = true
 	
+	await get_tree().create_timer(2).timeout
 	
 	#bosses[currentIndex].global_position = global_position
 	bosses[currentIndex].process_mode = Node.PROCESS_MODE_INHERIT

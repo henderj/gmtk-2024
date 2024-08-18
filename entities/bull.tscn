@@ -71,8 +71,7 @@ collision_layer = 8
 collision_mask = 3
 script = ExtResource("6_iu4ev")
 movementSpeed = 800
-minMovement = 300.0
-maxMovement = 600.0
+maxMovement = 800.0
 legHips = [NodePath("HitboxComponent/LegHip"), NodePath("HitboxComponent/LegHip2")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]

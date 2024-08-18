@@ -47,3 +47,20 @@ linear_accel_min = 76.6
 linear_accel_max = 76.6
 scale_amount_curve = SubResource("Curve_mxs8j")
 color = Color(1, 0.552941, 0.584314, 1)
+
+[node name="SpawnParticle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_m05q8")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 791.49
+initial_velocity_max = 851.06
+orbit_velocity_min = 0.5
+orbit_velocity_max = 0.5
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+color = Color(1, 0.262745, 0.313726, 1)

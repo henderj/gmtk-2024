@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2gocuhw2o7py"]
+[gd_scene load_steps=6 format=3 uid="uid://c2gocuhw2o7py"]
 
 [ext_resource type="FontFile" uid="uid://da2t6lyf41wty" path="res://assets/fonts/open-sans/open-sans-bold.ttf" id="4"]
 [ext_resource type="Script" path="res://scenes/menu/game_version.gd" id="4_3hod2"]
 [ext_resource type="Script" path="res://scenes/menu/menu.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://cku24jkwqfe5k" path="res://scenes/settings/settings.tscn" id="5_3kmp5"]
 [ext_resource type="Script" path="res://scenes/menu/godot_version.gd" id="5_fdyjp"]
 
 [node name="Menu" type="Control"]
@@ -74,6 +75,14 @@ focus_neighbor_bottom = NodePath("../ExitButton")
 focus_next = NodePath("../ExitButton")
 text = "START"
 
+[node name="Settings" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../ExitButton")
+focus_next = NodePath("../ExitButton")
+text = "Settings
+"
+
 [node name="ExitButton" type="Button" parent="MarginContainer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
@@ -125,19 +134,25 @@ text = "Made by:"
 layout_mode = 2
 theme_type_variation = &"LabelSmall"
 theme_override_colors/font_color = Color(0.92549, 0.92549, 0.92549, 1)
-text = "yourmom"
+text = "SecretJuice"
 
 [node name="Developer2" type="Label" parent="MarginContainer/Control/Credits"]
 layout_mode = 2
 theme_type_variation = &"LabelSmall"
 theme_override_colors/font_color = Color(0.886275, 0.87451, 0.87451, 1)
-text = "me"
+text = "henderj"
 
 [node name="Developer3" type="Label" parent="MarginContainer/Control/Credits"]
 layout_mode = 2
 theme_type_variation = &"LabelSmall"
 theme_override_colors/font_color = Color(0.886275, 0.87451, 0.87451, 1)
-text = "at yourmom's house"
+text = "WereWeasel"
+
+[node name="Settings" parent="." instance=ExtResource("5_3kmp5")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/Control/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/VBoxContainer/Settings" to="." method="ToggleSettings"]
 [connection signal="pressed" from="MarginContainer/Control/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="close" from="Settings" to="." method="ToggleSettings"]

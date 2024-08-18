@@ -5,6 +5,8 @@
 [ext_resource type="Script" path="res://entities/bullets/shooting_patterns/duel_shots.gd" id="2_lradh"]
 
 [node name="DuelShots" instance=ExtResource("1_w3q6y")]
+num_bullets = 15
+rate = 0.3
 
 [node name="Shooters" parent="." index="0"]
 script = ExtResource("2_lradh")
