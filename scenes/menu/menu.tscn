@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2gocuhw2o7py"]
+[gd_scene load_steps=13 format=3 uid="uid://c2gocuhw2o7py"]
 
 [ext_resource type="Texture2D" uid="uid://dpyeqck50mw6w" path="res://scenes/menu/BBLayer6.png" id="2_76dxw"]
 [ext_resource type="Texture2D" uid="uid://b2x3p6yqg0cem" path="res://scenes/menu/BBLayer5.png" id="3_hcc3w"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/menu/godot_version.gd" id="5_fdyjp"]
 [ext_resource type="Texture2D" uid="uid://1vb7nqgsmhxr" path="res://scenes/menu/BBLayer3.png" id="5_kilbv"]
 [ext_resource type="Texture2D" uid="uid://kt1rgb7ny2gw" path="res://scenes/menu/BBLayer2.png" id="6_8fwf7"]
+[ext_resource type="Texture2D" uid="uid://dv0r3pcpqdofk" path="res://scenes/menu/BBLayertitle.png" id="7_828qf"]
 [ext_resource type="Texture2D" uid="uid://52s5mgoab8c4" path="res://scenes/menu/BBLayer1.png" id="7_nqmqm"]
 [ext_resource type="Theme" uid="uid://ducfept6pmkkm" path="res://resources/theme/theme-main.tres" id="8_jpgvr"]
 
@@ -65,6 +66,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_8fwf7")
+
+[node name="ColorRect7" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_828qf")
 
 [node name="ColorRect6" type="TextureRect" parent="."]
 layout_mode = 1
