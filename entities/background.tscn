@@ -12,18 +12,18 @@ modulate = Color(0.0467074, 0.0527786, 0.289552, 1)
 script = ExtResource("1_mraay")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Layer1"]
-position = Vector2(-79.9609, -293.961)
+position = Vector2(-1175.73, -888.519)
 rotation = 0.359841
 texture = ExtResource("2_5i7wm")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Layer1"]
-position = Vector2(1133.72, 1939.54)
+position = Vector2(37.9536, 1344.98)
 rotation = 1.51358
 scale = Vector2(1.47641, 1.47641)
 texture = ExtResource("2_5i7wm")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Layer1"]
-position = Vector2(2387.04, 279.039)
+position = Vector2(1291.27, -315.519)
 rotation = 1.30585
 scale = Vector2(1.04242, 1.04242)
 texture = ExtResource("2_5i7wm")
@@ -34,19 +34,19 @@ script = ExtResource("1_mraay")
 damping = 0.2
 
 [node name="Sprite2D2" type="Sprite2D" parent="Layer2"]
-position = Vector2(163.755, 783.999)
+position = Vector2(-979.198, 192.3)
 rotation = 0.121261
 scale = Vector2(0.419, 0.443)
 texture = ExtResource("2_5i7wm")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Layer2"]
-position = Vector2(1247.76, 822.999)
+position = Vector2(104.807, 231.3)
 rotation = 0.398979
 scale = Vector2(0.419, 0.443)
 texture = ExtResource("2_5i7wm")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Layer2"]
-position = Vector2(1187.21, 40.6977)
+position = Vector2(44.256, -551.001)
 rotation = -0.560808
 scale = Vector2(0.419, 0.443)
 texture = ExtResource("2_5i7wm")
@@ -57,25 +57,25 @@ script = ExtResource("1_mraay")
 damping = 0.4
 
 [node name="Sprite2D5" type="Sprite2D" parent="Layer3"]
-position = Vector2(754, 759)
+position = Vector2(-392.178, 149.546)
 rotation = -0.243424
 scale = Vector2(0.0987967, 0.104456)
 texture = ExtResource("2_5i7wm")
 
 [node name="Sprite2D6" type="Sprite2D" parent="Layer3"]
-position = Vector2(1734, 826)
+position = Vector2(587.822, 216.546)
 rotation = 0.361745
 scale = Vector2(0.0987967, 0.104456)
 texture = ExtResource("2_5i7wm")
 
 [node name="Sprite2D7" type="Sprite2D" parent="Layer3"]
-position = Vector2(1651, 502)
+position = Vector2(504.822, -107.453)
 rotation = -0.119989
 scale = Vector2(0.0987967, 0.104456)
 texture = ExtResource("2_5i7wm")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Layer3"]
-position = Vector2(581, 246)
+position = Vector2(-565.178, -363.453)
 rotation = -0.644583
 scale = Vector2(0.0987967, 0.104456)
 texture = ExtResource("2_5i7wm")
