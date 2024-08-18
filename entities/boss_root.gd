@@ -43,6 +43,10 @@ func telegraph():
 		body.Move()	
 
 func attack():
+	
+	if playerNode == null:
+		return
+	
 	var pattern = attackPatterns[currentMoveIndex].instantiate()
 	
 	if not pattern == null:
