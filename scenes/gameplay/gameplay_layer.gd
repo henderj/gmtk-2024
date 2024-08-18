@@ -4,8 +4,20 @@ extends CanvasLayer
 @onready var victoryState = $MarginContainer/Control/Victory
 @onready var stopwatch: Label = $MarginContainer/Control/Victory/StopWatch
 
+@onready var tutorialLabel = $tutorial
+@onready var bethebulletLabel = $BeeTheBullet
+
 var time_elapsed := 0.0
 var is_stopped := false
+
+func _ready():
+	await get_tree().create_timer(10).timeout
+	tutorialLabel.visible = false
+	
+func showBeethebullet():
+	bethebulletLabel.visible = true
+	await get_tree().create_timer(8).timeout
+	bethebulletLabel.visible = false
 
 func VictoryState():
 	victoryState.visible = true

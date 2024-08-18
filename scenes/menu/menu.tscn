@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2gocuhw2o7py"]
+[gd_scene load_steps=12 format=3 uid="uid://c2gocuhw2o7py"]
 
-[ext_resource type="FontFile" uid="uid://da2t6lyf41wty" path="res://assets/fonts/open-sans/open-sans-bold.ttf" id="4"]
+[ext_resource type="Texture2D" uid="uid://dpyeqck50mw6w" path="res://scenes/menu/BBLayer6.png" id="2_76dxw"]
+[ext_resource type="Texture2D" uid="uid://b2x3p6yqg0cem" path="res://scenes/menu/BBLayer5.png" id="3_hcc3w"]
 [ext_resource type="Script" path="res://scenes/menu/game_version.gd" id="4_3hod2"]
+[ext_resource type="Texture2D" uid="uid://bgms834ykepid" path="res://scenes/menu/BBLayer4.png" id="4_kraj5"]
 [ext_resource type="Script" path="res://scenes/menu/menu.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://cku24jkwqfe5k" path="res://scenes/settings/settings.tscn" id="5_3kmp5"]
 [ext_resource type="Script" path="res://scenes/menu/godot_version.gd" id="5_fdyjp"]
+[ext_resource type="Texture2D" uid="uid://1vb7nqgsmhxr" path="res://scenes/menu/BBLayer3.png" id="5_kilbv"]
+[ext_resource type="Texture2D" uid="uid://kt1rgb7ny2gw" path="res://scenes/menu/BBLayer2.png" id="6_8fwf7"]
+[ext_resource type="Texture2D" uid="uid://52s5mgoab8c4" path="res://scenes/menu/BBLayer1.png" id="7_nqmqm"]
+[ext_resource type="Theme" uid="uid://ducfept6pmkkm" path="res://resources/theme/theme-main.tres" id="8_jpgvr"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -15,14 +21,59 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.176471, 0.682353, 0.647059, 1)
+texture = ExtResource("2_76dxw")
+
+[node name="ColorRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hcc3w")
+
+[node name="ColorRect3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_kraj5")
+
+[node name="ColorRect4" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_kilbv")
+
+[node name="ColorRect5" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_8fwf7")
+
+[node name="ColorRect6" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_nqmqm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -46,13 +97,6 @@ offset_bottom = -339.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="MarginContainer/Control/CenterContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 60
-text = "Godot Game Template"
-uppercase = true
-
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -60,10 +104,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -30.0
-offset_right = 96.0
-offset_bottom = 134.0
+offset_left = -429.0
+offset_top = 167.0
+offset_right = -129.0
+offset_bottom = 467.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
@@ -73,6 +117,7 @@ custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../ExitButton")
 focus_next = NodePath("../ExitButton")
+theme = ExtResource("8_jpgvr")
 text = "START"
 
 [node name="Settings" type="Button" parent="MarginContainer/Control/VBoxContainer"]
@@ -119,10 +164,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -86.0
-offset_top = -23.0
+offset_left = -184.0
+offset_top = -203.0
+offset_right = -91.0
+offset_bottom = -99.0
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(2, 2)
 
 [node name="MadeByLabel" type="Label" parent="MarginContainer/Control/Credits"]
 layout_mode = 2

@@ -130,7 +130,7 @@ shape = SubResource("RectangleShape2D_4pv1k")
 
 [node name="MovementSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_t3td0")
-volume_db = -20.0
+volume_db = -30.0
 autoplay = true
 bus = &"SFX"
 script = ExtResource("8_ae5x7")

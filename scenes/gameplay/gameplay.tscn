@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=27 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
 [ext_resource type="Script" path="res://entities/background_controller.gd" id="2_qm35y"]
@@ -92,6 +92,11 @@ font_size = 76
 [sub_resource type="LabelSettings" id="LabelSettings_y04mo"]
 font = ExtResource("8_lxukd")
 font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_ryq7l"]
+font = ExtResource("7_bs0nj")
+font_size = 32
+font_color = Color(1, 1, 1, 0.760784)
 
 [sub_resource type="Environment" id="Environment_bgiew"]
 background_mode = 3
@@ -274,6 +279,28 @@ theme_override_fonts/font = ExtResource("8_lxukd")
 theme_override_font_sizes/font_size = 32
 text = "Main Menu"
 
+[node name="tutorial" type="Label" parent="GameplayLayer"]
+offset_left = 1460.0
+offset_top = 197.0
+offset_right = 1692.0
+offset_bottom = 290.0
+text = "WASD to Move
+Click to Shoot
+"
+label_settings = SubResource("LabelSettings_ryq7l")
+
+[node name="BeeTheBullet" type="Label" parent="GameplayLayer"]
+visible = false
+offset_left = 835.0
+offset_top = 708.0
+offset_right = 1093.0
+offset_bottom = 801.0
+text = "BE the Bullet
+and FINISH HIM!
+"
+label_settings = SubResource("LabelSettings_ryq7l")
+horizontal_alignment = 1
+
 [node name="PauseLayer" parent="." instance=ExtResource("2")]
 visible = false
 
@@ -346,14 +373,17 @@ playerNode = NodePath("../MainCharacter")
 [connection signal="hit_boss" from="MainCharacter" to="BossTransition" method="KillBoss"]
 [connection signal="initialize" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/PlayerHealthContainer/PlayerHealth" method="InitializeHealthbar"]
 [connection signal="take_damage" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/PlayerHealthContainer/PlayerHealth" method="ChangeValue"]
+[connection signal="die" from="Spider" to="GameplayLayer" method="showBeethebullet"]
 [connection signal="die" from="Spider" to="MainCharacter" method="TransformIntoBullet"]
 [connection signal="die" from="Spider" to="BossTransition" method="PrepToKill"]
 [connection signal="initialize" from="Spider" to="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth" method="InitializeHealthbar"]
 [connection signal="take_damgage" from="Spider" to="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth" method="ChangeValue"]
+[connection signal="die" from="Bull" to="GameplayLayer" method="showBeethebullet"]
 [connection signal="die" from="Bull" to="MainCharacter" method="TransformIntoBullet"]
 [connection signal="die" from="Bull" to="BossTransition" method="PrepToKill"]
 [connection signal="initialize" from="Bull" to="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth" method="InitializeHealthbar"]
 [connection signal="take_damgage" from="Bull" to="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth" method="ChangeValue"]
+[connection signal="die" from="Virus" to="GameplayLayer" method="showBeethebullet"]
 [connection signal="die" from="Virus" to="MainCharacter" method="TransformIntoBullet"]
 [connection signal="die" from="Virus" to="BossTransition" method="PrepToKill"]
 [connection signal="initialize" from="Virus" to="GameplayLayer/MarginContainer/Control/BossHealthContainer/BossHealth" method="InitializeHealthbar"]
