@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2kqamoul11gc"]
+[gd_scene load_steps=14 format=3 uid="uid://b2kqamoul11gc"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/player_movement.gd" id="1_jbq02"]
 [ext_resource type="Script" path="res://entities/main_character_sprites.gd" id="2_7f84s"]
@@ -15,10 +15,17 @@
 radius = 17.0292
 height = 48.2848
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mejgt"]
+size = Vector2(45, 19.8959)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pv1k"]
+size = Vector2(17.2312, 9.56915)
+
 [node name="MainCharacter" type="CharacterBody2D"]
 collision_mask = 12
 script = ExtResource("1_jbq02")
 movementSpeed = 600
+shootingSlowDown = 0.2
 
 [node name="Sprites" type="Node2D" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -98,6 +105,29 @@ visible = false
 position = Vector2(1, -9.00001)
 rotation = 0.127512
 shape = SubResource("CapsuleShape2D_6uw6x")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-25, -21)
+rotation = 0.301145
+shape = SubResource("RectangleShape2D_mejgt")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-29.9073, 2.44437)
+rotation = -0.205636
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_mejgt")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-13, 17)
+rotation = -0.435425
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4pv1k")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(5, 22)
+rotation = -1.57551
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4pv1k")
 
 [node name="MovementSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_t3td0")

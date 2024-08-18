@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=15 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://b506ljjwq04a5" path="res://entities/mandelbrot.tscn" id="2_cvyvw"]
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="4_cn87y"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://ctklyuuy0mpo" path="res://entities/spider.tscn" id="5_51niy"]
 [ext_resource type="Script" path="res://scenes/gameplay/health_bar.gd" id="6_7hmyu"]
-[ext_resource type="PackedScene" uid="uid://dwd6xjhdnn8a3" path="res://entities/bull.tscn" id="6_xr4gr"]
+[ext_resource type="PackedScene" path="res://entities/bull.tscn" id="6_xr4gr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyr2g"]
 bg_color = Color(1, 1, 1, 1)
@@ -85,6 +86,9 @@ size = Vector2(2000, 40)
 [node name="Gameplay" type="Node"]
 process_mode = 1
 script = ExtResource("5")
+
+[node name="Mandelbrot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_cvyvw")]
+player = NodePath("../MainCharacter")
 
 [node name="GameplayLayer" type="CanvasLayer" parent="."]
 

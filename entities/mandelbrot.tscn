@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b506ljjwq04a5"]
+
+[ext_resource type="Shader" path="res://resources/shaders/mandelbrot3.gdshader" id="1_fyib8"]
+[ext_resource type="Texture2D" uid="uid://cerg3a5ie8peo" path="res://resources/shaders/blank.png" id="3_tocik"]
+[ext_resource type="Script" path="res://entities/mandelbrot.gd" id="4_wkapi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_drudo"]
+shader = ExtResource("1_fyib8")
+shader_parameter/is_card = false
+shader_parameter/zoom_choice = 5
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/iTime = 6.972
+shader_parameter/color1 = Color(0.0313726, 0.0470588, 0.121569, 1)
+shader_parameter/color2 = Color(0.345, 0.3585, 0.75, 1)
+shader_parameter/color3 = Color(0.150724, 0.159541, 0.503394, 1)
+
+[node name="Mandelbrot" type="Sprite2D"]
+z_index = -1000
+material = SubResource("ShaderMaterial_drudo")
+position = Vector2(993, 538)
+scale = Vector2(2.065, 2.065)
+texture = ExtResource("3_tocik")
+region_rect = Rect2(-11, -33, 39, 24)
+script = ExtResource("4_wkapi")
+damping = 0.01
