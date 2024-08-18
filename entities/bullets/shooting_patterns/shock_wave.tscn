@@ -5,7 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://b3p5mwm2sq0p1" path="res://entities/bullets/bullet_types/slow_circle.tscn" id="3_hi22a"]
 
 [node name="ShockWave" instance=ExtResource("1_mky7p")]
-num_bullets = 7
+num_bullets = 15
+
+[node name="Shooter" parent="Shooters" index="0"]
+bullet_scene = ExtResource("3_hi22a")
 
 [node name="Shooter2" parent="Shooters" index="1" instance=ExtResource("2_a7ivi")]
 rotation = 1.0472
