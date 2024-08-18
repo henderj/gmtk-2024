@@ -9,7 +9,7 @@ func _ready():
 	center = get_viewport_rect().size / 2
 
 func _process(delta):
-	if player:
+	if player != null:
 		var player_dist = player.global_position - center
 		var view_offset = player_dist * -damping
 		global_position = view_offset
