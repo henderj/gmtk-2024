@@ -114,19 +114,16 @@ shape = SubResource("RectangleShape2D_mejgt")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(-29.9073, 2.44437)
 rotation = -0.205636
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mejgt")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(-13, 17)
 rotation = -0.435425
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4pv1k")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(5, 22)
 rotation = -1.57551
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4pv1k")
 
 [node name="MovementSFX" type="AudioStreamPlayer" parent="."]

@@ -1,11 +1,22 @@
-[gd_scene load_steps=14 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=17 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="4_cn87y"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://ctklyuuy0mpo" path="res://entities/spider.tscn" id="5_51niy"]
 [ext_resource type="Script" path="res://scenes/gameplay/health_bar.gd" id="6_7hmyu"]
-[ext_resource type="PackedScene" path="res://entities/bull.tscn" id="6_xr4gr"]
+[ext_resource type="PackedScene" uid="uid://dwd6xjhdnn8a3" path="res://entities/bull.tscn" id="6_xr4gr"]
+[ext_resource type="PackedScene" uid="uid://cmoxqoujvra3c" path="res://entities/virus.tscn" id="7_4vsqt"]
+
+[sub_resource type="Gradient" id="Gradient_m1k5k"]
+offsets = PackedFloat32Array(0.430913, 0.789227)
+colors = PackedColorArray(0.0823529, 0.0588235, 0.247059, 1, 0.0313726, 0.0470588, 0.121569, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5as2o"]
+gradient = SubResource("Gradient_m1k5k")
+width = 2500
+height = 2500
+fill_to = Vector2(0.508547, 0.944444)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyr2g"]
 bg_color = Color(1, 1, 1, 1)
@@ -85,6 +96,11 @@ size = Vector2(2000, 40)
 [node name="Gameplay" type="Node"]
 process_mode = 1
 script = ExtResource("5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -999
+position = Vector2(951, 456)
+texture = SubResource("GradientTexture2D_5as2o")
 
 [node name="GameplayLayer" type="CanvasLayer" parent="."]
 
@@ -168,7 +184,7 @@ scale = Vector2(0.8, 0.8)
 [node name="Spider" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("5_51niy")]
 process_mode = 4
 visible = false
-position = Vector2(554, 259)
+position = Vector2(957, 551)
 scale = Vector2(0.4, 0.4)
 playerNode = NodePath("../MainCharacter")
 
@@ -198,8 +214,17 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_ej17e")
 
 [node name="Bull" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("6_xr4gr")]
-position = Vector2(1006, 273)
+process_mode = 4
+visible = false
+position = Vector2(962, 540)
 scale = Vector2(0.5, 0.5)
+playerNode = NodePath("../MainCharacter")
+
+[node name="BackGround" type="Node2D" parent="."]
+
+[node name="Virus" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("7_4vsqt")]
+position = Vector2(960, 532)
+scale = Vector2(0.65, 0.65)
 playerNode = NodePath("../MainCharacter")
 
 [connection signal="initialize" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="InitializeHealthbar"]
@@ -207,3 +232,9 @@ playerNode = NodePath("../MainCharacter")
 [connection signal="die" from="Spider" to="MainCharacter" method="TransformIntoBullet"]
 [connection signal="initialize" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
 [connection signal="take_damgage" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]
+[connection signal="die" from="Bull" to="MainCharacter" method="TransformIntoBullet"]
+[connection signal="initialize" from="Bull" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
+[connection signal="take_damgage" from="Bull" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]
+[connection signal="die" from="Virus" to="MainCharacter" method="TransformIntoBullet"]
+[connection signal="initialize" from="Virus" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
+[connection signal="take_damgage" from="Virus" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]
