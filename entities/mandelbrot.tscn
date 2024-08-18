@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://resources/shaders/mandelbrot3.gdshader" id="1_fyib8"]
 [ext_resource type="Texture2D" uid="uid://cerg3a5ie8peo" path="res://resources/shaders/blank.png" id="3_tocik"]
-[ext_resource type="Script" path="res://entities/mandelbrot.gd" id="4_wkapi"]
+[ext_resource type="Script" path="res://entities/background.gd" id="4_wkapi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_drudo"]
 shader = ExtResource("1_fyib8")
