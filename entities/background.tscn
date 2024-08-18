@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp8ghsns4fbkl"]
+
+[ext_resource type="Script" path="res://entities/background.gd" id="1_mraay"]
+[ext_resource type="Texture2D" uid="uid://dds6kmoi55ip" path="res://assets/sprites/square.jpeg" id="2_5i7wm"]
+
+[node name="Background" type="Node2D"]
+z_index = -1000
+scale = Vector2(0.86, 0.86)
+
+[node name="Layer1" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+modulate = Color(0.0467074, 0.0527786, 0.289552, 1)
+script = ExtResource("1_mraay")
+player = NodePath("")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Layer1"]
+position = Vector2(-79.9609, -293.961)
+rotation = 0.359841
+texture = ExtResource("2_5i7wm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Layer1"]
+position = Vector2(320.039, 1837.04)
+rotation = 1.7014
+scale = Vector2(1.47641, 1.47641)
+texture = ExtResource("2_5i7wm")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Layer1"]
+position = Vector2(2387.04, 279.039)
+rotation = 1.30585
+scale = Vector2(1.04242, 1.04242)
+texture = ExtResource("2_5i7wm")
+
+[node name="Layer2" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+modulate = Color(0.0467074, 0.0527786, 0.289552, 1)
+script = ExtResource("1_mraay")
+player = NodePath("")
+damping = 0.2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Layer2"]
+position = Vector2(163.755, 783.999)
+rotation = 0.121261
+scale = Vector2(0.419, 0.443)
+texture = ExtResource("2_5i7wm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Layer2"]
+position = Vector2(1247.76, 822.999)
+rotation = 0.398979
+scale = Vector2(0.419, 0.443)
+texture = ExtResource("2_5i7wm")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Layer2"]
+position = Vector2(1364.76, 112.999)
+rotation = -0.560808
+scale = Vector2(0.419, 0.443)
+texture = ExtResource("2_5i7wm")
+
+[node name="Layer3" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+modulate = Color(0.0467074, 0.0527786, 0.289552, 1)
+script = ExtResource("1_mraay")
+player = NodePath("")
+damping = 0.4
+
+[node name="Sprite2D5" type="Sprite2D" parent="Layer3"]
+position = Vector2(754, 759)
+rotation = -0.243424
+scale = Vector2(0.0987967, 0.104456)
+texture = ExtResource("2_5i7wm")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Layer3"]
+position = Vector2(1734, 826)
+rotation = 0.361745
+scale = Vector2(0.0987967, 0.104456)
+texture = ExtResource("2_5i7wm")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Layer3"]
+position = Vector2(1651, 502)
+rotation = -0.119989
+scale = Vector2(0.0987967, 0.104456)
+texture = ExtResource("2_5i7wm")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Layer3"]
+position = Vector2(581, 246)
+rotation = -0.644583
+scale = Vector2(0.0987967, 0.104456)
+texture = ExtResource("2_5i7wm")
