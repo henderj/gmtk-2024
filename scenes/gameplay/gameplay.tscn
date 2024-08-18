@@ -207,3 +207,6 @@ playerNode = NodePath("../MainCharacter")
 [connection signal="die" from="Spider" to="MainCharacter" method="TransformIntoBullet"]
 [connection signal="initialize" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
 [connection signal="take_damgage" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]
+[connection signal="die" from="Bull" to="MainCharacter" method="TransformIntoBullet"]
+[connection signal="initialize" from="Bull" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
+[connection signal="take_damgage" from="Bull" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]

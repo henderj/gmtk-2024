@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwd6xjhdnn8a3"]
+[gd_scene load_steps=23 format=3 uid="uid://dwd6xjhdnn8a3"]
 
 [ext_resource type="Script" path="res://entities/boss_root.gd" id="1_4ktx4"]
 [ext_resource type="PackedScene" uid="uid://cpx01bmqyatb5" path="res://entities/bullets/shooting_patterns/shock_wave.tscn" id="2_c6g24"]
-[ext_resource type="PackedScene" uid="uid://my8ynwc8dero" path="res://entities/bullets/shooting_patterns/triangle.tscn" id="4_661s0"]
+[ext_resource type="PackedScene" uid="uid://isw64jjxmnqr" path="res://entities/bullets/shooting_patterns/duel_shots.tscn" id="2_st43y"]
+[ext_resource type="PackedScene" path="res://entities/bullets/shooting_patterns/spray.tscn" id="4_u6hvm"]
 [ext_resource type="Script" path="res://entities/boss_movement.gd" id="6_iu4ev"]
 [ext_resource type="Texture2D" uid="uid://dq01up04gcbdl" path="res://entities/BullBossSpriteSheet.png" id="7_kwyw8"]
 [ext_resource type="PackedScene" uid="uid://dl3o66oxy6g18" path="res://components/hitbox_component.tscn" id="7_qre7h"]
@@ -60,7 +61,7 @@ height = 397.166
 [node name="Boss" type="Node2D" node_paths=PackedStringArray("faceSprite")]
 script = ExtResource("1_4ktx4")
 faceSprite = NodePath("AnimatableBody2D/Sprite2D/Sprite2D")
-attackPatterns = Array[PackedScene]([ExtResource("2_c6g24"), ExtResource("4_661s0")])
+attackPatterns = Array[PackedScene]([ExtResource("2_st43y"), ExtResource("2_c6g24"), ExtResource("4_u6hvm")])
 facialExpressions = Array[Texture2D]([SubResource("AtlasTexture_if533"), SubResource("AtlasTexture_1rd6v"), SubResource("AtlasTexture_kdjta")])
 neutralExpression = SubResource("AtlasTexture_pl65n")
 dyingExpression = SubResource("AtlasTexture_k3fxl")
@@ -69,7 +70,9 @@ dyingExpression = SubResource("AtlasTexture_k3fxl")
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("6_iu4ev")
-movementSpeed = 2000
+movementSpeed = 800
+minMovement = 300.0
+maxMovement = 600.0
 legHips = [NodePath("HitboxComponent/LegHip"), NodePath("HitboxComponent/LegHip2")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]

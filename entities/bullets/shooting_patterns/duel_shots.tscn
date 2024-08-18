@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnthhv0qiqmmn"]
+[gd_scene load_steps=4 format=3 uid="uid://isw64jjxmnqr"]
 
 [ext_resource type="PackedScene" uid="uid://b8mpnu7wakcbq" path="res://entities/bullets/shooting_patterns/shooting_pattern.tscn" id="1_w3q6y"]
 [ext_resource type="PackedScene" uid="uid://c11eaq4y8s30c" path="res://entities/bullets/shooter.tscn" id="2_gs612"]
+[ext_resource type="Script" path="res://entities/bullets/shooting_patterns/duel_shots.gd" id="2_lradh"]
 
 [node name="DuelShots" instance=ExtResource("1_w3q6y")]
+
+[node name="Shooters" parent="." index="0"]
+script = ExtResource("2_lradh")
 
 [node name="Shooter" parent="Shooters" index="0"]
 rotation = -1.57079
