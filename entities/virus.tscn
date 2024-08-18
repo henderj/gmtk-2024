@@ -1,75 +1,73 @@
-[gd_scene load_steps=23 format=3 uid="uid://dwd6xjhdnn8a3"]
+[gd_scene load_steps=21 format=3 uid="uid://cmoxqoujvra3c"]
 
-[ext_resource type="Script" path="res://entities/boss_root.gd" id="1_4ktx4"]
-[ext_resource type="PackedScene" uid="uid://cpx01bmqyatb5" path="res://entities/bullets/shooting_patterns/shock_wave.tscn" id="2_c6g24"]
-[ext_resource type="PackedScene" uid="uid://isw64jjxmnqr" path="res://entities/bullets/shooting_patterns/duel_shots.tscn" id="2_st43y"]
-[ext_resource type="PackedScene" uid="uid://cst4sub5bk0s2" path="res://entities/bullets/shooting_patterns/spray.tscn" id="4_u6hvm"]
-[ext_resource type="Script" path="res://entities/boss_movement.gd" id="6_iu4ev"]
-[ext_resource type="Texture2D" uid="uid://dq01up04gcbdl" path="res://entities/BullBossSpriteSheet.png" id="7_kwyw8"]
-[ext_resource type="PackedScene" uid="uid://dl3o66oxy6g18" path="res://components/hitbox_component.tscn" id="7_qre7h"]
-[ext_resource type="Texture2D" uid="uid://bcupuo0ry0ovp" path="res://entities/SpiderBossSpriteSheet.png" id="8_usmdk"]
-[ext_resource type="PackedScene" uid="uid://dn61ufqjghgsi" path="res://components/health_component.tscn" id="10_ofiid"]
+[ext_resource type="Script" path="res://entities/boss_root.gd" id="1_lktyc"]
+[ext_resource type="PackedScene" uid="uid://yq0681p2m4uj" path="res://entities/bullets/shooting_patterns/helix.tscn" id="2_u6kd2"]
+[ext_resource type="PackedScene" uid="uid://c8wfcvm2qlg6y" path="res://entities/bullets/shooting_patterns/sinewave.tscn" id="3_31r5r"]
+[ext_resource type="PackedScene" uid="uid://dy0j15qwr52hr" path="res://entities/bullets/shooting_patterns/sine_circle.tscn" id="4_yj0jf"]
+[ext_resource type="Script" path="res://entities/boss_movement.gd" id="6_oq201"]
+[ext_resource type="PackedScene" uid="uid://dl3o66oxy6g18" path="res://components/hitbox_component.tscn" id="7_r2jtw"]
+[ext_resource type="Texture2D" uid="uid://b23jtjrb5xj4f" path="res://entities/VirusBossSpriteSheet.png" id="7_wao4p"]
+[ext_resource type="PackedScene" uid="uid://dn61ufqjghgsi" path="res://components/health_component.tscn" id="9_m2hvx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_if533"]
-atlas = ExtResource("7_kwyw8")
-region = Rect2(514, 1370, 1528, 1309)
+atlas = ExtResource("7_wao4p")
+region = Rect2(25, 1406, 1281, 1335)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1rd6v"]
-atlas = ExtResource("7_kwyw8")
-region = Rect2(2047, 1363, 1521, 1308)
+atlas = ExtResource("7_wao4p")
+region = Rect2(1319, 1409, 1276, 1331)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kdjta"]
-atlas = ExtResource("7_kwyw8")
-region = Rect2(2019, 2716, 1535, 1240)
+atlas = ExtResource("7_wao4p")
+region = Rect2(38, 2758, 1274, 1341)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pl65n"]
-atlas = ExtResource("7_kwyw8")
-region = Rect2(2081, 3, 1503, 1298)
+atlas = ExtResource("7_wao4p")
+region = Rect2(1296, 63, 1279, 1333)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3fxl"]
-atlas = ExtResource("7_kwyw8")
-region = Rect2(505, 2670, 1506, 1280)
+atlas = ExtResource("7_wao4p")
+region = Rect2(1324, 2766, 1278, 1339)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prn8j"]
 radius = 129.79
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_in50c"]
-atlas = ExtResource("7_kwyw8")
-region = Rect2(424.059, 28.9, 1646.73, 1173.77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_umge4"]
-atlas = ExtResource("7_kwyw8")
-region = Rect2(2069, 0, 1536, 1308)
+atlas = ExtResource("7_wao4p")
+region = Rect2(1279, 54, 1305, 1350)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mvxxd"]
 radius = 123.48
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5f7tm"]
-radius = 544.82
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux4k6"]
+atlas = ExtResource("7_wao4p")
+region = Rect2(798, 271, 409, 399)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_igvm0"]
 radius = 236.35
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p64ty"]
-atlas = ExtResource("7_kwyw8")
-region = Rect2(50, 686, 282, 443)
+atlas = ExtResource("7_wao4p")
+region = Rect2(96, 92, 443, 833)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hxsd0"]
-radius = 134.255
-height = 397.166
+radius = 192.61
+height = 681.47
 
 [node name="Boss" type="Node2D" node_paths=PackedStringArray("faceSprite")]
-script = ExtResource("1_4ktx4")
-faceSprite = NodePath("AnimatableBody2D/Sprite2D/Sprite2D")
-attackPatterns = Array[PackedScene]([ExtResource("2_st43y"), ExtResource("2_c6g24"), ExtResource("4_u6hvm")])
+script = ExtResource("1_lktyc")
+faceSprite = NodePath("AnimatableBody2D/Sprite2D")
+attackPatterns = Array[PackedScene]([ExtResource("2_u6kd2"), ExtResource("3_31r5r"), ExtResource("4_yj0jf")])
 facialExpressions = Array[Texture2D]([SubResource("AtlasTexture_if533"), SubResource("AtlasTexture_1rd6v"), SubResource("AtlasTexture_kdjta")])
 neutralExpression = SubResource("AtlasTexture_pl65n")
 dyingExpression = SubResource("AtlasTexture_k3fxl")
+minWaitTime = 2.0
+maxWaitTime = 3.0
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." node_paths=PackedStringArray("legHips")]
 collision_layer = 8
 collision_mask = 3
-script = ExtResource("6_iu4ev")
+script = ExtResource("6_oq201")
 movementSpeed = 800
 minMovement = 300.0
 maxMovement = 600.0
@@ -87,39 +85,25 @@ scale = Vector2(0.2, 0.2)
 texture = SubResource("AtlasTexture_in50c")
 region_rect = Rect2(724.503, 0, 1469.63, 1290.06)
 
-[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/Sprite2D"]
-position = Vector2(25, 50)
-texture = SubResource("AtlasTexture_umge4")
-
-[node name="HitboxComponent" parent="AnimatableBody2D" node_paths=PackedStringArray("health_component") instance=ExtResource("7_qre7h")]
+[node name="HitboxComponent" parent="AnimatableBody2D" node_paths=PackedStringArray("health_component") instance=ExtResource("7_r2jtw")]
 collision_layer = 8
 collision_mask = 3
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent"]
 position = Vector2(1.52588e-05, -0.499992)
+rotation = -0.267534
+scale = Vector2(0.9, 0.9)
 shape = SubResource("CircleShape2D_mvxxd")
 
 [node name="LegHip" type="Node2D" parent="AnimatableBody2D/HitboxComponent"]
 position = Vector2(119, 52)
 
-[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip"]
-position = Vector2(6, 10)
-rotation = -1.54827
-scale = Vector2(0.1, 0.1)
-collision_layer = 8
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip/HitboxComponent2"]
-position = Vector2(-1.5767, -69.9822)
-shape = SubResource("CircleShape2D_5f7tm")
-
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip"]
-position = Vector2(74, 75)
+position = Vector2(35, 5)
 rotation = -0.829591
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("8_usmdk")
-region_enabled = true
+scale = Vector2(0.18, 0.18)
+texture = SubResource("AtlasTexture_ux4k6")
 region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
 
 [node name="HitboxComponent" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D"]
@@ -131,9 +115,9 @@ position = Vector2(1.46078, 7.46464)
 shape = SubResource("CircleShape2D_igvm0")
 
 [node name="Sprite2D2" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip"]
-position = Vector2(107, 178)
-rotation = 1.56456
-scale = Vector2(0.25, 0.25)
+position = Vector2(121, 92)
+rotation = -0.264373
+scale = Vector2(0.18, 0.18)
 texture = SubResource("AtlasTexture_p64ty")
 region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
 
@@ -144,30 +128,19 @@ collision_layer = 8
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D2/HitboxComponent2"]
-position = Vector2(1.46078, 7.46464)
+position = Vector2(-0.561832, -2.52928)
 shape = SubResource("CapsuleShape2D_hxsd0")
 
 [node name="LegHip2" type="Node2D" parent="AnimatableBody2D/HitboxComponent"]
-position = Vector2(-130, 48)
+position = Vector2(-115, 57)
+rotation = -0.111697
 scale = Vector2(-1, 1)
 
-[node name="HitboxComponent2" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip2"]
-position = Vector2(6, 10)
-rotation = -1.54827
-scale = Vector2(0.1, 0.1)
-collision_layer = 8
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/HitboxComponent2"]
-position = Vector2(-1.5767, -69.9822)
-shape = SubResource("CircleShape2D_5f7tm")
-
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip2"]
-position = Vector2(74, 75)
+position = Vector2(35, 5)
 rotation = -0.829591
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("8_usmdk")
-region_enabled = true
+scale = Vector2(0.18, 0.18)
+texture = SubResource("AtlasTexture_ux4k6")
 region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
 
 [node name="HitboxComponent" type="Area2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D"]
@@ -179,9 +152,9 @@ position = Vector2(1.46078, 7.46464)
 shape = SubResource("CircleShape2D_igvm0")
 
 [node name="Sprite2D2" type="Sprite2D" parent="AnimatableBody2D/HitboxComponent/LegHip2"]
-position = Vector2(107, 178)
-rotation = 1.56456
-scale = Vector2(0.25, 0.25)
+position = Vector2(121, 92)
+rotation = -0.264373
+scale = Vector2(0.18, 0.18)
 texture = SubResource("AtlasTexture_p64ty")
 region_rect = Rect2(194.091, 429.757, 527.853, 543.042)
 
@@ -192,20 +165,18 @@ collision_layer = 8
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D2/HitboxComponent2"]
-position = Vector2(1.46078, 7.46464)
+position = Vector2(-0.561832, -2.52928)
 shape = SubResource("CapsuleShape2D_hxsd0")
 
-[node name="HealthComponent" parent="AnimatableBody2D" instance=ExtResource("10_ofiid")]
+[node name="HealthComponent" parent="AnimatableBody2D" instance=ExtResource("9_m2hvx")]
 MAX_HEALTH = 100.0
 bar_color = Color(1, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="AnimatableBody2D/HitboxComponent" to="." method="on_hit"]
-[connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip/HitboxComponent2" to="." method="on_hit"]
 [connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D/HitboxComponent" to="." method="on_hit"]
 [connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip/Sprite2D2/HitboxComponent2" to="." method="on_hit"]
-[connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip2/HitboxComponent2" to="." method="on_hit"]
 [connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D/HitboxComponent" to="." method="on_hit"]
 [connection signal="area_entered" from="AnimatableBody2D/HitboxComponent/LegHip2/Sprite2D2/HitboxComponent2" to="." method="on_hit"]
 [connection signal="changed" from="AnimatableBody2D/HealthComponent" to="." method="TakeDamage"]
