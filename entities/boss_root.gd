@@ -16,10 +16,15 @@ signal initialize(max: float, val: float, color: Color)
 @export var touch_damage: float = 1
 @export var touch_knockback: float = 500
 
+@export var minWaitTime: float = 3
+@export var maxWaitTime: float = 6
+
 @export var playerNode: Node2D
 
 var currentMoveIndex = 0
 var isDead = false
+
+
 
 func telegraph():
 	
@@ -47,7 +52,7 @@ func attack():
 	
 	faceSprite.texture = neutralExpression
 	
-	timer.start(randf_range(3.0, 6.0))
+	timer.start(randf_range(minWaitTime, maxWaitTime))
 	
 func _ready():
 	timer.start()
