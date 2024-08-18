@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2kqamoul11gc"]
+[gd_scene load_steps=15 format=3 uid="uid://b2kqamoul11gc"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/player_movement.gd" id="1_jbq02"]
 [ext_resource type="Script" path="res://entities/main_character_sprites.gd" id="2_7f84s"]
@@ -20,6 +20,9 @@ size = Vector2(45, 19.8959)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pv1k"]
 size = Vector2(17.2312, 9.56915)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hntth"]
+radius = 473.305
 
 [node name="MainCharacter" type="CharacterBody2D"]
 collision_mask = 12
@@ -101,7 +104,6 @@ script = ExtResource("6_tv6aq")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-visible = false
 position = Vector2(1, -9.00001)
 rotation = 0.127512
 shape = SubResource("CapsuleShape2D_6uw6x")
@@ -166,8 +168,17 @@ radial_accel_max = -500.0
 scale_amount_min = 0.01
 scale_amount_max = 0.02
 
+[node name="BossKiller" type="Area2D" parent="."]
+position = Vector2(15, -16)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossKiller"]
+shape = SubResource("CircleShape2D_hntth")
+
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="." method="play_fire_sound"]
 [connection signal="timeout" from="Sprites/ArmOrigin/Arm/Timer" to="Sprites/ArmOrigin/Arm/Shooter" method="shoot"]
 [connection signal="changed" from="HealthComponent" to="." method="TakeDamage"]
 [connection signal="initialize" from="HealthComponent" to="." method="_initializeHealthBar"]
 [connection signal="hit" from="HitboxComponent" to="." method="on_hit"]
+[connection signal="area_entered" from="BossKiller" to="." method="HitBoss"]

@@ -3,6 +3,7 @@ extends Node2D
 signal take_damgage(old_amount: float, new_amount: float)
 signal die
 signal initialize(max: float, val: float, color: Color)
+signal die_for_real
 
 @onready var body = $AnimatableBody2D
 @onready var timer = $Timer
@@ -63,6 +64,10 @@ func _ready():
 	neutralExpression = faceSprite.texture
 
 func TakeDamage(old: float, new: float):
+	
+	if isDead:
+		die_for_real.emit()
+	
 	emit_signal("take_damgage", old, new)
 
 func Die():

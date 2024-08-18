@@ -1,5 +1,7 @@
 extends Node2D
 
+signal finish_transition
+
 @export var backgrounds: Array[Node2D] = []
 @export var zoom_duration: float = 3
 @export var zoom_to: float = 100
@@ -30,3 +32,7 @@ func next_bg():
 		Vector2.ONE, zoom_duration).from(Vector2.ZERO).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT)
 	tween.parallel().tween_property(new_bg, 'modulate:a', 
 		1, zoom_duration).from(0)
+	
+	await get_tree().create_timer(zoom_duration).timeout
+	
+	finish_transition.emit()

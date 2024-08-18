@@ -1,16 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=20 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
 [ext_resource type="Script" path="res://entities/background_controller.gd" id="2_qm35y"]
-[ext_resource type="PackedScene" uid="uid://b2g8snnc3n45e" path="res://entities/background2.tscn" id="3_7rs66"]
-[ext_resource type="PackedScene" uid="uid://cp8ghsns4fbkl" path="res://entities/background.tscn" id="4_a6fx4"]
+[ext_resource type="PackedScene" path="res://entities/background2.tscn" id="3_7rs66"]
+[ext_resource type="PackedScene" path="res://entities/background.tscn" id="4_a6fx4"]
 [ext_resource type="PackedScene" uid="uid://b2kqamoul11gc" path="res://entities/main_character.tscn" id="4_cn87y"]
-[ext_resource type="PackedScene" uid="uid://81u1x7xh8qfm" path="res://entities/background3.tscn" id="4_v60rd"]
+[ext_resource type="PackedScene" path="res://entities/background3.tscn" id="4_v60rd"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://ctklyuuy0mpo" path="res://entities/spider.tscn" id="5_51niy"]
 [ext_resource type="Script" path="res://scenes/gameplay/health_bar.gd" id="6_7hmyu"]
-[ext_resource type="PackedScene" path="res://entities/bull.tscn" id="6_xr4gr"]
-[ext_resource type="PackedScene" path="res://entities/virus.tscn" id="7_4vsqt"]
+[ext_resource type="PackedScene" uid="uid://dwd6xjhdnn8a3" path="res://entities/bull.tscn" id="6_xr4gr"]
+[ext_resource type="PackedScene" uid="uid://cmoxqoujvra3c" path="res://entities/virus.tscn" id="7_4vsqt"]
+[ext_resource type="PackedScene" uid="uid://cpmwjhf7ehwg6" path="res://entities/boss_transition.tscn" id="12_n1gvi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyr2g"]
 bg_color = Color(1, 1, 1, 1)
@@ -241,8 +242,6 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_ej17e")
 
 [node name="Bull" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("6_xr4gr")]
-process_mode = 4
-visible = false
 position = Vector2(962, 540)
 scale = Vector2(0.5, 0.5)
 playerNode = NodePath("../MainCharacter")
@@ -250,21 +249,33 @@ playerNode = NodePath("../MainCharacter")
 [node name="BackGround" type="Node2D" parent="."]
 
 [node name="Virus" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("7_4vsqt")]
+process_mode = 4
+visible = false
 position = Vector2(960, 532)
 scale = Vector2(0.65, 0.65)
 playerNode = NodePath("../MainCharacter")
 
+[node name="BossTransition" parent="." node_paths=PackedStringArray("bosses") instance=ExtResource("12_n1gvi")]
+bosses = [NodePath("../Bull"), NodePath("../Spider"), NodePath("../Virus")]
+
+[connection signal="finish_transition" from="Backgrounds" to="BossTransition" method="TransitionToBoss"]
+[connection signal="hit_boss" from="MainCharacter" to="BossTransition" method="KillBoss"]
 [connection signal="initialize" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="InitializeHealthbar"]
 [connection signal="take_damage" from="MainCharacter" to="GameplayLayer/MarginContainer/Control/HBoxContainer2/PlayerHealth" method="ChangeValue"]
 [connection signal="die" from="Spider" to="MainCharacter" method="TransformIntoBullet"]
+[connection signal="die" from="Spider" to="BossTransition" method="PrepToKill"]
 [connection signal="initialize" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
 [connection signal="take_damgage" from="Spider" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]
 [connection signal="die" from="Bull" to="MainCharacter" method="TransformIntoBullet"]
+[connection signal="die" from="Bull" to="BossTransition" method="PrepToKill"]
 [connection signal="initialize" from="Bull" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
 [connection signal="take_damgage" from="Bull" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]
 [connection signal="die" from="Virus" to="MainCharacter" method="TransformIntoBullet"]
+[connection signal="die" from="Virus" to="BossTransition" method="PrepToKill"]
 [connection signal="initialize" from="Virus" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="InitializeHealthbar"]
 [connection signal="take_damgage" from="Virus" to="GameplayLayer/MarginContainer/Control/HBoxContainer/BossHealth" method="ChangeValue"]
+[connection signal="finished_killing" from="BossTransition" to="Backgrounds" method="next_bg"]
+[connection signal="finished_killing" from="BossTransition" to="MainCharacter" method="TransformIntoBee"]
 
 [editable path="Backgrounds/Background1"]
 [editable path="Backgrounds/Background2"]

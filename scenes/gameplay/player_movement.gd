@@ -3,6 +3,8 @@ extends CharacterBody2D
 signal initialize(max: float, val: float, color: Color)
 signal take_damage(old: float, new: float)
 
+signal hit_boss
+
 var dir = Vector2(0,0)
 var is_shooting: bool = false
 
@@ -26,15 +28,18 @@ func _ready():
 	shooter_timer.paused = true
 	
 func TransformIntoBullet():
-	print("Transform")
 	is_transforming = true
 	shrinkParticle.emitting = true
 	
 
-func _doTransformation(delta):
-	scale = scale.lerp(Vector2.ZERO, delta)
+func _doTransformation(delta, targetScale: float):
+	scale = scale.lerp(Vector2.ONE * targetScale, delta)
+
+func TransformIntoBee():
+	is_transforming = false
+	await get_tree().create_timer(3).timeout
+	shrinkParticle.emitting = false
 	
-	print(scale)
 
 func TakeDamage(old: float, new: float):
 	take_damage.emit(old, new)
@@ -62,7 +67,9 @@ func _process(delta):
 	shooter_timer.paused = not is_shooting
 	
 	if is_transforming:
-		_doTransformation(delta)
+		_doTransformation(delta, 0.1)
+	else:
+		_doTransformation(delta, 1)
 
 func _physics_process(delta):
 	dir = Vector2(0, 0)
@@ -89,3 +96,7 @@ func _physics_process(delta):
 
 func play_fire_sound():
 	SoundManager.PlaySound(fire_sound)
+
+func HitBoss(area: Area2D):
+	print("BOSS HIT")
+	hit_boss.emit()
